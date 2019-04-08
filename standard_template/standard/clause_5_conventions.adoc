@@ -1,9 +1,13 @@
 == Conventions
-This sections provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+This Abstract Specification specifies mandatory and recommended requirements for tiling a 2-D Euclidean plane. This Abstract Specificaiton does not mandate any particular coding or implementation pattern (e.g., XML, JSON)
+
+=== Abreviations
+
+WMTS   Web Map Tiling Service
 
 === Identifiers
 The normative provisions in this standard are denoted by the URI
 
-http://www.opengis.net/spec/{standard}/{m.n}
+http://www.opengis.net/spec/2d-tiling-core/1.0
 
 All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
