@@ -1,5 +1,5 @@
 == Conventions
-This Abstract Specification specifies mandatory and recommended requirements for tiling a 2-D Euclidean plane. This Abstract Specificaiton does not mandate any particular coding or implementation pattern (e.g., XML, JSON)
+This Abstract Specification at a conceptual level specifies mandatory and recommended requirements for tiling a 2-D Euclidean plane. This Abstract Specificaiton does not mandate any particular coding or implementation pattern (e.g., XML, JSON)
 
 === Abreviations
 
