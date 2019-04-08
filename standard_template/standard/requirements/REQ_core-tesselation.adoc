@@ -1,7 +1,7 @@
 [width="90%",cols="2,6"]
 |===
-|*Requirement 1* {set:cellbgcolor:#CACCCE}|/req/req-class-a/req-name-1 +
+|*Requirement 1* {set:cellbgcolor:#CACCCE}|/req/core/tesselation +
  +
 
-Any tiling scheme used to create a tile set shall be a regular tessellation of a flat surface and is the tiling of a plane using one or more geometric shapes, called tiles, with no overlaps and no gaps.  {set:cellbgcolor:#FFFFFF}
+Any tiling scheme used to create a tile set shall be a regular tessellation of a 2-D plane using one or more geometric shapes, called tiles, with no overlaps and no gaps.  {set:cellbgcolor:#FFFFFF}
 |===
