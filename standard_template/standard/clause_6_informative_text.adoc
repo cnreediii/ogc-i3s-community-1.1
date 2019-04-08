@@ -1,6 +1,14 @@
-== Clauses not Containing Normative Material
+== Introduction
 
-Paragraph
+For many geospatial technology applications and use cases, there is the need (requirement!) to partition the space of interest. Examples are numerous. Within the OGC standards baseline, CDB defines how to partition the globe into a set of 2d tiles for many levels of detail. The Web Matrix Tile Set (WMTS) standard defines the rules and requirements for a tile matrix set as a way to index space based on a set of regular grids defining a domain (tile matrix) (tile matrix) for a limited list of scales in restricted set of Coordinate Reference Systems (CRS). The new - and more general - Tile Matrix Set standard specifies the concept of a tile matrix set and tile matrix set limits and its implementation in 2D space. Finally, I3S defines how to partition 3d space using a hierarchical, node-based spatial index structure in which each node’s payload may contain features with associated geometry, textures and attributes.
+
+In geometry, space partitioning is the process of dividing a space (usually a Euclidean space) into two or more disjoint subsets. In other words, space partitioning divides a space into non-overlapping regions. Any point in the space can then be identified to lie in exactly one of the regions. 
+
+Within that context, we can consider the requirements for partitioning space based on dimension. This OGC Abstract Specification presents a conceptual model for partitioning 2-D Euclidean space. Tiling of 2d Euclidian space is the most commonly known approach to partitioning space. However, there are common mandatory elements for any approach to partitioning space. This document defines the several common required elements that apply to any dimension and then follows with more specific requirements for the 2-D tiles and tiling.
+
+Please note that in the preparation of this draft conceptual model, the tiling sections/extensions to CDB, GeoPackage, WMTS, and MVT were reviewed. The OGC DGGS standard and various Engineering Reports from the OGC Test Bed 13, Test Bed 14 and the Vector Tiles Pilot were also considered. Finally, the Tile Matrix Set candidate standard was reviewed. Much of this document is derived by abstracting what is contained in those existing and candidate standards and specifications.
+
+The goal is to define a simple conceptual model that can support any and all requirements for tiled data stores and applications including extensions for visualization, portrayal, analytics, filtering, lelvels of detail, and so forth. These various use cases and/or workflows are not part of the core conceptual model but instead may be thought of as profiles or extensions of the model that restrict core requirements or define additional requirements. For example, the majority of the CDB standard that deals with tiles defines additional requirements such as level of detail to optimize the data store for that domain of interest.
 
 === Clauses not containing normative material sub-clause 1
 
