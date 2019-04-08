@@ -8,3 +8,9 @@ the tiling of a plane using one or more geometric shapes, called tiles, with no 
 
 === *tile*
 a geometric shape with known properties that is the result of the tiling (tessellation) of a plane. A tile consists of a single connected "piece" without "holes" or "lines" (topological disc).
+
+=== *tiling*
+The process of decomposing some space into lots of little pieces (tiles) that fit together without gaps or overlaps.
+
+=== *tile set*
+A set of tiles with common properties that meets the definition of a tessellation. In short, a collection of subsets of the plane, i.e. tiles, which cover the plane without gaps or overlaps.
