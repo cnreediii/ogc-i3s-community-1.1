@@ -3,5 +3,8 @@ This document uses the terms defined in Sub-clause 5.3 of [OGC 06-121r8], which 
 
 For the purposes of this document, the following additional terms and definitions apply.
 
-=== *term name*
-text of the definition
+=== *tessellation*
+the tiling of a plane using one or more geometric shapes, called tiles, with no overlaps and no gaps. In mathematics, tessellations can be generalized to higher dimensions and a variety of geometries . There are three types of tessellation. Regular tessellations are made up entirely of congruent regular polygons all meeting vertex to vertex. There are only three regular tessellations. These consist of a network of equilateral triangles, squares or hexagons footnoteref:[note1,Irregular tessellations  consist of figures that aren't composed of regular polygons but still interlock without gaps or overlaps. Voronoi diagrams are an example of an irregular tessellation.].
+
+=== *tile*
+a geometric shape with known properties that is the result of the tiling (tessellation) of a plane. A tile consists of a single connected "piece" without "holes" or "lines" (topological disc).
