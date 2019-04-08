@@ -4,7 +4,7 @@ Paragraph
 === Requirement Class A or Requirement A Example
 Paragraph – intro text for the requirement class.
 
-include::requirements/core/REQ_core-tessellation.adoc[]
+include::requirements/REQ_core-tessellation.adoc[]
 
 ==== Requirement 1
 Paragraph - intro text for the requirement.
