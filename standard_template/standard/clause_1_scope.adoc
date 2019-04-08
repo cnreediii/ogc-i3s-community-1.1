@@ -1,5 +1,4 @@
 == Scope
-[NOTE]
-====
-Insert Scope text here. Give the subject of the document and the aspects of that scope covered by the document.
-====
+
+This document presents a sub-class of a more general conceptual model for partitioning space: tiling of 2d Euclidian space Tiling of 2d Euclidian space is the most commonly known approach to partitioning space in traditional geospatial technology. However, there are also common elements and/or semantics for any approach to partitioning space in any dimension. This document defines some of the common required elements and then follows with more specific requirements for the two dimension case.
+
