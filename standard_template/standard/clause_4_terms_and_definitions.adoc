@@ -6,6 +6,12 @@ For the purposes of this document, the following additional terms and definition
 === *Conceptual model* 
 a description of common concepts and their relationships, particularly in order to facilitate exchange of information between parties within a specific domain [CEN ENV 1613:1994]. A conceptual model is explicitly chosen to be independent of design or implementation concerns.
 
+=== *coordinate reference system*
+coordinate system that is related to the real world by a datum [ISO 19111]
+
+=== *coordinate system*
+set of mathematical rules for specifying how coordinates are to be assigned to points [ISO 19111]
+
 === *tessellation*
 partitioning of a space into a set of conterminous subspaces having the same dimension as the space being partitioned [ISO 19123]
 
