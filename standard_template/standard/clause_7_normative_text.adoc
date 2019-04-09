@@ -13,6 +13,8 @@ Element name: TileTessellation
 
 include::requirements/REQ_core-crs.adoc[]
 
-Any tile scheme shall specify a coordinate reference system (CRS) that is consistent for any given tile set. The CRS for a given tile set could be based on an engineering datum or an earth centric datum. The CRS could be further defined (restricted) to meet very specific requirements, say for visualization of pre-rendered tiles as defined in the WMTS standard. Further, at the core conceptual level, there is no requirement that all CRSs be the same for all tile sets in a tiled data store. Having a consistent CRS across all tile sets is a requirement that would be specified in a profile. For example, CDB specifies WGS 84 (EPSG4326) for all tiles.
+Any tile scheme shall specify a coordinate reference system (CRS) that is consistent for a given tile set. The CRS for a given tile set could be based on an engineering datum or an earth centric datum. The CRS could be restricted to meet very specific requirements, say for visualization of pre-rendered tiles as defined in the WMTS standard. Further, at the core conceptual level, there is no requirement that all CRSs be the same for all tile sets in a tiled data store. 
+
+Having the same CRS for all tile sets in a data store is a requirement that would be specified in a profile. For example, CDB specifies WGS 84 (EPSG4326) for all tiles.
 
 Element name: TileSetCRS
