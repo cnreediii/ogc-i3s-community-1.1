@@ -1,7 +1,7 @@
-== Clause containing normative material
-Paragraph
+== Conceptual Model for 2 Dimensional Euclidean Space Tiles and Tiling: Normative
+This section defines the mandatory elements of the core model for 2-D tiling of in Euclidean space. These elements are mandatory regardless and independent of the implementation platform, programming languages, encodings, or any other implementation specific and requirements. 
 
-=== Requirement Class A or Requirement A Example
+=== 2-D Core Conceptual Model Requirements
 Paragraph – intro text for the requirement class.
 
 include::requirements/REQ_core-tessellation.adoc[]
