@@ -17,3 +17,23 @@ The tiling conceptual model defined in this document assumes that the target is 
 _As stated in OGC 08-015r6 Abstract Specification Topic 2: Spatial referencing by coordinates, a coordinate system is a set of mathematical rules for specifying how coordinates are to be assigned to points in space. A Coordinate Reference System (CRS) is a coordinate system that is related to the real world by a reference datum. An example of mathematical rules is the application of a sphere or an ellipsoid centered in the datum and the use of a projection to transform the sphere or the ellipsoid into a planar representation of the world._
 
 The remainder of this abstract specification assumes that the space to be tiled is a two dimensional planar surace in Euclidean space.
+
+=== Characteristics of a Conceptual Model
+
+The terms and definitions clause in this Abstract Specification provides a short definition for "conceptual Model". However, for additional clarification, the following are characteristics of a good conceptual model. A conceptual model:
+
+* is a representation of a system, made of the composition of concepts which are used to help people know, understand, or simulate a subject the model represents. A documented conceptual model represents 'concepts' (entities), the relationships between them, and a vocabulary.
+
+* is explicitly defined to be independent of design or implementation concerns. The aim of a conceptual model is to express the meaning of terms and concepts used by domain experts to discuss the problem, and to find the correct relationships between different concepts.
+
+* organizes the vocabulary needed to communicate consistently and thoroughly about the know-how of a problem domain.
+
+* starts with a glossary of terms and definitions.  There is a very high premium on high-quality, design-independent definitions, free of data or implementation biases.  The model also emphasizes rich vocabulary.
+
+* is always about identifying the correct choice of terms to use in communications, including statements of rules and requirements, especially where high precision and subtle distinctions need to be made.  The core concepts of a geospatial problem domain are typically quite stable over time.
+
+==== Conceptual Model vs. Data Model
+
+A conceptual model differs from a data model in important ways.  The goal of a conceptual model is to support the expression of natural-language statements, and supply their semantics — not unify, codify (and sometimes simplify) data.  Therefore the vocabulary included in a conceptual model is far richer, as suits knowledge-intensive problem domains.  In short, conceptual models are concept-centric; data models are thing-entity-or-class-centric.
+
+Data models can usually be rather easily derived from conceptual models; the reverse is much harder (or impossible).  Like data models, conceptual models are often rendered graphically, but free of such distractions to stakeholders as cardinalities.
