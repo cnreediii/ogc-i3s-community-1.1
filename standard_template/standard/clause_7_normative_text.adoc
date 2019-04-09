@@ -5,13 +5,13 @@ This section defines the mandatory and recommended requirements of the core mode
 
 ==== Requirement 1 - tessellation
 
-include::requirements/REQ_core-tessellation.adoc[]
+include::requirements/REQ1_core-tessellation.adoc[]
 
 Element name: TileTessellation
 
 ==== Requirement 2 - Tile Set Coordinate Reference System (CRS)
 
-include::requirements/REQ_core-crs.adoc[]
+include::requirements/REQ2_core-crs.adoc[]
 
 Any tile scheme shall specify a coordinate reference system (CRS) that is consistent for a given tile set. The CRS for a given tile set could be based on an engineering datum or an earth centric datum. The CRS could be restricted to meet very specific requirements, say for visualization of pre-rendered tiles as defined in the WMTS standard. Further, at the core conceptual level, there is no requirement that all CRSs be the same for all tile sets in a tiled data store. 
 
