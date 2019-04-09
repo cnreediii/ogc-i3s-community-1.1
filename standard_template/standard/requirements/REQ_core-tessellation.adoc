@@ -3,5 +3,6 @@
 |*Requirement 1* {set:cellbgcolor:#CACCCE}|/req/core/tessellation +
  +
 
-Any tiling scheme used to create a tile set shall be a regular tessellation of a 2-D plane using one or more geometric shapes, called tiles, with no overlaps and no gaps.  {set:cellbgcolor:#FFFFFF}
+Any tiling scheme used to create a tile set shall be a regular tessellation of a 2-D plane +
+using one or more geometric shapes, called tiles, with no overlaps and no gaps.  {set:cellbgcolor:#FFFFFF}
 |===
