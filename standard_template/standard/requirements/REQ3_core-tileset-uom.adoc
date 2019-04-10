@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 3* {set:cellbgcolor:#CACCCE}|/req/core/tileset/uom +
+
+A tile scheme for a tile set shall have a units of measure that is consistent +
+for all tiles in a given tile set.  {set:cellbgcolor:#FFFFFF}
+|===
