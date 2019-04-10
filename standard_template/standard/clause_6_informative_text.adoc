@@ -28,6 +28,10 @@ In this use case, geospatial content is subdivided into small units called tiles
 
 A very typical storage use case would be a city defining the tile structure for its spatial data store. They could begin by defining the geographic extent of the entire area of interest and could include a fringe area for future growth. Typically, in the US cities work in State Plane coordinates, such as Colorado North zone (NAD 83) for the City of Ft. Collins. The parameters are available in the EPSG database (EPSG 2876). The units of measure are feet. They pick a tile set origin that is the same for all tile sets in the data store. Typically, GIS practitioners think of origins being in the lower left corner so that option is selected for both the tile set and for each tile in a tile set. They then choose a regular square tessellation. They wish to create three tile sets with unique IDs of Parcels, Streams, and Roads. Each tile set will have a different tile size. Parcels will have a tile width and height of 1000 feet. Streams will have a tile width and height of 5000 feet. Roads will have a tile width and height of 2000 feet.
 
+[#img_Storage,reftext='{figure-caption} {counter:figure-num}']
+.Example tile set for above parcel map use case
+image::images/storage.png[width=600,align="center"]
+
 ==== Visualization Use Case
 
 The Visualization use case is focused on providing high speed geospatial content rendering and visualization capabilities on a client. In this use case, the source geospatial data is heavily processed and restructured and reformatted to be optimized for visualization on one or more clients. For example, source vector data that is topologically structured and semantically rich may be processed into a tile matrix of PNG images. 
