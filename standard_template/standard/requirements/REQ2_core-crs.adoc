@@ -1,6 +1,6 @@
 [width="90%",cols="2,6"]
 |===
-|*Requirement 2* {set:cellbgcolor:#CACCCE}|/req/core/crs +
+|*Requirement 2* {set:cellbgcolor:#CACCCE}|/req/core/tileset/crs +
 
 A tile scheme for a tile set shall have a coordinate reference system (CRS) that + 
 is consistent for all tiles in a given tile set.  {set:cellbgcolor:#FFFFFF}
