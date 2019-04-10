@@ -9,7 +9,8 @@ This document presents a sub-class of a more general conceptual model for partit
 This Abstract Specification *does not*:
 
 * Speak to the content that could be organized in a tiled structure;
-* Address concepts such as styling, levels of detail, and levels;
+* Address concepts such as styling, levels of detail, attributes, and levels;
+* Make any suggestions regarding how content will be processed and stored in the tiled structure.
 * Provide guidance on formats, encodings, or any other implementation details.
 
 The above concepts and implementation guidance is defined in profiles, extensions, and profiles with extensions based on this Abstract Specification. Examples of this type of guidance is the OGC Tile Matrix Set Standard, the OGC I3S Community Standard, and the OGC CDB standard.
