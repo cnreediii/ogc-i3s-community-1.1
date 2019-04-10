@@ -1,4 +1,15 @@
 == Scope
 
-This document presents a sub-class of a more general conceptual model for partitioning space: tiling of 2d Euclidian space Tiling of 2d Euclidian space is the most commonly known approach to partitioning space in traditional geospatial technology. However, there are also common elements and/or semantics for any approach to partitioning space in any dimension. This document defines some of the common required elements and then follows with more specific requirements for the two dimension case.
+=== What this Abstract Specification is
 
+This document presents a sub-class of a more general conceptual model for partitioning space: tiling of 2d Euclidian space. Tiling of 2d Euclidian space is the most commonly known approach to partitioning space in traditional geospatial technology. However, there are also common elements and/or semantics for any approach to partitioning space in any dimension. This document defines some of the common required elements and then follows with more specific requirements for the two dimension case.
+
+=== What this Abstract Specification is not
+
+This Abstract Specification *does not*:
+
+* Speak to the content that could be organized in a tiled structure;
+* Address concepts such as styling, levels of detail, and levels;
+* Provide guidance on formats, encodings, or any other implementation details.
+
+The above concepts and implementation guidance is defined in profiles, extensions, and profiles with extensions based on this Abstract Specification. Examples of this type of guidance is the OGC Tile Matrix Set Standard, the OGC I3S Community Standard, and the OGC CDB standard.
