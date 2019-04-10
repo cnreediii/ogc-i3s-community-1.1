@@ -1,0 +1,8 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 4* {set:cellbgcolor:#CACCCE}|/req/core/tileset/extent +
+
+Each tile set shall specify an extent in the TileSet coordinate reference system (CRS). +
+The extent shall expressed following the rules as specified in Clause 10.2.1 Basic bounding box +
+parameters (OWS Common).{set:cellbgcolor:#FFFFFF}
+|===
