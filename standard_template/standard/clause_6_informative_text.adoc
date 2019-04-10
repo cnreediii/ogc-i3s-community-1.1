@@ -34,7 +34,7 @@ image::images/storage.png[width=500,align="center"]
 
 ==== Visualization Use Case
 
-The Visualization use case is focused on providing high speed geospatial content rendering and visualization capabilities on a client. In this use case, the source geospatial data is heavily processed and restructured and reformatted to be optimized for visualization on one or more clients. For example, source vector data that is topologically structured and semantically rich may be processed into a tile matrix of PNG images. 
+The Visualization use case is focused on providing high speed geospatial content rendering and visualization capabilities on a client. In this use case, the source geospatial data is heavily processed and restructured and reformatted to be optimized for visualization on one or more clients. For example, source vector data that is topologically structured and semantically rich may be processed into a tile matrix of PNG images and all geometry, topology, and semantics are lost. 
 
 [#img_tilematrix,reftext='{figure-caption} {counter:figure-num}']
 .Example tile matrix for visualization
