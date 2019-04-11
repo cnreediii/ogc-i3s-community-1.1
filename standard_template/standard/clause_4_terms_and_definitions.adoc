@@ -12,6 +12,15 @@ coordinate system that is related to the real world by a datum [ISO 19111]
 === *coordinate system*
 set of mathematical rules for specifying how coordinates are to be assigned to points [ISO 19111]
 
+=== *extension*
+a set of one or more conformance clauses that defines new options for an existing standard. Extensions are generally designed to add additional capabilities that are not part of the core standard. An example is OGC GeoPackage Extension for Tiled Gridded Coverage Data. [OGC TC PnP]
+
+=== *profile*
+a pure subset of an existing standard including restrictions on or deletions of conformance clauses related to the subsetting. An example of a profile is the GML Simple Feature Profile. [ISO 19106:2004, Type 1 Profile]
+
+=== *profile with extension(s)
+a set of one or more conformance clauses from a base standard that includes at least one new conformance clause (extension). An example is OpenGIS® Web Map Services - Profile for EO Products.
+
 === *tessellation*
 partitioning of a space into a set of conterminous subspaces having the same dimension as the space being partitioned [ISO 19123]
 
