@@ -12,6 +12,9 @@ coordinate system that is related to the real world by a datum [ISO 19111]
 === *coordinate system*
 set of mathematical rules for specifying how coordinates are to be assigned to points [ISO 19111]
 
+=== *equilateral triangle*
+a triangle in which all three sides are equal. In the familiar Euclidean geometry, an equilateral triangle is also equiangular; that is, all three internal angles are also congruent to each other and are each 60°.
+
 === *extension*
 a set of one or more conformance clauses that defines new options for an existing standard. Extensions are generally designed to add additional capabilities that are not part of the core standard. An example is OGC GeoPackage Extension for Tiled Gridded Coverage Data. [OGC TC PnP]
 
