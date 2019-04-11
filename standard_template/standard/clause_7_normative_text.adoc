@@ -1,13 +1,17 @@
 == Conceptual Model for 2 Dimensional Euclidean Space Tiles and Tiling: Normative
 This section defines the mandatory and recommended requirements of the core model for 2-D tiling of in Euclidean space. These elements are mandatory regardless and independent of the implementation platform, programming languages, encodings, or any other implementation specific and requirements. 
 
-=== 2-D Core Conceptual Model Requirements
+=== Base Requirement
 
 ==== Requirement 1 - tessellation
 
 include::requirements/REQ1_core-tessellation.adoc[]
 
 Element name: TileTessellation
+
+=== Requirement Class Tile Set
+
+This requirement class defines the requirements for defining a tile set.
 
 ==== Requirement 2 - Tile Set Coordinate Reference System (CRS)
 
@@ -34,4 +38,6 @@ include::requirements/REQ4_core-tileset-extent.adoc[]
 In any tiling scheme, there are two extents to be considered. The extent of an individual tile and the extent of the tile set. This requirement is for defining the extent of the tile set.
 
 Note, if there is one tile in a tile set, the extents are identical. In this tiling conceptual model there is no requirement, such as in DGGS, for a tile or tile set to cover the entire globe. A tile or tile set could have an extent that covers a building site, a city, a county, a country, and so forth. Any restrictions on the extent of a tile or tile set would be specified in one or more requirements in a profile or a profile extension.
+
+=== Requirements Class Tile Schema
 
