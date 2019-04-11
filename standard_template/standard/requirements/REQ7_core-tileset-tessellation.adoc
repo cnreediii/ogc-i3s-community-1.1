@@ -2,6 +2,9 @@
 |===
 |*Requirement 7* {set:cellbgcolor:#CACCCE}|/req/core/tileset/tessellation +
 
-Any tiling scheme used to create a tile set shall be a regular tessellation of a 2-D plane +
-using a geometric shape as specified in Requirement <n>, called tiles, with no overlaps and no gaps.  {set:cellbgcolor:#FFFFFF}
+Any tiling process used to create a tile set shall be a regular tessellation of a 2-D plane +
+using a geometric shape of type square (rectilinear), hexagonal, or equilateral triangles. The +
+resulting tile set shall consist of one or more tiles, with no overlaps and no gaps. +
+The tiling scheme shall be consistent for all tiles within a tile set and shall adhere to +
+requirements 2 through 6.{set:cellbgcolor:#FFFFFF}
 |===
