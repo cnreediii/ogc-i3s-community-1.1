@@ -18,7 +18,7 @@ a set of one or more conformance clauses that defines new options for an existin
 === *profile*
 a pure subset of an existing standard including restrictions on or deletions of conformance clauses related to the subsetting. An example of a profile is the GML Simple Feature Profile. [ISO 19106:2004, Type 1 Profile]
 
-=== *profile with extension(s)
+=== *profile with extension(s)*
 a set of one or more conformance clauses from a base standard that includes at least one new conformance clause (extension). An example is OpenGIS® Web Map Services - Profile for EO Products.
 
 === *tessellation*
