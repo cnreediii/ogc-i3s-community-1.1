@@ -55,9 +55,15 @@ The tile set origin defines where the spatial origin reference point is for the 
 
 Example model element: TileSetOrigin=LowerLeftCorner . Other values could be upper left, lower right, upper right and so forth)
 
-==== Requirement 7 - tessellation
+==== Requirement 7 - Tile Set Tessellation Type
 
-include::requirements/REQ7_core-tessellation.adoc[]
+include::requirements/REQ7_core-tessellation-type.adoc[]
+
+A regular tessellation 2D planar surface can be performed using one of three geometric shapes: squares (rectangles), hexagons, and equilaterial triangles. Squares (rectangles) represent the majority of current and past approaches for tesselating a plane in geospatial systems. However, hexagons have been used in a variety of systems and are the normal tessellation method used in a Discrete Global Grid System (DGGS). Typically there are also rules applied to specify the size and or extent for each tesselation type. For example, in a DGGS implementation, equal area hexagons are often used. In WMTS and TMS, each tile in a tile set as the same width and height.
+
+==== Requirement 8 - tessellation
+
+include::requirements/REQ8_core-tessellation.adoc[]
 
 Element name: TileTessellation
 
