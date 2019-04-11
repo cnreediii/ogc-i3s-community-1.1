@@ -58,8 +58,8 @@ A conceptual model organizes the vocabulary needed to communicate consistently a
 
 * is always about identifying the correct choice of terms to use in communications, including statements of rules and requirements, especially where high precision and subtle distinctions need to be made.  The core concepts of a geospatial problem domain are typically quite stable over time.
 
-==== Conceptual Model vs. Data Model
+==== Conceptual Model vs. Logical (Data) Model
 
-A conceptual model differs from a data model in important ways.  The goal of a conceptual model is to support the expression of natural-language statements, and supply their semantics — not unify, codify (and sometimes simplify) data.  Therefore the vocabulary included in a conceptual model is far richer, as suits knowledge-intensive problem domains.  In short, conceptual models are concept-centric; data models are thing-entity-or-class-centric.
+A conceptual model differs from a logical model in important ways.  The goal of a conceptual model is to support the expression of natural-language statements, and supply their semantics — not unify, codify (and sometimes simplify) data.  Therefore the vocabulary included in a conceptual model is far richer, as suits knowledge-intensive problem domains.  In short, conceptual models are concept-centric; logical models are thing-entity-or-class-centric.
 
-Data models can usually be rather easily derived from conceptual models; the reverse is much harder (or impossible).  Like data models, conceptual models are often rendered graphically, but free of such distractions to stakeholders as cardinalities.
+Logical models can usually be rather easily derived from conceptual models; the reverse is much harder (or impossible).  Like logical models, conceptual models are often rendered graphically, but free of such distractions to stakeholders as cardinalities.
