@@ -3,11 +3,9 @@ This section defines the mandatory and recommended requirements of the core mode
 
 === Base Requirement
 
-==== Requirement 1 - tessellation
+==== Requirement 1 - Core
 
-include::requirements/REQ1_core-tessellation.adoc[]
-
-Element name: TileTessellation
+include::requirements/REQ1_core.adoc[]
 
 === Requirement Class Tile Set Schema
 
