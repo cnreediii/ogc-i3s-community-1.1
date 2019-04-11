@@ -13,6 +13,14 @@ Element name: TileTessellation
 
 This requirement class defines the requirements for defining a tile set.
 
+==== Requirement 2 - Tile Set Identifier (ID)
+
+include::requirements/REQ2_core-tileset-id.adoc[]
+
+Each tile set in a tiled data store shall have a unique identifier. This identifier could be a number or an alphanumeric string. For example, the ID could be CodeType, as an adaptation of MD_Identifier class ISO 19115. An example of analphanumeric identifier might be "Parcels" or "Street Network".
+
+Element name: TileSetIdentifier
+
 ==== Requirement 3 - Tile Set Coordinate Reference System (CRS)
 
 include::requirements/REQ3_core-tileset-crs.adoc[]
