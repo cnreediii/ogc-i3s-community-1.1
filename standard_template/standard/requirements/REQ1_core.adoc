@@ -1,0 +1,7 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 1* {set:cellbgcolor:#CACCCE}|/req/core +
+
+A tiled data implementation SHALL include all mandatory requirements  +
+as specified in this Abstract Specification.  {set:cellbgcolor:#FFFFFF}
+|===
