@@ -9,13 +9,13 @@ include::requirements/REQ1_core-tessellation.adoc[]
 
 Element name: TileTessellation
 
-=== Requirement Class Tile Set
+=== Requirement Class Tile Set Schema
 
 This requirement class defines the requirements for defining a tile set.
 
-==== Requirement 2 - Tile Set Coordinate Reference System (CRS)
+==== Requirement 3 - Tile Set Coordinate Reference System (CRS)
 
-include::requirements/REQ2_core-tileset-crs.adoc[]
+include::requirements/REQ3_core-tileset-crs.adoc[]
 
 A tile scheme shall specify a coordinate reference system (CRS) that is consistent for a given tile set. The CRS for a given tile set could be based on an engineering datum or an earth centric datum. The CRS could be restricted to meet very specific requirements, say for visualization of pre-rendered tiles as defined in the WMTS standard. Further, at the core conceptual level, there is no requirement that all CRSs be the same for all tile sets in a tiled data store. 
 
@@ -23,21 +23,35 @@ Having the same CRS for all tile sets in a data store is a requirement that woul
 
 Element name: TileSetCRS
 
-==== Requirement 3 - Tile Set Units of Measure (UoM)
+==== Requirement 4 - Tile Set Units of Measure (UoM)
 
-include::requirements/REQ3_core-tileset-uom.adoc[]
+include::requirements/REQ4_core-tileset-uom.adoc[]
 
 A tile scheme shall specify a unit of measure (UoM) for a tile set, such as meters or feet, that is consistent for any given tile set. The UoM may be specified in the CRS definition or may be different from the CRS definition. At the core conceptual level, there is no requirement that all UoMs be the same for all tile sets in a tiled data store. Having a consistent UoM across all tile sets is a requirement that would be specified in a profile. (Example conceptual mode element “TileUoM=ft”)
 
 Element name: TileSetUOM
 
-==== Requirement 4 - Tile Set Extent
+==== Requirement 5 - Tile Set Extent
 
-include::requirements/REQ4_core-tileset-extent.adoc[]
+include::requirements/REQ5_core-tileset-extent.adoc[]
 
 In any tiling scheme, there are two extents to be considered. The extent of an individual tile and the extent of the tile set. This requirement is for defining the extent of the tile set.
 
 Note, if there is one tile in a tile set, the extents are identical. In this tiling conceptual model there is no requirement, such as in DGGS, for a tile or tile set to cover the entire globe. A tile or tile set could have an extent that covers a building site, a city, a county, a country, and so forth. Any restrictions on the extent of a tile or tile set would be specified in one or more requirements in a profile or a profile extension.
+
+==== Requirement 6 - Tile Set Origin
+
+include::requirements/REQ6_core-tileset-origin.adoc[]
+
+The tile set origin defines where the spatial origin reference point is for the entire tile set. Typically, for a GIS implemented in the northern hemisphere, the tile set origin would be specified in the coordinates of CRS using the lower left hand corner. This Abstract Specification does not specify where the origin of a tile set is located. There is also not the requirement that all tile set origins in a tiled data store be the same (although having this rule sure helps downstream!). These rules would be specified in a profile or be specific to an implementation. For example, in WMTS the tile set origin is the upper left corner. In any case, there is a tile set origin. 
+
+Example model element: TileSetOrigin=LowerLeftCorner . Other values could be upper left, lower right, upper right and so forth)
+
+==== Requirement 7 - tessellation
+
+include::requirements/REQ7_core-tessellation.adoc[]
+
+Element name: TileTessellation
 
 === Requirements Class Tile Schema
 
