@@ -1,0 +1,5 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 2* {set:cellbgcolor:#CACCCE}|/req/core/tileset/id +
+Each tile set in a tiled data store shall have a unique identifier. {set:cellbgcolor:#FFFFFF}
+|===
