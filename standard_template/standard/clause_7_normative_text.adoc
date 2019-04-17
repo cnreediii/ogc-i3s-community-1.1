@@ -8,7 +8,9 @@ This section is comprised of two main sub-sections: A general tiling conceptual 
 
 The following figure captures the fundamental conceptual model for a space paritioning based on tiles. This conceptual model can be applied to any spatial data independent of any space/time dimension.
 
-
+[#img_concept-model,reftext='{figure-caption} {counter:figure-num}']
+.Conconceptual for space partitioning based on tiles.
+image::images/tiling-conceptual-model.png[width=500,align="center"]
 
 === Logical Model for 2-D Euclidean Space Tiles and Tiling: Normative
 This section defines the mandatory and recommended requirements of the core model for 2-D tiling of in Euclidean space. These elements are mandatory regardless and independent of the implementation platform, programming languages, encodings, or any other implementation specific and requirements. 
