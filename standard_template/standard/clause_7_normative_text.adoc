@@ -1,17 +1,29 @@
-== Conceptual Model for 2 Dimensional Euclidean Space Tiles and Tiling: Normative
+[[ConceptualModel]]
+
+== Overview
+
+This section is comprised of two main sub-sections: A general tiling conceptual model and a detailed logical model for tiling 2D Euclidean Space. The conceptual model is very abstract and cannot be implemented as is. A One or more logical models are required to provide the requirements and structure necessary to move to implementation.
+
+=== General Tile/Tiling Conceptual Model
+
+The following figure captures the fundamental conceptual model for a space paritioning based on tiles. This conceptual model can be applied to any spatial data independent of any space/time dimension.
+
+
+
+=== Logical Model for 2-D Euclidean Space Tiles and Tiling: Normative
 This section defines the mandatory and recommended requirements of the core model for 2-D tiling of in Euclidean space. These elements are mandatory regardless and independent of the implementation platform, programming languages, encodings, or any other implementation specific and requirements. 
 
-=== Base Requirement
+==== Base Requirement
 
-==== Requirement 1 - Core
+===== Requirement 1 - Core
 
 include::requirements/REQ1_core.adoc[]
 
-=== Requirement Class Tile Set Schema
+==== Requirement Class Tile Set Schema
 
 This requirement class defines the requirements for defining a tile set.
 
-==== Requirement 2 - Tile Set Identifier (ID)
+===== Requirement 2 - Tile Set Identifier (ID)
 
 include::requirements/REQ2_core-tileset-id.adoc[]
 
@@ -19,7 +31,7 @@ Each tile set in a tiled data store shall have a unique identifier. This identif
 
 Element name: TileSetIdentifier
 
-==== Requirement 3 - Tile Set Coordinate Reference System (CRS)
+===== Requirement 3 - Tile Set Coordinate Reference System (CRS)
 
 include::requirements/REQ3_core-tileset-crs.adoc[]
 
@@ -29,7 +41,7 @@ Having the same CRS for all tile sets in a data store is a requirement that woul
 
 Element name: TileSetCRS
 
-==== Requirement 4 - Tile Set Units of Measure (UoM)
+===== Requirement 4 - Tile Set Units of Measure (UoM)
 
 include::requirements/REQ4_core-tileset-uom.adoc[]
 
@@ -37,7 +49,7 @@ A tile scheme shall specify a unit of measure (UoM) for a tile set, such as mete
 
 Element name: TileSetUOM
 
-==== Requirement 5 - Tile Set Extent
+===== Requirement 5 - Tile Set Extent
 
 include::requirements/REQ5_core-tileset-extent.adoc[]
 
@@ -45,7 +57,7 @@ In any tiling scheme, there are two extents to be considered. The extent of an i
 
 Note, if there is one tile in a tile set, the extents are identical. In this tiling conceptual model there is no requirement, such as in DGGS, for a tile or tile set to cover the entire globe. A tile or tile set could have an extent that covers a building site, a city, a county, a country, and so forth. Any restrictions on the extent of a tile or tile set would be specified in one or more requirements in a profile or a profile extension.
 
-==== Requirement 6 - Tile Set Origin
+===== Requirement 6 - Tile Set Origin
 
 include::requirements/REQ6_core-tileset-origin.adoc[]
 
@@ -53,17 +65,17 @@ The tile set origin defines where the spatial origin reference point is for the 
 
 Example model element: TileSetOrigin=LowerLeftCorner . Other values could be upper left, lower right, upper right and so forth)
 
-==== Requirement 7 - Tile Set Tessellation Type
+===== Requirement 7 - Tile Set Tessellation Type
 
 include::requirements/REQ7_core-tessellation-type.adoc[]
 
 A regular tessellation 2D planar surface can be performed using one of three geometric shapes: squares (rectangles), hexagons, and equilaterial triangles. Squares (rectangles) represent the majority of current and past approaches for tesselating a plane in geospatial systems. However, hexagons have been used in a variety of systems and are the normal tessellation method used in a Discrete Global Grid System (DGGS). Typically there are also rules applied to specify the size and or extent for each tesselation type. For example, in a DGGS implementation, equal area hexagons are often used. In WMTS and TMS, each tile in a tile set as the same width and height.
 
-==== Requirement 8 - tessellation
+===== Requirement 8 - tessellation
 
 include::requirements/REQ8_core-tessellation.adoc[]
 
 Element name: TileTessellation
 
-=== Requirements Class Tile Schema
+==== Requirements Class Tile Schema
 
