@@ -27,6 +27,9 @@ a pure subset of an existing standard including restrictions on or deletions of 
 === *profile with extension(s)*
 a set of one or more conformance clauses from a base standard that includes at least one new conformance clause (extension). [OGC TC PnP] An example is OpenGIS® Web Map Services - Profile for EO Products.
 
+=== *space partitioning*
+In geometry, space partitioning is the process of dividing a space (usually a Euclidean space) into two or more disjoint subsets (see also partition of a set). In other words, space partitioning divides a space into non-overlapping regions. Any point in the space can then be identified to lie in exactly one of the regions.
+
 === *tessellation*
 partitioning of a space into a set of conterminous subspaces having the same dimension as the space being partitioned [ISO 19123]
 
