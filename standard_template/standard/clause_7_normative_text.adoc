@@ -9,8 +9,14 @@ This section is comprised of two main sub-sections: A general tiling conceptual 
 The following figure captures the fundamental conceptual model for a space paritioning based on tiles. This conceptual model can be applied to any spatial data independent of any space/time dimension.
 
 [#img_concept-model,reftext='{figure-caption} {counter:figure-num}']
-.Conconceptual for space partitioning based on tiles.
+.Conceptual for space partitioning based on tiles.
 image::images/tiling-conceptual-model.png[width=500,align="center"]
+
+This figure captures the fundamantal concepts for defining and implementing a tiled structure. Each of the concepts is briefly defined.
+
+`*tile*` The fundamental unit when partitioning space is the `tile`. A `tile` is a geometric shape with known properties that is the result of the tiling (tessellation) of a plane. A tile consists of a single connected "piece" without "holes" or "lines" (topological disc). In two dimensional space, a tile could be regular (e.g. square) or irregular (e.g. Thiesien polygon). A voxel is an example of a regular partitioning of 3 dimensional space.
+
+
 
 === Logical Model for 2-D Euclidean Space Tiles and Tiling: Normative
 This section defines the mandatory and recommended requirements of the core model for 2-D tiling of in Euclidean space. These elements are mandatory regardless and independent of the implementation platform, programming languages, encodings, or any other implementation specific and requirements. 
