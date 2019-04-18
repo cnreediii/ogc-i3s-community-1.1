@@ -48,6 +48,10 @@ include::requirements/REQ1_core.adoc[]
 
 ==== Requirement Class Tile Set Schema
 
+The following is the requirements class of the Tile Set Schema
+
+include::requirements/rc-tileset-schema.adoc[]
+
 This requirement class defines the requirements for defining a tile set.
 
 ===== Requirement 2 - Tile Set Identifier (ID)
