@@ -93,5 +93,11 @@ include::requirements/rc-tile-schema.adoc[]
 
 ==== Requirement 9 - Property Tile ID
 
-include::requirements/REQ9_tile-id.adoc[]
+include::requirements/REQ9_tile-address.adoc[]
+
+
+Element name: TileAddress
+Each tile in a tile set shall have a unique identifier. This identifier could be a number or an alphanumeric string. The identifer could be a simple row-column designation in relation to the tile set origin.
+
+==== Requirement 10 - Property 
 
