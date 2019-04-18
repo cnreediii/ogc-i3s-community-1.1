@@ -19,7 +19,7 @@
 |Approval Date:   <2019-mm-dd>
 |Publication Date:   <2019-mm-dd>
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/AS/2d-tiles/1.0
-|Internal reference number of this OGC(R) document:    19-nnnrx
+|Internal reference number of this OGC(R) document:    19-014
 |Version: 1.0
 |Category: OGC(R)  Candidate Abstract Specification
 |Editor:   Carl Reed, PhD
