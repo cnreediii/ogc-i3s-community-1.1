@@ -2,7 +2,9 @@
 
 == Overview
 
-This section is comprised of two main sub-sections: A general tiling conceptual model and a detailed logical model for tiling 2D Euclidean Space. The conceptual model is very abstract and cannot be implemented as is. A One or more logical models are required to provide the requirements and structure necessary to move to implementation.
+This section is comprised of two main sub-sections: A general tiling conceptual model and a detailed logical model for tiling 2D Euclidean Space. The conceptual model is very abstract and cannot be implemented as is. One or more logical models are required to provide the requirements and structure necessary to move to implementation. Therefore, in addition to the conceptual model, this Abstract Specification also specifies a logical model for the 2-D planar (Euclidean) use case. 
+
+
 
 === General Tile/Tiling Conceptual Model
 
