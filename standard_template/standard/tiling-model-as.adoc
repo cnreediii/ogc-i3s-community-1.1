@@ -1,5 +1,5 @@
 :Title: OGC (add title text)
-:titletext: {Title}
+:titletext: OGC Tiling Conceptual Model and Logical Model for 2-D Planar Space
 :doctype: book
 :encoding: utf-8
 :lang: en
