@@ -6,17 +6,15 @@ In geometry, space partitioning is the process of dividing a space (usually a Eu
 
 Within that context, the requirements for partitioning space based on dimension can be considered. This OGC Abstract Specification presents a conceptual model for partitioning (tiling) 2-D Euclidean space. Tiling of 2d Euclidian space is the most commonly known approach to partitioning space. However, there are common mandatory elements for any approach to partitioning space in any dimension. This document defines the several common required elements that apply to any dimension and then follows with more specific requirements for the 2-D tiles and tiling case.
 
-Please note that in the preparation of this conceptual model, the tiling sections/extensions to CDB, GeoPackage, WMTS, and MVT were reviewed. The OGC DGGS standard and various Engineering Reports from the OGC Test Bed 13, Test Bed 14 and the Vector Tiles Pilot were also considered. Finally, the new Tile Matrix Set candidate standard was reviewed. Much of this document is derived by abstracting what is contained in those existing and candidate standards and specifications.
+Please note that in tdeveloping the conceptual model and the associated logical model, the tiling sections/extensions to CDB, GeoPackage, WMTS, and MVT were reviewed. The OGC DGGS standard and various Engineering Reports from the OGC Test Bed 13, Test Bed 14 and the Vector Tiles Pilot were also considered. Finally, the new Tile Matrix Set candidate standard was reviewed. Much of this document is derived by abstracting what is contained in those existing and candidate standards and specifications.
 
 The goal is to define a simple conceptual model that can support any and all requirements for tiled data stores and applications including extensions for visualization, portrayal, analytics, filtering, lelvels of detail, and so forth. These various use cases and/or workflows are not part of the core conceptual model but instead may be thought of as profiles or extensions of the model that restrict core requirements or define additional requirements. For example, the majority of the CDB standard that deals with tiles defines additional requirements such as level of detail to optimize the data store for that domain of interest.
 
 === Key concept - The assumption of a 2-D planar space
 
-The tiling conceptual model defined in this document assumes that the tiling target is a two dimensional plane in Euclidean space. However, the content to be stored in a tiled structure is typically earth (or planetary body) referenced. Therefore, the transformation from a spheroidal coordinate system into a planar system is required. The following paragraph, extracted from the Tile Matrix Set Standard, describes the solution for coordinate reference systems other than geographic (Latitude, Longitude).
+The tiling logical model defined in this document assumes that the tiling target is a two dimensional plane in Euclidean space. However, the content to be stored in a tiled structure is typically earth (or planetary body) referenced. Therefore, the transformation from a spheroidal coordinate system into a planar system is required. The following paragraph, extracted from the Tile Matrix Set Standard, describes the solution for coordinate reference systems other than geographic (Latitude, Longitude).
 
 _As stated in OGC 08-015r6 Abstract Specification Topic 2: Spatial referencing by coordinates, a coordinate system is a set of mathematical rules for specifying how coordinates are to be assigned to points in space. A Coordinate Reference System (CRS) is a coordinate system that is related to the real world by a reference datum. An example of mathematical rules is the application of a sphere or an ellipsoid centered in the datum and the use of a projection to transform the sphere or the ellipsoid into a planar representation of the world._
-
-The remainder of this abstract specification assumes that the space to be tiled is a two dimensional planar surface in Euclidean space.
 
 === Two key use cases
 
@@ -58,7 +56,14 @@ A conceptual model organizes the vocabulary needed to communicate consistently a
 
 * is always about identifying the correct choice of terms to use in communications, including statements of rules and requirements, especially where high precision and subtle distinctions need to be made.  The core concepts of a geospatial problem domain are typically quite stable over time.
 
-==== Conceptual Model vs. Logical (Data) Model footnoteref:[note2,A good discussion of the relationship between concptual and logical in data modeling is here: http://uksanjay.blogspot.com/2012/06/difference-between-conceptual-logical.html.]
+=== Logical Model footnoteref:[note3,The following content is a copy from Wikipedia  https://en.wikipedia.org/wiki/Logical_data_model]
+A logical data model or logical schema is a data model of a specific problem domain expressed independently of a particular database management product or storage technology (physical data model) but in terms of data structures such as relational tables and columns, object-oriented classes, or XML tags. This is as opposed to a conceptual data model, which describes the semantics of an organization without reference to technology. 
+
+Logical data models represent the abstract structure of a domain of information. They are often diagrammatic in nature and are most typically used in business processes that seek to capture things of importance to an organization and how they relate to one another. Once validated and approved, the logical data model can become the basis of a physical data model and form the design of a database.
+
+Logical data models should be based on the structures identified in a preceding conceptual data model, since this describes the semantics of the information context, which the logical model should also reflect. Even so, since the logical data model anticipates implementation on a specific computing system, the content of the logical data model is adjusted to achieve certain efficiencies. 
+
+==== Conceptual Model vs. Logical (Data) Model footnoteref:[note2,A good discussion of the relationship between conceptual and logical in data modeling is here: http://uksanjay.blogspot.com/2012/06/difference-between-conceptual-logical.html.]
 
 A conceptual model differs from a logical model in important ways.  The goal of a conceptual model is to support the expression of natural-language statements, and supply their semantics — not unify, codify (and sometimes simplify) data.  Therefore the vocabulary included in a conceptual model is far richer, as suits knowledge-intensive problem domains.  In short, conceptual models are concept-centric; logical models are thing-entity-or-class-centric.
 
