@@ -1,3 +1,6 @@
+[[LogicalModel]]
+
+== Logical Model for Tiling 2-D Planar Space: Overview
 
 This section defines the normative requirement for the 2-D Tiling Logical Model.
 
