@@ -1,0 +1,20 @@
+[cols="1,4",width="90%"]
+|===
+2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
+2+|http://www.opengis.net/spec/tile-model/1.0/req/tile-set {set:cellbgcolor:#FFFFFF}
+|Target type |Token
+|Dependency |http://www.example.org/req/blah
+|*Requirement 2* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tileset/id +
+Tile Set Identifier {set:cellbgcolor:#FFFFFF}
+|*Requirement 3* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tileset/crs +
+Tile Set Coordinate Reference System {set:cellbgcolor:#FFFFFF}
+|*Requirement 4* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tileset/uom +
+Tile Set Units of Measure
+{set:cellbgcolor:#FFFFFF}
+|*Requirement 5* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tileset/extent +
+Tile Set Extent
+{set:cellbgcolor:#FFFFFF}
+|*Requirement 6* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tileset/origin +
+Tile Set Origin
+{set:cellbgcolor:#FFFFFF}
+|===
