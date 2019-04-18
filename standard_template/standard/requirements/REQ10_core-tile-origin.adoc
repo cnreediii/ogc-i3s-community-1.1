@@ -1,0 +1,8 @@
+[width="90%",cols="2,6"]
+|===
+|*Requirement 10* {set:cellbgcolor:#CACCCE}|/req/core/tile/origin +
+The tile origin _SHALL_ be defined. The same tile origin shall apply +
+to all tiles in a given tile set. Tile origins may be one of +
+“lower left”,“upper left”, "lower_right", "upper_right", and "centroid". +
+{set:cellbgcolor:#FFFFFF}
+|===
