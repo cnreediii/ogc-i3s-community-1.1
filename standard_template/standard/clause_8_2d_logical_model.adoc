@@ -91,13 +91,15 @@ The Tile Schema requirements class is defined as:
 
 include::requirements/rc-tile-schema.adoc[]
 
-==== Requirement 9 - Property Tile ID
+==== Requirement 9 - Property Tile Address (ID)
 
 include::requirements/REQ9_tile-address.adoc[]
 
+A tile set shall use a spatial referencing method to assign a unique spatial reference (or index) to each tile across the entire tile set.   These indices may be any alphanumeric string including controlled vocabularies such as the USGS quad index, IP address, tile row/column, or other indexing schemes. The default is sequential numbering beginning at the tile located at the TileSet origin.
 
 Element name: TileAddress
-Each tile in a tile set shall have a unique identifier. This identifier could be a number or an alphanumeric string. The identifer could be a simple row-column designation in relation to the tile set origin.
 
 ==== Requirement 10 - Property 
+
+include::requirements/REQ10_tile-origin.adoc[]
 
