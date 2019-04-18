@@ -1,6 +1,6 @@
 [big]*i.     Abstract*
 
-This OGC Abstract Specification defines a core conceptual model for 2-D tiled structures and by extension tiling. This model is a sub-class for a more comprehensive Spatial Partitioning Conceptual Model.
+This OGC Abstract Specification defines 1.) a conceptual model for tiling space and 2.) a logical model for 2-D tiled structures and by extension tiling. The conceptual model specified in this Abstract Specification could be a sub-class in a more comprehensive Spatial Partitioning Conceptual Model.
 
 [big]*ii.    Keywords*
 
@@ -10,7 +10,7 @@ ogcdoc, OGC document,  tiles, tiling, 2d
 
 [big]*iii.   Preface*
 
-Numerous OGC standards specify some type of tiling scheme. These include Web map Tiling Service (WMTS), CDB, and GeoPackage. There have also been a number of OGC Innovation Initiatives focused on tiling and tiling schemes. However, a general tiling conceptual model for 2-D  Euclidian space has not been defined. This Abstract Specification defines that conceptual model.
+Numerous OGC standards specify some type of tiling scheme. These include Web map Tiling Service (WMTS), CDB, and GeoPackage. There have also been a number of OGC Innovation Initiatives focused on tiling and tiling schemes. However, a general tiling conceptual model and related logical model for 2-D  Euclidian space have not been defined. This Abstract Specification defines a tiling conceptual model and a logical model for tiling 2-D planar space that is based on the conceptual model.
 
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
 
