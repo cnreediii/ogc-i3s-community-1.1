@@ -1,6 +1,7 @@
 [width="90%",cols="2,6"]
 |===
-|*Requirement 9* {set:cellbgcolor:#CACCCE}|/req/core/tile/id +
-Each tile in a tile set shall have a unique identifier.  {set:cellbgcolor:#FFFFFF}
+|*Requirement 9* {set:cellbgcolor:#CACCCE}|/req/core/tile/address +
+A tile set _SHALL_ use a spatial referencing method to assign a unique +
+spatial reference (or index) to each tile across the entire tile set.  {set:cellbgcolor:#FFFFFF}
 |===
 
