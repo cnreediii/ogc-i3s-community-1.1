@@ -2,7 +2,7 @@
 |===
 |*Requirement 6* {set:cellbgcolor:#CACCCE}|/req/core/tileset/origin +
 
-The tile set origin shall dspecify the spatial origin reference point +
+The tile set origin shall specify the spatial origin reference point +
 for the entire tile set. Values shall be one of lower_left, upper_left, +
 lower_right, upper_right, or center. The tile set origin also includes the +
 coordinate of the tile set origin. The coordinate is expressed in the CRS of the tile set.
