@@ -1,2 +1,6 @@
-/req/core/tile/id
-Each tile in a tile set shall have a unique identifier. 
+[width="90%",cols="2,6"]
+|===
+|*Requirement 9* {set:cellbgcolor:#CACCCE}|/req/core/tile/id +
+Each tile in a tile set shall have a unique identifier.  {set:cellbgcolor:#FFFFFF}
+|===
+
