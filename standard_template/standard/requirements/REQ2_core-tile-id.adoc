@@ -1,0 +1,2 @@
+/req/core/tile/id
+Each tile in a tile set shall have a unique identifier. 
