@@ -75,7 +75,9 @@ include::requirements/REQ7_core-tessellation-type.adoc[]
 
 A regular tessellation 2D planar surface can be performed using one of three geometric shapes: squares (rectangles), hexagons, and equilaterial triangles. Squares (rectangles) represent the majority of current and past approaches for tesselating a plane in geospatial systems. However, hexagons have been used in a variety of systems and are the normal tessellation method used in a Discrete Global Grid System (DGGS). Typically there are also rules applied to specify the size and or extent for each tesselation type. For example, in a DGGS implementation, equal area hexagons are often used. In WMTS and TMS, each tile in a tile set as the same width and height.
 
-==== Requirement 8 - tessellation
+=== Requirement 8 - tessellation class
+
+Related to the Tile Set Schema is the actual tessellation process used to generate the tile set.
 
 include::requirements/REQ8_core-tessellation.adoc[]
 
@@ -83,5 +85,13 @@ Element name: TileTessellation
 
 === Requirements Class Tile Schema
 
+The following set of requirements defines the properties of each individual tile. Combined with the Tile Set Schema common properties, there is enough information for any application -server or client - to access, process, analyze, and visualize any geospatial content provided in the tiled structure.
 
+The Tile Schema requirements class is defined as:
+
+include::requirements/rc-tile-schema.adoc[]
+
+==== Requirement 9 - Property Tile ID
+
+include::requirements/REQ9_tile-id.adoc[]
 
