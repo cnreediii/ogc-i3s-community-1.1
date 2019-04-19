@@ -83,18 +83,28 @@ include::requirements/REQ7_core-tessellation.adoc[]
 
 A regular tessellation 2D planar surface can be performed using one of three geometric shapes: squares (rectangles), hexagons, and equilaterial triangles. Squares (rectangles) represent the majority of current and past approaches for tesselating a plane in geospatial systems. However, hexagons have been used in a variety of systems and are the normal tessellation method used in a Discrete Global Grid System (DGGS). Typically there are also rules applied to specify the size and or extent for each tesselation type. For example, in a DGGS implementation, equal area hexagons are often used. In WMTS and TMS, each tile in a tile set as the same width and height.
 
-Element name: TileTessellation
+Element name: tessellationType
 
 ==== Tessellation Type `square`
 
-If a tessellation type of type `square` is specified, then the germane following properties shall be specified:
+If the `tessellationType` is `square`, then the valid following properties _SHALL_ be specified:
 
 [width="90%",options="header"]
 |===
 |property name|description
-|tileWidth| Width of an imdividual tile in the units of measure specified in TileSetUOM
-|tileHeight|Height of an imdividual tile in the units of measure specified in TileSetUOM
+|tileWidth| Width of an individual tile in the units of measure specified in TileSetUOM
+|tileHeight|Height of an individual tile in the units of measure specified in TileSetUOM
 |equalarea|If all tiles are to be equal area (such as in a DGGS) this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required.
+|===
+
+=== Tessellation Type `triangle`
+
+If the specified `tesslationType` is `triangle`, then the length of the side of the equilaterial triangle _SHALL_ be specified.
+
+[width="90%",options="header"]
+|===
+|property name|description
+|length|Length of the triangle side in the units of measure specified in TileSetUOM. All three sides of the triangle have the same length.
 |===
 
 === Requirements Class Tile Schema
