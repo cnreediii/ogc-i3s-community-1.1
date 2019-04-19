@@ -1,6 +1,6 @@
 [appendix]
 :appendix-caption: Annex B
-== Title Additional Informative Material
+== Additional Informative Material
 
 This Annex provides additional informative material as guidance but not as mandatory elements.
 
