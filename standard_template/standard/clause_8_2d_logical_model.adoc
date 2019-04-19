@@ -85,6 +85,18 @@ A regular tessellation 2D planar surface can be performed using one of three geo
 
 Element name: TileTessellation
 
+==== Tessellation Type `square`
+
+If a tessellation type of type `square` is specified, then the germane following properties shall be specified:
+
+[width="90%",options="header"]
+|===
+|property name|description
+|width| Width of an imdividual tile in the units of measure specified in TileSetUOM
+|height|Height of an imdividual tile in the units of measure specified in TileSetUOM
+|equalarea|If all tiles are to be equal area (such as in a DGGS) this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required.
+|===
+
 === Requirements Class Tile Schema
 
 This clause specifies the requirements that define the properties of each individual tile. Combined with the Tile Set Schema common properties, there is enough information for any application -server or client - to access, process, analyze, and visualize any geospatial content provided in the tiled structure.
@@ -107,6 +119,8 @@ include::requirements/REQ10_core-tile-origin.adoc[]
 
 The tile origin defines where the spatial origin reference point would be for each individual tile in a tile set. Typically, in a GIS being used in the northern hemisphere, this typically would be the lower left hand corner. All tile origin locations (such as lower left) would be the same for all tiles in a tile set. Neither the conceptual model nor the logical model specifies where the origin of a tile is located. These rules would be specified in a profile or be specific to an implementation. In any case, there is always a tile set origin.
 
+Element name: TileOrigin
+
 ==== Requirement 11 - Property Tile Reference footnoteref:[note4,This requirement is based on requirements in the OGC DGGS Abstract Specification.]
 
 include::requirements/REQ11_core-tile-reference.adoc[]
@@ -120,6 +134,8 @@ Element name: TileReference
 include::requirements/REQ12_core-tile-extent.adoc[]
 
 Please note that the tile extent does not need to be stored as part of the tile metadata. However, at a minimum the tile extent must be able to be calculated. Tile extents are typically required for building a spatial index footnoteref:[note5,A tile index provides an efficient (fast) mechanism for finding any tile or set of tiles in a tiled data store when using a spatial filter, including a point and query operation. Typical spatial indexing are R-Trees and Quad-Trees. The conceptual model specifies no requirements for how a spatial index is constructed or the technology used. However, the tile extents, tile addresses, and tile references can be used to populate a spatial index, such as an R-Tree.], such as an R-Tree.
+
+Element name: TileExtent
 
 === Recommended Tile Set Metadata Class
 
