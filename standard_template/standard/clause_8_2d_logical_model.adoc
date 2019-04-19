@@ -123,5 +123,16 @@ Please note that the tile extent does not need to be stored as part of the tile 
 
 === Recommended Tile Set Metadata Class
 
-The following suggested metadata elements are extracted from the Tile Matrix Set candidate standard. Perhaps additional metadata elements should be added to this table. Also, there is the need, as we did in CDB, to specify the metadata standard being used so that applications and users are provided this information. CDB provides an enumeration of the most common metadata standards used in our industry (Volume 1 Clause 5.1.6)
+Providing more complete metadata for a tile set ensures enhanced provenance and quality of service for any content provided in a tiled structure. 
+
+The following suggested metadata elements are extracted from the OGC Tile Matrix Set candidate standard. Additional metadata elements may be added to this table. If additional metadata elements are required, the OGC CDB Standard provides an enumeration of the most common metadata standards used in the geospatial industry (Volume 1 Clause 5.1.6). The CDB Standard also provides a more detailed list of key metadata elements.
+
+[width="90%",options="header"]
+|===
+|Element|Description|Reference|
+|title|Title of the tile set, normally used for display to a human|LanguageString data structure, see Figure 15 in OWS Common [OGC 06-121r9]|Zero or more (optional) Include when available and useful. Include one for each language represented.
+|abstract|Brief narrative description of the tile set, normally available for display to a human|LanguageString data structure, see Figure 15 in OWS Common [OGC 06-121r9]|Zero or more (optional) Include when available and useful Include one for each language represented
+|keywords|Unordered list of one or more commonly used or formalized word(s) or phrase(s) used to describe this tile set.|	MD_Keywords class in ISO 19115|Zero or more (optional) One for each keyword authority used
+|===
+
 
