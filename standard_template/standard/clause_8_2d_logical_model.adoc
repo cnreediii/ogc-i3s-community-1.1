@@ -120,3 +120,8 @@ Element name: TileReference
 include::requirements/REQ12_core-tile-extent.adoc[]
 
 Please note that the tile extent does not need to be stored as part of the tile metadata. However, at a minimum the tile extent must be able to be calculated. Tile extents are typically required for building a spatial index, such as an R-Tree.
+
+=== Recommended Tile Set Metadata Class
+
+The following suggested metadata elements are extracted from the Tile Matrix Set candidate standard. Perhaps additional metadata elements should be added to this table. Also, there is the need, as we did in CDB, to specify the metadata standard being used so that applications and users are provided this information. CDB provides an enumeration of the most common metadata standards used in our industry (Volume 1 Clause 5.1.6)
+
