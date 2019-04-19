@@ -94,10 +94,10 @@ If the `tessellationType` is `square`, then the valid following properties _SHAL
 |property name|description
 |tileWidth| Width of an individual tile in the units of measure specified in TileSetUOM
 |tileHeight|Height of an individual tile in the units of measure specified in TileSetUOM
-|equalarea|If all tiles are to be equal area (such as in a DGGS) this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required.
+|equalarea|If all tiles are to be equal area this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required.
 |===
 
-=== Tessellation Type `triangle`
+==== Tessellation Type `triangle`
 
 If the specified `tesslationType` is `triangle`, then the length of the side of the equilaterial triangle _SHALL_ be specified.
 
@@ -105,6 +105,17 @@ If the specified `tesslationType` is `triangle`, then the length of the side of 
 |===
 |property name|description
 |length|Length of the triangle side in the units of measure specified in TileSetUOM. All three sides of the triangle have the same length.
+|===
+
+==== Tessellation Type Hexagon
+
+In geometry, the hexagonal tiling or hexagonal tessellation is a regular tiling of the Euclidean plane, in which three hexagons meet at each vertex. For the purposes of this logical model, a tesellationType `hexagon` _SHALL_ be a regular hexagon. A regular hexagon has vertices equally spaced around a circle and with all sides the same length . Further, the interior angle at each vertex is 120 degrees. 
+
+[width="90%",options="header"]
+|===
+|property name|description
+|length|Length of the hexagonal side in the units of measure specified in TileSetUOM. All six sides of the hexagon have the same length.
+|equalarea|If all hexagonal tiles are to be equal area, this property is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `length` is not required.
 |===
 
 === Requirements Class Tile Schema
