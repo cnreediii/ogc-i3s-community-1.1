@@ -105,12 +105,14 @@ include::requirements/REQ10_core-tile-origin.adoc[]
 
 The tile origin defines where the spatial origin reference point would be for each individual tile in a tile set. Typically, in a GIS being used in the northern hemisphere, this typically would be the lower left hand corner. All tile origin locations (such as lower left) would be the same for all tiles in a tile set. Neither the conceptual model nor the logical model specifies where the origin of a tile is located. These rules would be specified in a profile or be specific to an implementation. In any case, there is always a tile set origin.
 
-==== Requirement 11 - Property Tile Reference
+==== Requirement 11 - Property Tile Reference footnoteref[note4, This requirement is based on requirements in the OGC DGGS Abstract Specification.
 
 include::requirements/REQ11_core-tile-reference.adoc[]
 
 Each tile must be referenced at its centroid. This is because the centroid is the only location that will provide a systematic and consistent spatial reference point for all tiles in a tile set regardless of their shape. NOTE: The reference information does not need to be physically stored in the tile set store. The reference can be calculated from the tile extents (see requirement 12).
 
-
-
 Element name: TileReference
+
+==== Requirement 12 - Property Tile Extent
+
+
