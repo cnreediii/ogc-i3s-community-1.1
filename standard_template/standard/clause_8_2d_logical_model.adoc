@@ -85,7 +85,13 @@ Element name: TileTessellation
 
 === Requirements Class Tile Schema
 
-The following set of requirements defines the properties of each individual tile. Combined with the Tile Set Schema common properties, there is enough information for any application -server or client - to access, process, analyze, and visualize any geospatial content provided in the tiled structure.
+This clause specifies the requirements that define the properties of each individual tile. Combined with the Tile Set Schema common properties, there is enough information for any application -server or client - to access, process, analyze, and visualize any geospatial content provided in the tiled structure.
+
+The following figure, based on the Conceptual Model diagram, shows the properties by class (concept) and the relationsips between the classes.
+
+[#img_logical-model,reftext='{figure-caption} {counter:figure-num}']
+.Logical Model for partitioning based on tiles in the 2-D Euclidean case.
+image::images/tiling-logical-model.png[width=500,align="center"]
 
 The Tile Schema requirements class is defined as:
 
