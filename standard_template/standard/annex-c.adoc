@@ -8,23 +8,25 @@ This could just have easily been written in JSON, Javascript or some other langu
 
 <ows:Identifier>Fort Collins Tiled Data Store</ows:Identifier>
 
+```
 <TileSet> +
 	<TileSetIdentifier>Parcels<TileSetIdentifier> +
-<TileSetCRS>EPSG2876</TiledSetCRS> +
-<TileSetUOM>FT</TileSetUOM> +
-<TileSetOrigin>LowerLeftCorner</TileSetOrigin> +
-<!-- lower left point of tile set bounding box --> +
-<ows:BoundingBox> +
-<LowerCorner>3080000,1400000</LowerCorner> +
-<UpperCorner>3600000,1500000</UpperCorner> +
-<ows:BoundingBox> +
+	<TileSetCRS>EPSG2876</TiledSetCRS> +
+	<TileSetUOM>FT</TileSetUOM> +
+	<TileSetOrigin>LowerLeftCorner</TileSetOrigin> +
+		<!-- lower left point of tile set bounding box --> +
+		<ows:BoundingBox> +
+			<LowerCorner>3080000,1400000</LowerCorner> +
+			<UpperCorner>3600000,1500000</UpperCorner> +
+		<ows:BoundingBox> +
 	< TileTessellation>Square</TileTessellation> +
-<TileOrigin>Lower_Left</TileOrigin> +
-<!-- width and height of each tile in specified units --> +
-<TileExtentefinition> +
-<TileWidth>1000</TileWidth> +
-<TileHeight>1000</TileHeight> +
-</TileExtentefinition> +
-<TileAddress>Default</TileAddress> +
+	<TileOrigin>Lower_Left</TileOrigin> +
+	<!-- width and height of each tile in specified units --> +
+	<TileExtentefinition> +
+		<TileWidth>1000</TileWidth> +
+		<TileHeight>1000</TileHeight> +
+	</TileExtentefinition> +
+	<TileAddress>Default</TileAddress> +
 
 </TileSet>
+```
