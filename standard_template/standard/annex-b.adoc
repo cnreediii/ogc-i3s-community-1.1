@@ -1,4 +1,4 @@
-[appendix]
+[annex-b]
 :appendix-caption: Annex B
 == Additional Informative Material
 
