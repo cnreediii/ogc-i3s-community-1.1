@@ -92,8 +92,8 @@ If a tessellation type of type `square` is specified, then the germane following
 [width="90%",options="header"]
 |===
 |property name|description
-|width| Width of an imdividual tile in the units of measure specified in TileSetUOM
-|height|Height of an imdividual tile in the units of measure specified in TileSetUOM
+|tileWidth| Width of an imdividual tile in the units of measure specified in TileSetUOM
+|tileHeight|Height of an imdividual tile in the units of measure specified in TileSetUOM
 |equalarea|If all tiles are to be equal area (such as in a DGGS) this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required.
 |===
 
