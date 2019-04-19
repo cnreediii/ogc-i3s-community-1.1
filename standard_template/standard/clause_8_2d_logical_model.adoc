@@ -92,9 +92,10 @@ If the `tessellationType` is `square`, then the valid following properties _SHAL
 [width="90%",options="header"]
 |===
 |property name|description
-|tileWidth| Width of an individual tile in the units of measure specified in TileSetUOM
-|tileHeight|Height of an individual tile in the units of measure specified in TileSetUOM
-|equalarea|If all tiles are to be equal area this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required.
+|tileWidth| Width of an individual tile. The default units of measure is as specified by TileSetUOM,
+|tileHeight|Height of an individual tile. The default units of measure is as specified by TileSetUOM.
+|equalarea|If all tiles are to be equal area this is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `width` and `height` are not required. If the desired units of measure for the area is different that `TileSetUOM`, then the units property below needs to be specified.
+|units|Units of Measure for equal area tiles (e.g. miles, hectares, etc)
 |===
 
 ==== Tessellation Type `triangle`
