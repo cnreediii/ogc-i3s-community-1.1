@@ -119,7 +119,7 @@ Element name: TileReference
 
 include::requirements/REQ12_core-tile-extent.adoc[]
 
-Please note that the tile extent does not need to be stored as part of the tile metadata. However, at a minimum the tile extent must be able to be calculated. Tile extents are typically required for building a spatial index, such as an R-Tree.
+Please note that the tile extent does not need to be stored as part of the tile metadata. However, at a minimum the tile extent must be able to be calculated. Tile extents are typically required for building a spatial index footnoteref:[note5,A tile index provides an efficient (fast) mechanism for finding any tile or set of tiles in a tiled data store when using a spatial filter, including a point and query operation. Typical spatial indexing are R-Trees and Quad-Trees. The conceptual model specifies no requirements for how a spatial index is constructed or the technology used. However, the tile extents, tile addresses, and tile references can be used to populate a spatial index, such as an R-Tree.], such as an R-Tree.
 
 === Recommended Tile Set Metadata Class
 
