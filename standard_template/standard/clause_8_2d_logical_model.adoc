@@ -117,4 +117,6 @@ Element name: TileReference
 
 ==== Requirement 12 - Property Tile Extent
 
+include::requirements/REQ12_core-tile-extent.adoc[]
 
+Please note that the tile extent does not need to be stored as part of the tile metadata. However, at a minimum the tile extent must be able to be calculated. Tile extents are typically required for building a spatial index, such as an R-Tree.
