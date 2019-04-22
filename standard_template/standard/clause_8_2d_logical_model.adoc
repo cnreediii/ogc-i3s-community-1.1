@@ -143,11 +143,11 @@ The tile origin defines where the spatial origin reference point would be for ea
 
 Element name: TileOrigin
 
-==== Requirement 11 - Property Tile Reference statement.footnote:[This requirement is based on requirements in the OGC DGGS Abstract Specification.]
+==== Requirement 11 - Property Tile Reference
 
 include::requirements/REQ11_core-tile-reference.adoc[]
 
-Each tile must be referenced at its centroid. This is because the centroid is the only location that will provide a systematic and consistent spatial reference point for all tiles in a tile set regardless of their shape. NOTE: The reference information does not need to be physically stored in the tile set store. The reference can be calculated from the tile extents (see requirement 12).
+Each tile must be referenced at its centroidstatement.footnote:[This requirement is based on requirements in the OGC DGGS Abstract Specification.]. This is because the centroid is the only location that will provide a systematic and consistent spatial reference point for all tiles in a tile set regardless of their shape. NOTE: The reference information does not need to be physically stored in the tile set store. The reference can be calculated from the tile extents (see requirement 12).
 
 Element name: TileReference
 
