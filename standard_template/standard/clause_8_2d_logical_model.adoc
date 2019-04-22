@@ -143,7 +143,7 @@ The tile origin defines where the spatial origin reference point would be for ea
 
 Element name: TileOrigin
 
-==== Requirement 11 - Property Tile Reference footnoteref:[note4,This requirement is based on requirements in the OGC DGGS Abstract Specification.]
+==== Requirement 11 - Property Tile Reference statement.footnote:[This requirement is based on requirements in the OGC DGGS Abstract Specification.]
 
 include::requirements/REQ11_core-tile-reference.adoc[]
 
