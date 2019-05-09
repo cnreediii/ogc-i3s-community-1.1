@@ -2,10 +2,10 @@
 |===
 |*Requirement 7* {set:cellbgcolor:#CACCCE}|/req/core/tileset/tessellation +
 
-Any tiling process used to create a tile set shall be a regular tessellation of a 2-D plane +
-using a geometric shape of type square (rectilinear), hexagonal, or equilateral triangles. The +
-resulting tile set shall consist of one or more tiles, with no overlaps and no gaps. +
-The tiling scheme shall be consistent for all tiles within a tile set and shall adhere to +
+Any tiling process used to create a tile set SHALL be a regular tessellation of a 2-D plane +
+using a geometric shape of type square (rectilinear), hexagon, or equilateral triangle. The +
+resulting tile set SHALL consist of one or more tiles, with no overlaps and no gaps. +
+The tiling scheme SHALL be consistent for all tiles within a tile set and shall adhere to +
 requirements 2 through 6. The complete enumeration of values for this property are `square`, +
 `hexagon`, or `triangle`. `triangle` is short for equilateral triangle. {set:cellbgcolor:#FFFFFF}
 |===
