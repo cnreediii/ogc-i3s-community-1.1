@@ -3,7 +3,8 @@ This Abstract Specification at a conceptual level specifies mandatory and recomm
 
 === Abreviations
 
-WMTS   Web Map Tiling Service
+TMS     Tile Matrix Set
+WMTS    Web Map Tiling Service
 
 === Identifiers
 The normative provisions in this standard are denoted by the URI
