@@ -37,7 +37,7 @@ requirements/rc-tileset-schema.adoc
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ3_core-tileset-crs.adoc
-|Requirement: |//req/core/tileset/crs
+|Requirement: |/req/core/tileset/crs
 |Test purpose: | To verify that a tile set has a unique CRS identifier.
 |Test method: | Either automated test or visual inspection.
 |===
@@ -47,7 +47,7 @@ requirements/rc-tileset-schema.adoc
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ4_core-tileset-uom.adoc
-|Requirement: |//req/core/tileset/uom
+|Requirement: |/req/core/tileset/uom
 |Test purpose: | To verify that a tile set has a unique UoM identifier.
 |Test method: | Either automated test or visual inspection.
 |===
@@ -57,7 +57,7 @@ requirements/rc-tileset-schema.adoc
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ5_core-tileset-extent.adoc
-|Requirement: |//req/core/tileset/extent
+|Requirement: |/req/core/tileset/extent
 |Test purpose: | To verify that a tile set has an extent specified in the tile set +
 CRS and following the OWS COmmon requirements for expressing a bbox.
 |Test method: | Either automated test or visual inspection.
@@ -68,7 +68,7 @@ CRS and following the OWS COmmon requirements for expressing a bbox.
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ6_core-tileset-origin.adoc
-|Requirement: |//req/core/tileset/origin
+|Requirement: |/req/core/tileset/origin
 |Test purpose: | To verify that origin reference point for the entire tile set is specified.
 |Test method: | Either automated test or visual inspection.
 |===
@@ -78,7 +78,7 @@ CRS and following the OWS COmmon requirements for expressing a bbox.
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ7_core-tessellation.adoc
-|Requirement: |//req/core/tileset/tesselation
+|Requirement: |/req/core/tileset/tesselation
 |Test purpose: | To verify that a tesselation type of 'square', 'hexagon', or 'triangle' is specified.
 |Test method: | Either automated test or visual inspection.
 |===
@@ -94,7 +94,7 @@ requirements/rc-tile-schema.adoc
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ9_core-tile-address.adoc
-|Requirement: |//req/core/tile/address
+|Requirement: |/req/core/tile/address
 |Test purpose: | To verify that a spatial referencing method to assign a unique +
 spatial reference (or index) to each tile across the entire tile set as been specified.
 |Test method: | Either automated test or visual inspection.
@@ -105,7 +105,7 @@ spatial reference (or index) to each tile across the entire tile set as been spe
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ10_core-tile-origin.adoc
-|Requirement: |//req/core/tile/origin
+|Requirement: |/req/core/tile/origin
 |Test purpose: | To verify that a spatial origin reference point is for each +
 individual tile in a tile set is specified. 
 |Test method: | Either automated test or visual inspection.
@@ -116,7 +116,7 @@ individual tile in a tile set is specified.
 [cols=">20h,<80d",width="100%"]
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ12_core-tile-extent.adoc
-|Requirement: |//req/core/tile/extent
+|Requirement: |/req/core/tile/extent
 |Test purpose: | To verify that the extent of the tile is provided or can be calculated. 
 |Test method: | Either automated test or visual inspection.
 |===
