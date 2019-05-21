@@ -137,7 +137,7 @@ include::requirements/rc-tile-schema.adoc[]
 
 include::requirements/REQ9_core-tile-address.adoc[]
 
-A tile set shall use a spatial referencing method to assign a unique spatial reference (or index) to each tile across the entire tile set.   These indices may be any alphanumeric string including controlled vocabularies such as the USGS quad index, IP address, tile row/column, or other indexing schemes. The default is sequential numbering beginning at the tile located at the tileSet origin.
+A tile set shall use a spatial referencing method to assign a unique spatial reference (or index) to each tile across the entire tile set.   These indices may be any alphanumeric string including controlled vocabularies such as the USGS quad index, IP address, tile row/column, or other indexing schemes. The default is sequential numbering beginning at the tile located at the tileSet origin. A value of _default_ signifies row/column addressing.
 
 Element name: tileAddress
 
