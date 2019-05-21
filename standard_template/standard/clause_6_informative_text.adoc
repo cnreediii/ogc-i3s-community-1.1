@@ -22,9 +22,9 @@ There are two distinct but related use cases for implementing and using a tiled 
 
 ==== Storage Use Case
 
-In this use case, geospatial content is subdivided into small units called tiles. The intent is to significantly enhance such operations as search, update, and presentation of the source content in its "native" form. In this use case, the original geospatial data (raster, grid, vector, point clouds, etc) is maintained. There is no special processing to create forms of the data specifically for high speed caching and rendering on the client. This is the Visualization use case and is described in the next clause.
+In this use case, geospatial content is subdivided into small units called tiles. The intent is to significantly enhance such operations as search, update, and presentation of the source content in its "native" form. In this use case, the original geospatial data (raster, grid, vector, point clouds, etc.) is maintained. There is no special processing to create forms of the data specifically for high speed caching and rendering on the client. Such processing is typically required for the Visualization use case and is described in the next clause.
 
-A very typical storage use case would be a city defining the tile structure for its spatial data store. They could begin by defining the geographic extent of the entire area of interest and could include a fringe area for future growth. Typically, in the US cities work in State Plane coordinates, such as Colorado North zone (NAD 83) for the City of Ft. Collins. The parameters are available in the EPSG database (EPSG 2876). The units of measure are feet. They pick a tile set origin that is the same for all tile sets in the data store. Typically, GIS practitioners think of origins being in the lower left corner so that option is selected for both the tile set and for each tile in a tile set. They then choose a regular square tessellation. They wish to create three tile sets with unique IDs of Parcels, Streams, and Roads. Each tile set will have a different tile size. Parcels will have a tile width and height of 1000 feet. Streams will have a tile width and height of 5000 feet. Roads will have a tile width and height of 2000 feet.
+A very typical storage use case would be a city defining the tile structure for its spatial data store. They could begin by defining the geographic extent of the entire area of interest and could include a fringe area for future growth. Typically in the United States, cities and counties work in State Plane coordinates, such as Colorado North zone (NAD 83) for the City of Ft. Collins. The parameters are available in the EPSG database (EPSG 2876). The units of measure are feet. They pick a tile set origin that is the same for all tile sets in the data store. Typically, GIS practitioners think of origins being in the lower left corner so that option is selected for both the tile set and for each tile in a tile set. They then choose a regular square tessellation. They wish to create three tile sets with unique tileset IDs of Parcels, Streams, and Roads. Each tile set will have a different tile size. Parcels will have a tile width and height of 1000 feet. Streams will have a tile width and height of 5000 feet. Roads will have a tile width and height of 2000 feet.
 
 [#img_Storage,reftext='{figure-caption} {counter:figure-num}']
 .Example tile set for above parcel map use case
@@ -37,6 +37,12 @@ The Visualization use case is focused on providing high speed geospatial content
 [#img_tilematrix,reftext='{figure-caption} {counter:figure-num}']
 .Example tile matrix for visualization
 image::images/tilematrix-1.png[width=500,align="center"]
+
+For example, the OGC Tile Matrix Set standard specifies rules for defining a tile matrix. From that standard:
+
+_For the case of a two dimensional space, given the top left point of the tile matrix in CRS coordinates (tileMatrixMinX, tileMatrixMaxY), the width and height of the tile matrix in tile units (matrixWidth, matrixHeight), the width and height of a tile (tileWidth, tileHeight) in original grid cells (often referred to as pixels),, the coefficient to convert the coordinate reference system (CRS) units into meters (metersPerUnit) and the scale (1:scaleDenominator), the bottom right corner of the bounding box of a tile matrix (tileMatrixMaxX, tileMatrixMinY) can be calculated as follows: . . ._
+
+The TMS model is entirely consistent with the conceptual and logical models defined in this abstract specification – although the property names are different. The OGC TMS can be thought of as a profile with extensions of this abstract specification.
 
 === Characteristics of a Conceptual Model
 
