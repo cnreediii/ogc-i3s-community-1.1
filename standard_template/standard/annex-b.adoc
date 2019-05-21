@@ -3,27 +3,27 @@
 == Additional Informative Material: Simple Example of an XML encoding
 
 Below is a modification of an XML example from the WMTS standard but revised to meet the above example requirements. This could just have easily been written in JSON, Javascript, and so on.
+
 <ows:Identifier>Fort Collins Tiled Data Store</ows:Identifier>
 
-<TileSet>
-	<TileSetIdentifier>Parcels<TileSetIdentifier>
-<TileSetCRS>EPSG2876</TiledSetCRS>
-<TileSetUOM>FT</TileSetUOM>
-<TileSetOrigin>LowerLeftCorner</TileSetOrigin>
-<!-- lower left point of tile set bounding box -->
-<ows:BoundingBox>
-<LowerCorner>3080000,1400000</LowerCorner>
-<UpperCorner>3600000,1500000</UpperCorner>
-<ows:BoundingBox>
+```
+<tileSet> 
+	<tileSetIdentifier>Parcels<tileSetIdentifier> 
+	<tileSetCRS>EPSG2876</tiledSetCRS> 
+	<tileSetUOM>FT</tileSetUOM>
+	<tileSetOrigin>lower_left</tileSetOrigin>
+		<!-- Extent defined. lower left point of tile set bounding box -->
+		<ows:BoundingBox>
+			<LowerCorner>3080000,1400000</LowerCorner>
+			<UpperCorner>3600000,1500000</UpperCorner>
+		<ows:BoundingBox>
+		
 	< tessellationType>Square</tessellationType>
+	<!-- width and height of each tile in specified units -->
+		<tileWidth>1000</tileWidth>
+		<tileHeight>1000</tileHeight>
+	<tileOrigin>lower_left</tileOrigin>
+	<tileAddress>Default</tileAddress>
 
-<TileOrigin>Lower_Left</TileOrigin>
-<!-- width and height of each tile in specified units -->
-<TileExtentefinition>
-<tileWidth>1000</tileWidth>
-<tileHeight>1000</tileHeight>
-</TileExtentdefinition>
-<TileAddress>Default</TileAddress>
-
-</TileSet>
-
+</tileSet>
+```
