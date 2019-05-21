@@ -5,6 +5,7 @@ Each tile _SHALL_ have either an extent specified (bounding box) or _SHALL_ +
 have the ability for the tile extent to be calculated.   Each tile +
 extent _SHALL_ be specified in the TileSet coordinate reference system (CRS). +
 The encoding of the extent _SHALL_ follow the rules as specified in +
-Clause 10.2.1 Basic bounding box parameters (OWS Common). 
+Clause 10.2.1 Basic bounding box parameters (OWS Common). A value of ‘default’ +
+means that the extent needs to be calculated.
 {set:cellbgcolor:#FFFFFF}
 |===
