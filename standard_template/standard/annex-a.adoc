@@ -13,6 +13,7 @@ Core
 |Requirement: |/req/req-class-a/core
 |Test purpose: | To verify that a tiling specification conforms to the tiling logical core model for the 2d Euclidean plane use case.
 |Test method: | Inspect documentation.
+|===
 
 === Conformance Class B
 
