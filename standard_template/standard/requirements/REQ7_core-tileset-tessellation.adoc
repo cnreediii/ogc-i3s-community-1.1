@@ -6,6 +6,6 @@ Any tiling process used to create a tile set SHALL be a regular tessellation of 
 using a geometric shape of type square (rectilinear), hexagon, or equilateral triangle. The +
 resulting tile set SHALL consist of one or more tiles, with no overlaps and no gaps. +
 The tiling scheme SHALL be consistent for all tiles within a tile set and shall adhere to +
-requirements 2 through 6. The complete enumeration of values for this property are `square`, +
+requirements 2 through 6. The possible values for this requirement are: `square`, +
 `hexagon`, or `triangle`. `triangle` is short for equilateral triangle. {set:cellbgcolor:#FFFFFF}
 |===
