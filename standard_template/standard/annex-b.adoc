@@ -1,6 +1,29 @@
 [annex-b]
 :appendix-caption: Annex B
-== Additional Informative Material
+== Additional Informative Material: Simple Example of an XML encoding
 
-This Annex provides additional informative material as guidance but not as mandatory elements.
+Below is a modification of an XML example from the WMTS standard but revised to meet the above example requirements. This could just have easily been written in JSON, Javascript, and so on.
+<ows:Identifier>Fort Collins Tiled Data Store</ows:Identifier>
+
+<TileSet>
+	<TileSetIdentifier>Parcels<TileSetIdentifier>
+<TileSetCRS>EPSG2876</TiledSetCRS>
+<TileSetUOM>FT</TileSetUOM>
+<TileSetOrigin>LowerLeftCorner</TileSetOrigin>
+<!-- lower left point of tile set bounding box -->
+<ows:BoundingBox>
+<LowerCorner>3080000,1400000</LowerCorner>
+<UpperCorner>3600000,1500000</UpperCorner>
+<ows:BoundingBox>
+	< tessellationType>Square</tessellationType>
+
+<TileOrigin>Lower_Left</TileOrigin>
+<!-- width and height of each tile in specified units -->
+<TileExtentefinition>
+<tileWidth>1000</tileWidth>
+<tileHeight>1000</tileHeight>
+</TileExtentdefinition>
+<TileAddress>Default</TileAddress>
+
+</TileSet>
 
