@@ -29,6 +29,8 @@ include::requirements/REQ1_core.adoc[]
 
 The following is the requirements class of the Tile Set Schema
 
+Element name: tileSet
+
 include::requirements/rc-tileset-schema.adoc[]
 
 This requirement class defines the requirements for defining a tile set.
