@@ -177,4 +177,12 @@ The following suggested metadata elements are extracted from the OGC Tile Matrix
 |keywords|Unordered list of one or more commonly used or formalized word(s) or phrase(s) used to describe this tile set.|	MD_Keywords class in ISO 19115|Zero or more (optional) One for each keyword authority used
 |===
 
+=== Notes on Tile Indices and Tile Pyramids
+
+==== Tile indexes
+A tile index provides an efficient (fast) mechanism for finding any tile or set of tiles in a tiled data store when using a spatial filter, including a point and query operation. Typical spatial indexing are R-Trees and Quad-Trees. The logical model specifies no requirements for how a spatial index is constructed or the technology used. However, the tile extents, tile addresses, and tile references can be used to populate a spatial index, such as an R-Tree.
+
+==== Tile Pyramids
+
+A tile pyramid structure would be specified as a set of rules (requirements) applied using the core logical model.  A tile pyramid is usually based on using a square tile tessellation for some area of interest and a common tile set extent for all tile sets that define the pyramid. The base of the pyramid could be one tile whose extent is identical to that of the tile set. The next tile set (level in the pyramid) could divide the tile set extent into 4 tiles. The next tile set could be based on dividing the tile set extent into 16 tiles and so forth. The OGC Tile Matrix Set candidate standard covers this topic extensively.
 
