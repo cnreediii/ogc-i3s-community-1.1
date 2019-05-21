@@ -27,5 +27,39 @@ requirements/rc-tileset-schema.adoc
 |===
 |Test id: |/conf/conf-class-a/requirements/REQ2_core-tileset-id.adoc
 |Requirement: |/req/core/tileset/id
-|Test purpose: | To verify that a tile set as a unique identifier.
+|Test purpose: | To verify that a tile set has a unique identifier.
 |Test method: | Either automated test or visual inspection.
+|===
+
+==== Requirement 3
+
+[cols=">20h,<80d",width="100%"]
+|===
+|Test id: |/conf/conf-class-a/requirements/REQ3_core-tileset-crs.adoc
+|Requirement: |//req/core/tileset/crs
+|Test purpose: | To verify that a tile set has a unique CRS identifier.
+|Test method: | Either automated test or visual inspection.
+|===
+
+==== Requirement 4
+
+[cols=">20h,<80d",width="100%"]
+|===
+|Test id: |/conf/conf-class-a/requirements/REQ3_core-tileset-uom.adoc
+|Requirement: |//req/core/tileset/uom
+|Test purpose: | To verify that a tile set has a unique UoM identifier.
+|Test method: | Either automated test or visual inspection.
+|===
+
+==== Requirement 5
+
+[cols=">20h,<80d",width="100%"]
+|===
+|Test id: |/conf/conf-class-a/requirements/REQ3_core-tileset-extent.adoc
+|Requirement: |//req/core/tileset/extent
+|Test purpose: | To verify that a tile set has an extent specified in the tile set CRS and following the OWS COmmon requirements for expressing a bbox.
+|Test method: | Either automated test or visual inspection.
+|===
+
+
+
