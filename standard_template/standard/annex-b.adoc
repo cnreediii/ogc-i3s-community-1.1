@@ -4,9 +4,9 @@
 
 Below is a modification of an XML example from the WMTS standard but revised to meet the above example requirements. This could just have easily been written in JSON, Javascript, and so on.
 
+```
 <ows:Identifier>Fort Collins Tiled Data Store</ows:Identifier>
 
-```
 <tileSet> 
 	<tileSetIdentifier>Parcels<tileSetIdentifier> 
 	<tileSetCRS>EPSG2876</tiledSetCRS> 
@@ -23,7 +23,7 @@ Below is a modification of an XML example from the WMTS standard but revised to 
 		<tileWidth>1000</tileWidth>
 		<tileHeight>1000</tileHeight>
 	<tileOrigin>lower_left</tileOrigin>
-	<tileAddress>Default</tileAddress>
-
+	<tileAddress>default</tileAddress>
+	<tileExtent>default</tileExtent>
 </tileSet>
 ```
