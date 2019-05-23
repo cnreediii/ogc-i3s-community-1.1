@@ -1,6 +1,6 @@
-# OGC Abstract specifiation topic "Core Tiling Conceptual and Logical Model"
+# OGC Abstract specification topic "Core Tiling Conceptual and Logical Model"
 
-This GitHub repository contains a draft of an OGC Abstract Specification for a concpetual model for tiling/tiled structures. The document also specifies a core logical model for tiling 2d Euclidean space.
+This GitHub repository contains a draft of an OGC Abstract Specification for a conceptual model for tiling/tiled structures. The document also specifies a core logical model for tiling 2d Euclidean space.
 
 The content of this AS has evolved since early 2018 and is grounded in a number of past and current OGC innovation and standards  program initiatives including:
 
