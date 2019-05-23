@@ -13,7 +13,7 @@ The content of this AS has evolved since early 2018 and is grounded in a number 
 - The editors personal experience on this topic
 - Various discussions and presentations at OGC Technical Committee meetings.
 
-Please note that this AS IS NOT a general discussion or model of a complete space/time partitioning model!
+Please note that this Abstract Specification IS NOT a general discussion or model of a complete space/time partitioning model!
 
 Please also note that this Abstract Specification DOES NOT address such topics as tile pyramids, layers, and symbology. These cocepts and the related logocal models are all extensions or profiles with extensions of this base Abstract Specification.
 
