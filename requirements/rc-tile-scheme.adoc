@@ -3,7 +3,7 @@
 2+|*Requirements Class* {set:cellbgcolor:#CACCCE}
 2+|http://www.opengis.net/spec/tile-model/1.0/req/tile {set:cellbgcolor:#FFFFFF}
 |Target type |Token
-|Dependency |Tile Set Schema
+|Dependency |Tile Set Scheme
 |*Requirement 9* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tile/address +
 Tile Address {set:cellbgcolor:#FFFFFF}
 |*Requirement 10* {set:cellbgcolor:#CACCCE} |http://www.opengis.net/spec/tile-model/1.0/req/core/tile/origin +
