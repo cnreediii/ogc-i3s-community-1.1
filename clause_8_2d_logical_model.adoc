@@ -131,7 +131,7 @@ This clause specifies the requirements that define the properties of each indivi
 
 The Tile Schema requirements class is defined as:
 
-include::requirements/rc-tile-schema.adoc[]
+include::requirements/rc-tile-scheme.adoc[]
 
 ==== Requirement 9 - Property Tile Address (ID)
 
