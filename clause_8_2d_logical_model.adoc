@@ -83,7 +83,7 @@ Example: tileSetOrigin=lower_left
 
 === Tessellation class
 
-Related to the Tile Set Schema is the actual tessellation process used to generate the tile set.
+Related to the Tile Set Scheme is the actual tessellation process used to generate the tile set.
 
 include::requirements/REQ7_core-tessellation.adoc[]
 
@@ -125,11 +125,11 @@ In geometry, the hexagonal tiling or hexagonal tessellation is a regular tiling 
 |equalarea|If all hexagonal tiles are to be equal area, this property is the area in the units of measure specified in TileSetUOM. If `equalarea` is specified then `length` is not required.
 |===
 
-=== Requirements Class Tile Schema
+=== Requirements Class Tile Scheme
 
-This clause specifies the requirements that define the properties of each individual tile in a tile set. Combined with the Tile Set Schema common properties, there is enough information for any application -server or client - to access, process, analyze, and visualize any geospatial content provided in the tiled structure.
+This clause specifies the requirements that define the properties of each individual tile in a tile set. Combined with the Tile Set Scheme common properties, there is enough information for any application - server or client - to create, access, process, analyze, and visualize any geospatial content provided in the tiled structure.
 
-The Tile Schema requirements class is defined as:
+The Tile Scheme requirements class is defined as:
 
 include::requirements/rc-tile-scheme.adoc[]
 
