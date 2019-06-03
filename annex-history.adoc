@@ -6,4 +6,5 @@
 |===
 |Date |Release |Editor | Primary clauses modified |Description
 |2019-April-28 |1.0|C. Reed Editor |all |initial version
+|2019-June-3 | 1.0 | C. Reed | |Various | Grammatical edits, add references
 |===
