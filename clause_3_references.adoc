@@ -5,23 +5,13 @@ ISO / TC 211: ISO 19115-1:2014 Geographic information -- Metadata -- Part 1: Fun
 
 OGC: OGC 07-057r7, OGC Web Map Tile Service Implementation Standard (2010)
 
+OGC: OGC 15-113r5, OGC Volume 1: OGC CDB Core Standard: Model and Physical Data Store Structure (2018)
+
+OGC: OGC  15-104r5, Topic 21: Discrete Global Grid Systems Abstract Specification (2017)
+
+OGC: OGC 12-128r15, OGC Geopackage Encoding Standard - with Corrigendum (2018)
+
+OGC: OGC  17-083r2, Tile Matrix Set Standard (2019)
+
 OGC: OGC 06-121r9, OGC Web Services Common (OWS Common) Encoding Standard (2010)
 
-[NOTE]
-====
-Insert References here. If there are no references, state “There are no normative references”.
-
-Smith, T.F., Waterman, M.S.: Identification of Common Molecular Subsequences.
-J. Mol. Biol. 147, 195–197 (1981)
-
-
-Foster, I., Kesselman, C.: The Grid: Blueprint for a New Computing Infrastructure.
-Morgan Kaufmann, San Francisco (1999)
-
-Foster, I., Kesselman, C., Nick, J., Tuecke, S.: The Physiology of the Grid: an Open
-Grid Services Architecture for Distributed Systems Integration. Technical report,
-Global Grid Forum (2002)
-
-National Center for Biotechnology Information, http://www.ncbi.nlm.nih.gov
-
-====
