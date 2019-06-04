@@ -1,76 +1,45 @@
-== Introduction
+== Introduction to I3S and SLPK
 
-For many geospatial technology applications and use cases, there is the need (requirement!) to partition the space of interest. Examples are numerous. Within the OGC standards baseline, CDB defines how to partition the globe into a set of 2d tiles for 24 levels of detail. The Web Matrix Tile Set (WMTS) standard defines the rules and requirements for a tile matrix set as a way to index space based on a set of regular grids defining a domain (tile matrix) for a limited list of scales in a restricted set of Coordinate Reference Systems (CRS). The new - and more general - Tile Matrix Set standard specifies the concept of a tile matrix set and tile matrix set limits and its implementation in 2D space. Finally, the OGC I3S Community Standard defines how to partition 3d space using a hierarchical, node-based spatial index structure in which each node’s payload may contain features with associated geometry, textures and attributes.
+This section provides background information on the design principals and background for I3S
 
-In geometry, space partitioning is the process of dividing a space (usually a Euclidean space) into two or more disjoint subsets. In other words, space partitioning divides a space into non-overlapping regions. Any point in the space can then be identified to lie in exactly one of the regions. 
+=== I3S Design Principals
 
-Within that context, the requirements for partitioning space based on dimension can be considered. This OGC Abstract Specification presents a conceptual and logical model for partitioning (tiling) 2-D Euclidean space. Tiling of 2d Euclidian space is the most commonly known approach to partitioning space. However, there are common concepts for any approach to partitioning space in any dimension. This document defines the common concepts that apply to any dimension and then follows with mandatory and recommended requirements for the tiling of 2d Euclidean space use case.
+The Indexed 3d Scene layer (I3S) format and the corresponding Scene Layer Package format (*.slpk) are specified to fulfill this set of design principles: 
 
-Please note that in developing the conceptual model and the associated logical model, the tiling sections/extensions to the OGC CDB, GeoPackage, and WMTS  standards along with the commercial MapBox Vector Tiles (MVT) specificaiton were reviewed. The OGC DGGS standard and various Engineering Reports from the OGC Test Bed 13, Test Bed 14 and the Vector Tiles Pilot were also considered. Finally, the new Tile Matrix Set standard was reviewed. Much of the content and requirements specified in this abstract specification are derived by abstracting what is contained in the existing and candidate standards and specifications.
+- *User Experience first*: Provide a positive user experience, including high interactivity and fast display;
+- *Scalability*: Support very large scene layers, including scenes with a global extent and many detailed features;
+- *Reusability*: Use as a service delivery format, storage format, and exchange format;
+- *Level of Detail*: Have support for multiple levels of detail;
+- *Distribution*: Allow efficient distribution of very large data sets;
+- *User-controllable symbology*: Support efficient rendering of client-side symbology/styling;
+- *Extensibility*: Support new layer, geometry types and new platforms;
+- *Web Friendliness*: Provide easy to handle data using JSON and current web standards;
+- *Compatibility*: Provide a single structure that is compatible across web, mobile, and desktop clients. Support is also included for cloud and servers;
+- *Declarative*: Communicate clearly to minimize the amount of required domain knowledge to support the format; Follow REST/JSON API best practices: Provide navigable links to all resources.
 
-The goal is to define a simple conceptual model that can support any and all requirements for tiled data stores and applications including extensions for visualization, portrayal, analytics, filtering, levels of detail, and so forth. Various application use cases and/or workflows, such as styling or dealing with topology, are not part of the core logical model. Instead, such applications may be thought of as profiles and/or extensions of the model that restrict core requirements or define additional requirements. For example, the majority of the CDB standard that deals with tiles defines additional requirements, such as level of detail, to optimize the data store for that domain of interest.
+=== I3S Overview
 
-=== Key concept - The assumption of a 2-D planar space
+A single I3S data set, referred to as a Scene Layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. Scene Layers provide clients access to data and allow them to visualize it according to their needs.   Data here refers to vertex geometry, texture as well as any associated attributes. 
 
-The tiling logical model defined in this document assumes that the tiling target is a two dimensional plane in Euclidean space. However, the content to be stored in a tiled structure is typically earth (or planetary body) referenced. Therefore, the transformation from a spheroidal coordinate system into a planar system is required. The following paragraph, extracted from the Tile Matrix Set Standard, describes the solution for coordinate reference systems other than geographic (Latitude, Longitude).
+An I3S Layer is characterized by a combination of layer type and profile. The layer type describes the kind of geospatial data stored within it. The layer profile includes additional details on the specific I3S implementation. 
 
-_As stated in OGC 08-015r6 Abstract Specification Topic 2: Spatial referencing by coordinates, a coordinate system is a set of mathematical rules for specifying how coordinates are to be assigned to points in space. A Coordinate Reference System (CRS) is a coordinate system that is related to the real world by a reference datum. An example of mathematical rules is the application of a sphere or an ellipsoid centered in the datum and the use of a projection to transform the sphere or the ellipsoid into a planar representation of the world._
+The requirements specified below apply to the following layer types defined in this standard:
 
-=== Two key use cases
+- 3D Objects (e.g., Building Exteriors from geospatial data and 3D models)
+-	Integrated Mesh (e.g., an integrated surface representing the skin of the earth including vegetation, buildings and roads from satellite, aerial or drone imagery via dense matching photogrammetry) 
+-	Points (e.g. hospitals or Schools, trees, street furniture, signs, etc. from GIS data)
+-	Point Clouds (e.g. LiDAR data) 
 
-There are two distinct but related use cases for implementing and using a tiled structure: storage and visualization. In both cases, the driving force is the desire to enhance performance. Performance could be in terms of access latency, caching, and/or streaming of relevant content to a client.
+Layers are described using two properties: type and profile. The type of a layer describes the type of geospatial data stored within it drawing from terms including 3D Objects, Points, Lines, Polygons, and Point Clouds. The profile for a layer includes additional detail on the specific I3S implementation for the layer that is exposed to clients. Each layer has a canonical profile, but in certain cases multiple layers that represent semantically different types of information can make use of the same underlying profile. In other cases the same layer type can support multiple profiles optimized for different use cases. 
 
-==== Storage Use Case
+The following table shows the layer types and profiles. For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
 
-In this use case, geospatial content is subdivided into small units called tiles. The intent is to significantly enhance such operations as search, update, and presentation of the source content in its "native" form. In this use case, the original geospatial data (raster, grid, vector, point clouds, etc.) is maintained. There is no special processing to create forms of the data specifically for high speed caching and rendering on the client. Such processing is typically required for the Visualization use case and is described in the next clause.
+[width="90%",options="header"]
+|===
+|Layer Type (example) |	Profile |	Annex |	Features with Identity |Attributes
+|3D Objects|	mesh-pyramids	|Annex H |Yes	|Yes
+|Integrated Mesh|mesh-pyramids	|Annex H |No	|Triangle Attributes (planned)
+|Point| points	|Annex G |Yes	|Yes
+|Point Cloud	|pointclouds | |	No|Vertex Attributes
+|===
 
-A very typical storage use case would be a city defining the tile structure for its spatial data store. They could begin by defining the geographic extent of the entire area of interest and could include a fringe area for future growth. Typically in the United States, cities and counties work in State Plane coordinates, such as Colorado North zone (NAD 83) for the City of Ft. Collins. The parameters are available in the EPSG database (EPSG 2876). The units of measure are feet. They pick a tile set origin that is the same for all tile sets in the data store. Typically, GIS practitioners think of origins being in the lower left corner so that option is selected for both the tile set and for each tile in a tile set. They then choose a regular square tessellation. They wish to create three tile sets with unique tileset IDs of Parcels, Streams, and Roads. Each tile set will have a different tile size. Parcels will have a tile width and height of 1000 feet. Streams will have a tile width and height of 5000 feet. Roads will have a tile width and height of 2000 feet.
-
-[#img_Storage,reftext='{figure-caption} {counter:figure-num}']
-.Example tile set for above parcel map use case
-image::images/storage.png[width=500,align="center"]
-
-==== Visualization Use Case
-
-The Visualization use case is focused on providing high speed geospatial content rendering and visualization capabilities on a client. In this use case, the source geospatial data is heavily processed and restructured and reformatted to be optimized for visualization on one or more clients. For example, source vector data that is topologically structured and semantically rich may be processed into a tile matrix of PNG images and all geometry, topology, and semantics are lost. 
-
-[#img_tilematrix,reftext='{figure-caption} {counter:figure-num}']
-.Example tile matrix for visualization
-image::images/tilematrix-1.png[width=500,align="center"]
-
-For example, the OGC Tile Matrix Set standard specifies rules for defining a tile matrix. From that standard:
-
-_For the case of a two dimensional space, given the top left point of the tile matrix in CRS coordinates (tileMatrixMinX, tileMatrixMaxY), the width and height of the tile matrix in tile units (matrixWidth, matrixHeight), the width and height of a tile (tileWidth, tileHeight) in original grid cells (often referred to as pixels),, the coefficient to convert the coordinate reference system (CRS) units into meters (metersPerUnit) and the scale (1:scaleDenominator), the bottom right corner of the bounding box of a tile matrix (tileMatrixMaxX, tileMatrixMinY) can be calculated as follows: . . ._
-
-The TMS model is entirely consistent with the conceptual and logical models defined in this abstract specification – although the property names are different. The OGC TMS can be thought of as a profile with extensions of this abstract specification.
-
-=== Characteristics of a Conceptual Model
-
-The terms and definitions clause in this Abstract Specification provides a short definition for "conceptual Model". This clause provides additional information on the OGC use of "conceptual model".
-
-A conceptual model is a representation of a system, made of the composition of concepts which are used to help people know, understand, or simulate a subject the model represents. A documented conceptual model represents 'concepts' (entities), the relationships between them, and a vocabulary.
-
-A conceptual model organizes the vocabulary needed to communicate consistently and thoroughly about the know-how of a problem domain. The aim of a conceptual model is to express the meaning of terms and concepts used by domain experts to discuss the problem, and to find the correct relationships between different concepts. A conceptual model:
-
-* is a representation of a system, made of the composition of concepts which are used to help people know, understand, or simulate a subject the model represents. A documented conceptual model represents 'concepts' (entities), the relationships between them, and a vocabulary.
-
-* is explicitly defined to be independent of design or implementation concerns. The aim of a conceptual model is to express the meaning of terms and concepts used by domain experts to discuss the problem, and to find the correct relationships between different concepts.
-
-* organizes the vocabulary needed to communicate consistently and thoroughly about the know-how of a problem domain.
-
-* starts with a glossary of terms and definitions.  There is a very high premium on high-quality, design-independent definitions, free of data or implementation biases.  The model also emphasizes rich vocabulary.
-
-* is always about identifying the correct choice of terms to use in communications, including statements of rules and requirements, especially where high precision and subtle distinctions need to be made.  The core concepts of a geospatial problem domain are typically quite stable over time.
-
-=== Logical Model footnoteref:[note3,The following content is a copy from Wikipedia  https://en.wikipedia.org/wiki/Logical_data_model]
-A logical data model or logical schema is a data model of a specific problem domain expressed independently of a particular database management product or storage technology (physical data model) but in terms of data structures such as relational tables and columns, object-oriented classes, or XML tags. This is as opposed to a conceptual data model, which describes the semantics of an organization without reference to technology. 
-
-Logical data models represent the abstract structure of a domain of information. They are often diagrammatic in nature and are most typically used in business processes that seek to capture things of importance to an organization and how they relate to one another. Once validated and approved, the logical data model can become the basis of a physical data model and form the design of a database.
-
-Logical data models should be based on the structures identified in a preceding conceptual data model, since this describes the semantics of the information context, which the logical model should also reflect. Even so, since the logical data model anticipates implementation on a specific computing system, the content of the logical data model is adjusted to achieve certain efficiencies. 
-
-==== Conceptual Model vs. Logical (Data) Model footnoteref:[note2,A good discussion of the relationship between conceptual and logical in data modeling is here: http://uksanjay.blogspot.com/2012/06/difference-between-conceptual-logical.html.]
-
-A conceptual model differs from a logical model in important ways.  The goal of a conceptual model is to support the expression of natural-language statements, and supply their semantics — not unify, codify (and sometimes simplify) data.  Therefore the vocabulary included in a conceptual model is far richer, as suits knowledge-intensive problem domains.  In short, conceptual models are concept-centric; logical models are thing-entity-or-class-centric.
-
-Logical models can usually be rather easily derived from conceptual models; the reverse is much harder (or impossible).  Like logical models, conceptual models are often rendered graphically, but free of such distractions to stakeholders as cardinalities.
