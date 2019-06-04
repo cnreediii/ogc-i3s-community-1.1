@@ -1,21 +1,12 @@
 == Scope
 
-=== What this Abstract Specification is
+A single I3S data set, referred to as a Scene Layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. Scene Layers provide clients access to data and allow them to visualize it according to their needs. The definition of "data" in this case includes the geometry, attributes, and vertex geometry.
+A Scene Layer is characterized by a combination of layer type and profile.  The layer type describes the kind of geospatial data stored within it. The layer profile includes additional details on the specific I3S implementation.
+The I3S format is declarative and extendable and can be used to represent different types of 3D data. The following layer types have been specified and the standard validated via implementation and production deployments:
 
-This document serves two purposes
+* 3D Objects (e.g. Building Exteriors from geospatial data and 3D models)
+* Integrated Meshes (e.g. a mesh surface with high resolution imagery textures representing the skin of the Earth, typically created from satellite, aerial or drone imagery)
+* Point Features (such as geolocated Hospitals or Schools, trees, street furniture, and signs)
+* Point Clouds - (e.g. large point data from LiDAR) 
 
-- Defines a general conceptual model for partitioning (tiling) of space. This model is implementation agnostic;
-- Based on the conceptual model, defines a sub-class (logical model) of the general conceptual model for tiling 2d Euclidian space. 
-
-Tiling of 2d Euclidian space is the most commonly known approach to partitioning space in traditional geospatial technology. However, there are also common elements and/or semantics for any approach to partitioning space in any dimension. The logical model in this document defines a set common required elements and then follows with more specific requirements for the two dimension case.
-
-=== What this Abstract Specification is not
-
-This Abstract Specification *does not*:
-
-* Speak to the content that could be organized in a tiled structure;
-* Address concepts such as styling, levels of detail, attributes, and levels;
-* Make any suggestions regarding how content will be processed and stored in the tiled structure.
-* Provide guidance on formats, encodings, or any other implementation details.
-
-The above concepts and implementation guidance is defined in profiles, extensions, and profiles with extensions based on this Abstract Specification. Examples of this type of guidance is the OGC Tile Matrix Set Standard, the OGC I3S Community Standard, and the OGC CDB standard.
+The Indexed 3d Scene Layer (I3S) and Scene Layer Package (*.slpk) are open formats and not dependent on any vendor specific solution, technology, or products . The specification for accessing I3S resources as Scene Service REST (Annex E) endpoints is also described in this standard as open formats.
