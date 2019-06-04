@@ -3,49 +3,75 @@ This document uses the terms defined in Sub-clause 5.3 of [OGC 06-121r8], which 
 
 For the purposes of this document, the following additional terms and definitions apply.
 
-=== *Conceptual model* 
-a description of common concepts and their relationships, particularly in order to facilitate exchange of information between parties within a specific domain [CEN ENV 1613:1994]. A conceptual model is explicitly chosen to be independent of design or implementation concerns.
+=== *3D Model* footnoteref:[note4,https://en.wikipedia.org/wiki/3D_modeling (February 7, 2017)]
+Three-dimensional (3D) models represent a physical body using a collection of points in 3D space, connected by various geometric entities such as triangles, lines, curved surfaces, etc.
 
-=== *coordinate reference system*
-coordinate system that is related to the real world by a datum [ISO 19111]
+=== *Array Buffers*
+In JavaScript, the ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.
 
-=== *coordinate system*
-set of mathematical rules for specifying how coordinates are to be assigned to points [ISO 19111]
+=== *Face*
+In solid geometry, a face is a flat (planar) surface that forms part of the boundary of a solid object; a three-dimensional solid bounded exclusively by flat faces is a polyhedron.
 
-=== *equilateral triangle*
-a triangle in which all three sides are equal. In the familiar Euclidean geometry, an equilateral triangle is also equiangular; that is, all three internal angles are also congruent to each other and are each 60°.
+=== *faceRanges*
+Indicates the range of triangles associated with a particular object (feature).
 
-=== *extension*
-a set of one or more conformance clauses that defines new options for an existing standard. Extensions are generally designed to add additional capabilities that are not part of the core standard. An example is OGC GeoPackage Extension for Tiled Gridded Coverage Data. [OGC TC PnP]
+=== *Gravity-related height*
+Height dependent on the Earth’s gravity field. NOTE: This refers to in particular orthometric height or normal height, which are both approximations of the distance of a point above the mean sea level. (ISO 19111)
 
-=== *hexagon*
-a six-sided polygon or 6-gon. The total of the internal angles of any simple (non-self-intersecting) hexagon is 720°. A regular hexagon is defined as a hexagon that is both equilateral and equiangular. It is bicentric, meaning that it is both cyclic (has a circumscribed circle) and tangential (has an inscribed circle). All internal angles are 120 degrees.
+=== *Height*
+Distance of a point from a chosen reference surface measured upward along a line perpendicular to that surface. NOTE: A height below the reference surface will have a negative value.
 
-=== *profile*
-a pure subset of an existing standard including restrictions on or deletions of conformance clauses related to the subsetting. An example of a profile is the GML Simple Feature Profile. [ISO 19106:2004, Type 1 Profile]
+=== *Integrated Mesh*
+An Integrated Mesh is a type of I3S layer that belongs to the mesh-pyramids profile.
+An Integrated Mesh layer type is typically used to represent and visualize geographic data captured as ‘3D Image’ representing the landscape in a seamless, highly scalable, textured mesh. Such ‘3D Image’ can integrate within its content a multitude of landscape elements including terrain surface, ground imagery, vegetation, man-made objects and structures, and water surfaces. This type of data is typically produced by automated extraction solutions operating on input data from satellite, aerial and/or drone imagery.
 
-=== *profile with extension(s)*
-a set of one or more conformance clauses from a base standard that includes at least one new conformance clause (extension). [OGC TC PnP] An example is OpenGIS® Web Map Services - Profile for EO Products.
+=== *Level of Detail (LoD)*
+Using different LoDs involves decreasing the complexity of a 3D model representation as it moves away from the viewer or according to other metrics such as object importance, viewpoint-relative speed or position. There are numerous approaches to defining LoDs. In GIS, LoDs typically refer to maps defined at given scales and resolutions. Typically higher levels of detail provide greater fidelity. A number of OGC standards define approaches to LoD.
 
-=== *space partitioning*
-In geometry, space partitioning is the process of dividing a space (usually a Euclidean space) into two or more disjoint subsets (see also partition of a set). In other words, space partitioning divides a space into non-overlapping regions. Any point in the space can then be identified to lie in exactly one of the regions.
+=== *LiDAR*
+Light Detection and Ranging, is a remote sensing method that uses light in the form of a pulsed laser to measure ranges (variable distances) to the Earth.
 
-=== *tessellation*
-partitioning of a space into a set of conterminous subspaces having the same dimension as the space being partitioned [ISO 19123]
+=== *Minimum Bounding Sphere  (MBS, mbs)* footnoteref:[note5,https://en.wikipedia.org/wiki/Bounding_sphere (February  12, 2017)]
+In mathematics, given a non-empty set of objects of finite extension in n-dimensional space, for example a set of points, a bounding sphere, enclosing sphere or enclosing ball for that set is an n-dimensional solid sphere containing all of these objects.
 
-NOTE: _the tiling of two dimensional space using one or more geometric shapes, called tiles, with no overlaps and no gaps. In mathematics, tessellations can be generalized to higher dimensions and a variety of geometries. Regular tessellations are made up entirely of congruent regular polygons all meeting vertex to vertex. There are only three regular tessellations. These consist of a network of equilateral triangles, squares or hexagons footnoteref:[note1,Irregular tessellations  consist of figures that aren't composed of regular polygons but still interlock without gaps or overlaps. Voronoi diagrams are an example of an irregular tessellation.]._
+=== *Near Infrared Light*
+Generally refers to light within the wavenumber range of 12,500 to 4,000 cm-1 (wavelengths from 800 to 2,500 nm) (https://www.shimadzu.com/an/ftir/support/tips/letter9/nir1.html, March 2019)
 
-=== *tile*
-a geometric shape with known properties that is the result of the tiling (tessellation) of a plane. A tile consists of a single connected "piece" without "holes" or "lines" (topological disc).
+=== *Normal or Normals* footnoteref:[note6,http://mathworld.wolfram.com/NormalVector.html (March 3, 2017)]
+The normal vector, often simply called the "normal," to a surface is a vector which is perpendicular to the surface at a given point. When normals are considered on closed surfaces, the inward-pointing normal (pointing towards the interior of the surface) and outward-pointing normal are usually distinguished. 
 
-=== *tiling*
-The process of decomposing some space into lots of little pieces (tiles) that fit together without gaps or overlaps.
+=== *Oriented Bounding Box (OBB)* footnoteref:[note7, An Exact Algorithm for Finding Minimum Oriented Bounding Boxes. http://clb.demon.fi/minobb/minobb.html  (June 1, 2015)]
+In geometry, the minimum or smallest bounding or enclosing box for a point set (S) in N dimensions is the box with the smallest measure (area, volume, or hyper-volume in higher dimensions) within which all the points lie. An oriented bounding box is simply a bounding parallelepiped whose faces and edges are not parallel to the basis vectors of the frame in which they're defined. In many applications the bounding box is aligned with the axes of the coordinate reference system and is known as an axis-aligned bounding box (AABB). To distinguish the general case from an AABB, an arbitrary bounding box is called an oriented bounding box (OBB) when an object's local coordinate reference system is used.
 
-=== *tiling scheme*
-a scheme that defines how space is partitioned into individual tiled units. The scheme defines the spatial reference system, the geometric properties of a tile, which space a uniquely identified tile occupies, and reversely which unique identifier corresponds to a space satisfying the geometric properties to be a tile.
+=== *Point Cloud* 
+A point cloud is a set of data points in space. Point clouds are generally produced by 3D scanners, which measure a large number of points on the external surfaces of objects around them. (Wikipedia, https://en.wikipedia.org/wiki/Point_cloud, March 2019)
 
-NOTE: _While in the general sense, a tiling scheme is not restricted to a coordinate reference system or a tile matrix set and allows for other spatial reference systems such as DGGS and other organizations including irregular ones, the logical model in this abstract specification focuses on the 2-D case._
+=== *Profile*
+In I3S, specific implementation instances for specific layer definitions (point, mesh, etc.)
 
+=== *S3TC* footnoteref:[note8, https://www.khronos.org/opengl/wiki/S3_Texture_Compression (February 7, 2017). Please note that S3TC is patented technology and is usage is subject to license restrictions. The patent expires October 7, 2017.]
+S3TC is a technique for compressing images for use as textures. Standard image compression techniques like JPEG and PNG can achieve greater compression ratios than S3TC. However, S3TC is designed to be implemented in high-performance hardware. JPEG and PNG decompress images all-at-once, while S3TC allows specific sections of the image to be decompressed independently.
 
-=== *tile set*
-A set of tiles with common properties that meets the definition of a tessellation. In short, a collection of subsets of the plane, i.e. tiles, which cover the space without gaps or overlaps.
+=== *Shader*
+A small program or set of algorithms that determines how 3-D surface properties of objects are rendered, and how light interacts with the object within a 3-D computer program.
+
+=== *Texture*
+In 3D graphics, the digital representation of the surface of an object. In addition to two-dimensional qualities, such as color and brightness, a texture is also encoded with three-dimensional properties, such as how transparent and reflective the object is. Once a texture has been defined, it can be wrapped around any 3-dimensional object. This is called texture mapping.
+
+=== *Texture Atlas* footnoteref:[note9, https://en.wikipedia.org/wiki/Texture_atlas (February 19, 2017)]
+A large image containing a collection, or "atlas", of sub-images, each of which is a texture map for some part of a 2D or 3D model.
+
+=== *Texture Mapping* footnoteref:[note10, https://en.wikipedia.org/wiki/Texture_mapping (February 19, 2017)]
+Texture mapping is a method for defining high frequency detail, surface texture, or color information on a computer-generated graphic or 3D model.
+
+=== *Texture Maps*
+A texture map is an image applied (mapped) to the surface of a shape or polygon. This may be a bitmap image or a procedural texture. They may be stored in common image file formats, referenced by 3d model formats or material definitions, and assembled into resource bundles.
+
+=== *UV Coordinate* footnoteref:[note11, http://www.rozengain.com/blog/2007/08/26/uv-coordinate-basics/ (February 19, 2017)]
+UV coordinates are 2D coordinates that are mapped onto a 3D model. UV coordinates are a texture's x and y coordinates and always range from 0 to 1. Let's take for example a 800×600 image. When we use a UV coordinate with u=0.5 and v=0.5 then the pixel at x=400 and y=300 is targeted.
+
+=== *UV Mapping (aka UV Unwrapping)* footnoteref:[note12, https://en.wikipedia.org/wiki/UV_mapping (February 9, 2017)]
+UV mapping is the 3D modeling process of projecting a 2D image to a 3D model's surface for texture mapping.
+
+=== *Vertex* footnoteref:[note13, https://en.wikipedia.org/wiki/Vertex_(geometry)#Vertices_in_computer_graphics (February 9, 2017)]
+In computer graphics, a vertex is not only associated with three spatial coordinates but also with other graphical information necessary to render the object correctly, such as colors, reflectance properties, textures, and surface normals. These properties are used in rendering by a vertex shader, part of the vertex pipeline.
