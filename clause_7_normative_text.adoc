@@ -114,7 +114,7 @@ _Treekeys_ are strings in which levels are separated by dashes.  The root node i
 
 [#fig_nodes,reftext='{figure-caption} {counter:figure-num}']
 .A Sample Index Tree with Treekeys
-image::figures/FIG01.png[width=500,align="center"]
+image::figures/FIG01.png[width=400,align="center"]
 
 _For example, take the node with treekey "3-1-0". Since it has 3 numeric elements 3, 1 and 0, it can be concluded that the node is on level 4 (The root node is at level 1). Furthermore, the node "3-1" is its parent node._
 
@@ -136,5 +136,21 @@ An I3S profile uses either a single text-based feature-data sub-resource that co
 
 [#fig_node_resources,reftext='{figure-caption} {counter:figure-num}']
 .Nodes and their attached resources
-image::figures/FIG02.png[width=500,align="center"]
+image::figures/FIG02.png[width=600,align="center"]
+
+Each node has exactly one NodeIndexDocument and one SharedDescriptors document. The FeatureData, Geometry, Texture and Attribute resources can be split into bundles for optimal network transfer and client-side reactivity. This allows balancing between index size, feature splitting (with a relatively large node capacity between 1MB and 10MB) and optimal network usage (with a smaller bundle size, usually in the range of 64kB to 512kB).
+
+There are always an equal number of FeatureData and Geometry resources. Each set contains the corresponding data elements to be able to render a complete feature. Optimal access to all required properties of the geometry data, including the feature to geometry mapping, is available directly from the binary geometry data resource, avoiding unnecessary dependency on the FeatureData document. All vertexAttributes (including position, normal, texture coordinates and color), vertex and feature counts, and mesh segmentation information (faceRanges) are also readily accessible from the geometry resource.
+
+[#fig_node_index,reftext='{figure-caption} {counter:figure-num}']
+.This diagram illustrates the content of an I3S node as stored in its node index document
+image::figures/FIG03.png[width=600,align="center"]
+
+Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. In the figure:
+
+-	Nodes are in green circles. 
+-	Node Identifiers are in blue boxes above a node and represent the identifier or address for each node.
+-	Features are in orange rectangles with each node. The numbers within the box represent feature identifiers.
+--	Each node has associated geometry, texture and attribute resources that compactly store the geometries, attributes and textures of all of the features explicitly represented by the node, as typed arrays and texture atlases.
+-	The geometry resource associated with each node is represented by the turquoise boxes. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual feature's range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding
 
