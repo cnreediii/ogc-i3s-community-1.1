@@ -1,16 +1,30 @@
 [big]*i.     Abstract*
 
-This OGC Abstract Specification defines 1.) a conceptual model for tiling space and 2.) a logical model for 2-D tiled structures and by extension tiling. The conceptual model specified in this Abstract Specification could be a sub-class in a more comprehensive Spatial Partitioning Conceptual Model.
+A single I3S data set, referred to as a Scene Layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. Scene Layers are designed to be used in mobile, desktop, and server-based workflows and can be accessed over the web or as local files. 
 
-[big]*ii.    Keywords*
+The delivery format and persistence model for Scene Layers, referred to as Indexed 3d Scene Layer (I3S) and Scene Layer Package (SLPK) respectively, are specified in detail in this OGC Community Standard. Both formats are encoded using JSON and binary ArrayBuffers (ECMAScript 2015). I3S is designed to be cloud, web and mobile friendly. I3S is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. I3S is designed to stream large 3d datasets and is designed for performance and scalability. I3S is designed to support 3D geospatial content and supports the requisite coordinate reference systems and height models in conjunction with a rich set of layer types.
+
+The open community GitHub version of this standard is here: https://github.com/Esri/i3s-spec. 
+
+[big]*ii.    Source of this document*
+
+The majority of the content in this OGC document is a direct copy of the content contained at https://github.com/Esri/i3s-spec . No normative changes have been made to the content. This OGC document does contain content not contained at https://github.com/Esri/i3s-spec. Specifically, while derived from content on the https://github.com/Esri/i3s-spec repository, the Abstract, Keywords, Preface, Submitting Organizations, Endorsers, Terms and Definitions, and References sections and Annex B (Bibliography) in this document are not found on the https://github.com/Esri/i3s-spec website. However, there is a plan to incorporate the Terms and Definitions and References sections into the community GitHub repository.
+
+Please note that the Esri I3S Github repository includes a “Building Scene Layer (e.g. comprehensive building model including building components)”. This layer type is not included in this Community Standard but may be included in a future version.
+
+[big]*iii.    Validity of content*
+
+The Submission Team has reviewed and certified that the “snapshot” content in this Community Standard is true and accurate. <<Add date this time>>
+
+[big]*iv.    Keywords*
 
 The following are keywords to be used by search engines and document catalogues.
 
-ogcdoc, OGC document,  tiles, tiling, 2d
+ogcdoc, OGC document, i3s, 3d, point clouds, visualization, scene, scene layer, slpk
 
-[big]*iii.   Preface*
+[big]*v.   Preface*
 
-Numerous OGC standards specify some type of tiling scheme. These include Web map Tiling Service (WMTS), CDB, and GeoPackage. There have also been a number of OGC Innovation Initiatives focused on tiling and tiling schemes. However, a general tiling conceptual model and related logical model for 2-D  Euclidian space have not been defined. This Abstract Specification defines a tiling conceptual model and a logical model for tiling 2-D planar space that is based on the conceptual model.
+I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
 
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
 
@@ -20,14 +34,28 @@ Recipients of this document are requested to submit, with their comments, notifi
 
 The following organizations submitted this Document to the Open Geospatial Consortium (OGC):
 
-* Carl Reed & Associates
+Organization name(s)
 
-[big]*v.     Submitters*
+Esri, Inc.
+
+[big]*v.     Supporting Organizations*
 
 All questions regarding this submission should be directed to the editor or the submitters:
 
+[width="90%",options="header"]
 |===
-|*Name* |*Affiliation*
-
-|Carl Reed |Carl Reed & Associates
+|Name	|Affiliation
+|Keith Ryden	|Esri
+|Allan W. Shearer	|UT Austin
+|Volker Coors	|Hochschule für Technik Stuttgart
+|Andreas Wytzisk	|52North
+|Carl Reed	|Carl Reed & Associates
+|Gordon Plunkett	|Esri Canada
+|Vijay Kumar	|Esri India Technologies
+|Clemens Portele	|interactive instruments GmbH
+|Brian Nicholls	|AAM Pty Ltd
+|Bomi Lee	Korea |Land & Geospatial InformatiX Corporation
+|Isaac Zaworski	|Vricon, Inc
+|Thorsten Rietz	|Wetransform GmbH
+|Dale Lutz	|Safe Software
 |===
