@@ -113,6 +113,6 @@ The _treekey_ format is loosely modeled on binary search trees. The key indicate
 _Treekeys_ are strings in which levels are separated by dashes.  The root node is at level 1 always gets ID root. For example, take the node with treekey "3-1-0". Since this key has 3 numeric elements 3, 1, and 0, we can conclude that the node is on level 4 ("root" node is at level 1) and the parent node is "3-1". An example of this numbering pattern is shown in Figure 1 below.
 
 [#fig_nodes,reftext='{figure-caption} {counter:figure-num}']
-.Conceptual for space partitioning based on tiles.
+.A Sample Index Tree with Treekeys
 image::figures/FIG01.png[width=500,align="center"]
 
