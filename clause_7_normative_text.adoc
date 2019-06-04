@@ -116,3 +116,25 @@ _Treekeys_ are strings in which levels are separated by dashes.  The root node i
 .A Sample Index Tree with Treekeys
 image::figures/FIG01.png[width=500,align="center"]
 
+_For example, take the node with treekey "3-1-0". Since it has 3 numeric elements 3, 1 and 0, it can be concluded that the node is on level 4 (The root node is at level 1). Furthermore, the node "3-1" is its parent node._
+
+The information for a node is stored in multiple individually accessible resources. The node index document is a lightweight resource that captures the Bounding Volume Hierarchy (BVH) tree topology for the node. Key components of the document include the node’s bounding volume information, meta-data used for (LoD Switching Models) metrics, as well as parent-child relationships. The node index resource allows for tree traversal without the need to access the more voluminous content associated with a node (geometry, texture data, attributes). 
+
+The decision to render a node by the client application is based on node’s bounding-volume visibility in the current 3D view. Once the node’s bounding-volume visibility is determined to be within the current 3D view of the application, then further evaluation is performed by the client application to determine the visual quality of the node. This determination is done using the information included in the node index document. The node’s quality is estimated as a function of current view parameters, node’s bounding volume and LoD selection metric value of the node.
+
+The standard supports both minimum bounding spheres (MBS) and oriented bounding boxes (OBB) as a node’s bounding volume.
+
+Each node includes the set of information covered by the nodes below it and is part of the path of the leaf nodes below it. Interior nodes may have a reduced representation of the information contained in descendant nodes.
+
+The I3S format models node information using a set of resources including NodeIndex Document, FeatureData, Geometry, Attributes, Textures and SharedResource. All these together represent the set of features or data elements for a given node. These resources are always attached to a node.
+
+- Node Index Document: A lightweight resource representing a node, its topology within the tree and includes references to other sub-resources. 
+-	Feature Data: A text sub-resource for a node that contains the identifiers for the set of features within a node. It can store the geometry and attributes for all of the features in the node either by value or as references into the geometry and attribute sub-resources for the node.
+-	The Geometry, Attribute and Texture sub-resources describe the geometry, attribute and texture for the node. Geometry and attribute sub-resources represent the geometries and attributes of all of the features within the node and include the identifiers of the owning features within the node as well as the mapping between individual feature identifiers and their geometry segments. Vertices within the geometry contain the appropriate texture coordinates.
+
+An I3S profile uses either a single text-based feature-data sub-resource that contains all geometry and attribute information (e.g. Point profile), or separate, binary and self-contained geometry and attribute sub-resources (e.g. mesh-pyramids profile). Applications that use the separate binary sub-resources do not need to first fetch the feature-data resource in order to interpret them. All binary data is stored using a little-endian byte ordering.
+
+[#fig_node_resources,reftext='{figure-caption} {counter:figure-num}']
+.Nodes and their attached resources
+image::figures/FIG02.png[width=500,align="center"]
+
