@@ -148,9 +148,9 @@ image::figures/FIG03.png[width=600,align="center"]
 
 Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is 3D Object and whose profile is mesh-pyramids. In the figure:
 
--	Nodes are in green circles. 
--	Node Identifiers are in blue boxes above a node and represent the identifier or address for each node.
--	Features are in orange rectangles with each node. The numbers within the box represent feature identifiers.
---	Each node has associated geometry, texture and attribute resources that compactly store the geometries, attributes and textures of all of the features explicitly represented by the node, as typed arrays and texture atlases.
--	The geometry resource associated with each node is represented by the turquoise boxes. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual feature's range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding
+*	Nodes are in green circles. 
+*	Node Identifiers are in blue boxes above a node and represent the identifier or address for each node.
+*	Features are in orange rectangles with each node. The numbers within the box represent feature identifiers.
+**	Each node has associated geometry, texture and attribute resources that compactly store the geometries, attributes and textures of all of the features explicitly represented by the node, as typed arrays and texture atlases.
+*	The geometry resource associated with each node is represented by the turquoise boxes. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual feature's range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding
 
