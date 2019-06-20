@@ -153,4 +153,12 @@ Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is
 *	Features are in orange rectangles with each node. The numbers within the box represent feature identifiers.
 **	Each node has associated geometry, texture and attribute resources that compactly store the geometries, attributes and textures of all of the features explicitly represented by the node, as typed arrays and texture atlases.
 *	The geometry resource associated with each node is represented by the turquoise boxes. Each geometry resource is an array of geometries. The same resource also stores the mesh-segmentation information, where each individual feature's range of triangles is stored along with the feature identifier (the values in the orange boxes) in a compact form similar to a run length encoding
+*	Note: Though both attribute and texture resources are omitted from the figure for clarity, it is worth noting that the attribute of all features of a given node are also stored as attribute resource of the node, following a similar storage model.
+*	Each node contains explicit references (the green lines) to the child nodes below it in the bounding volume hierarchy. Each node logically covers all of the features covered by the nodes in its sub-tree, though only some of them may be explicitly represented within the node. Applications make the decision (based on the nodes LoD Selection Metrics) on using the representation within the node versus descending to more detailed nodes. 
+*	The figure also illustrates the case where feature "6" has been generalized away at the lower level of detail node (node "3") and is intentionally no longer explicitly represented within its payload.
 
+[#fig_i3s_tree,reftext='{figure-caption} {counter:figure-num}']
+.Example illustrating the composition of an I3S tree for a 3D Object Indexed Scene Layer with a mesh pyramid profile.
+image::figures/FIG04.png[width=600,align="center"]
+
+Figure detail: _Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys._
