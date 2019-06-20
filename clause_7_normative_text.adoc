@@ -247,3 +247,15 @@ The correspondence between a reduced LoD feature in an interior node and the sam
 
 The main advantage of this mechanism is that clients can focus on the display criterion associated with nodes as a whole in making the decision to switch representations. `node-switching` is the default LoD Switching model for layer types that implement the Mesh-pyramids profile.
 
+==== 7.5.4	Levels of Detail Generation
+Integrated Mesh layer types typically come with pre-authored Levels of Detail. For input data that does not come with pre-authored LoDs, different LoD generation models can be employed. 
+
+For example, 3D Object layers based on the Mesh-pyramids profile may choose to create a LoD pyramid for all features based on generalizing, reducing and fusing the geometries (meshes) for individual features while preserving feature identity. The same approach can also be used with Integrated Mesh layers based on the mesh-pyramid profile.  In this case there are no features and each node contains a generalized version of the mesh covered by its descendants.
+
+The first step in the automatic LoD generation process is to build the I3S bounding volume tree hierarchy based on the spatial distribution of the 3D features. Once this has been completed, generation of the reduced LoD content for interior nodes can proceed.
+
+As shown in Table 2 below, the method used to create the levels depends on the Scene Layer type.
+
+[#img_scene_layer_type,reftext='{figure-caption} {counter:figure-num}']
+.Example Level of Detail generation methods based on Scene Layer type.
+image::images/TAB2.png[width=500,align="center"]
