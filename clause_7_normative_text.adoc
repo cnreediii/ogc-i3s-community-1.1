@@ -168,7 +168,7 @@ All Scene Layer types make use of the same fundamental set of geometry types: po
 Array Buffer View  geometry property declarations control geometries storage and consumption representation.  I3s provides full control over those properties, such as per-vertex layout of components (e.g. position, normal and texture coordinates). This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer. 
 I3S supports storage of triangle meshes via triangles geometry type.
 
-.Note JavaScript: ArrayBufferView is an abstract type that is the base for the following types: DataView, Float32Array, Float64Array, Int8Array, Int16Array, Int32Array, Uint8Array, Uint8ClampedArray, Uint16Array, Uint32Array
+_NOTE:_ JavaScript: ArrayBufferView is an abstract type that is the base for the following types: DataView, Float32Array, Float64Array, Int8Array, Int16Array, Int32Array, Uint8Array, Uint8ClampedArray, Uint16Array, Uint32Array.
 
 Both 3D Object as well as Integrated Mesh layer type model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.
 
@@ -182,3 +182,56 @@ Textures are stored as a binary resource associated with a node. The texture res
 The mesh-pyramids profile supports either a single texture or a texture atlas per node. 
 
 By default, the mesh-pyramids profile allows/supports encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S standard supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as https://en.wikipedia.org/wiki/S3_Texture_Compression[S3TC]. In all cases, the standard provides flexibility by allowing authoring applications to provide additional texture formats via the textureEncoding declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding.
+
+See Textures section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
+
+==== 7.3.4	Attribute Model and Storage
+I3S supports the following two patterns of accessing attribute data. They can be accessed through:
+
+.	From optional paired services that expose query-able and updatable RESTful endpoints that enable direct access to dynamic source data, including attributes. The query in this case uses the unique feature-ID key – which is always maintained within each node and is also available as part of the descriptor for any segmented geometry.
+.	From fully cached attribute information, in binary form, within the I3S store. I3S clients can still choose to use both of these modes even if the attributes are fully cached within I3S store. The binary storage representation provides a significant performance benefit
+
+Clients can use either method if the attributes are cached. The attribute values are stored as a geometry aligned, per field (column), key-value pair arrays. 
+
+For more details regarding point cloud scene layer, see AttributeInfo.
+
+For more details on all other scene layer types, see Attribute.
+
+=== 7.4	Bounding Volume Hierarchy
+Bounding volume hierarchy (BVH) is based on minimum bounding sphere (MBS) or oriented bounding box (OBB). The mesh-pyramids profile supports specifying the bounding volume in either MBS or OBB representation. OBB is the more optimal representation and implementers are encouraged to output node bounding volume in OBB format. Point cloud profile supports OBB representation only.
+
+For more details regarding the two types of bounding volumes see minimum bounding box and oriented bounding box sections.
+
+=== 7.5	Level of Detail 
+The concept of Level of Detail (LoD) is intrinsic to the I3S standard. Scene Layers may include levels of detail that apply to the layer as whole and serve to generalize or summarize information for the layer. This is similar to image pyramids and also similar to raster and tiled vector data schemes. A node in the I3S scene layer tree could be considered the analog of a tile in a raster or vector tiling scheme. Scene layers support levels of detail in a manner that preserves the identity of the individual features that are retained within any level of detail. Levels of Detail can be used to split heavy features, thin or cluster for better visuals, and integrate externally authored files.
+
+The I3S Level of Detail model covers several use cases, including, splitting up very heavy features such as detailed building or very large features (coastlines, rivers, infrastructure), thinning/clustering for optimized visualization as well as support for representing externally authored multiple LoDs.
+
+Note that the I3S Level of Detail concept is orthogonal to the concept of consolidated storage (batches) for a set of geometries within a level of detail. This batching is based on, for example, the concatenation of geometries/meshes into larger geometry collections/meshes to assist in optimal rendering. In all such cases the consolidated storage makes use of Geometry Array Buffers that provide access to individual geometries when needed, preserving the feature to geometry element mapping within the consolidated geometries.
+
+==== 7.5.1	Discrete LoDs
+I3S supports a Discrete LoD approach, where different Level of Detail are bound to the different levels of the index tree. Typically, leaf nodes of such LoD schema contain the original (feature/object) representation with the highest detail. The closer nodes are to the root, the lower the level of detail will be. For each next lower level, the amount of data is typically reduced by employing methods such as texture down-sampling, feature reduction/generalization, mesh reduction/generalization, clustering or thinning, so that all inner nodes also have a balanced weight. Generalization applies to the Scene Layer as a whole and the number of discrete levels of detail for the layer corresponds to the number of levels in the index tree for the scene layer. Here, the level of detail concept is analogous to the level of detail concepts for image pyramids as well as for standard raster and vector tiling schemes.
+
+By using only information found in the node index document, such as bounding volume and level of detail selection metrics, a client application traversing an I3S tree can readily decide if it needs to:
+
+.	Stop traversal to node’s children if the node is not visible in the current 3D view; or
+.	Use/render the data within a node if its quality is appropriate to the current 3D view and discontinue further traversal to children nodes; or to 
+.	Continue traversal until children nodes with better quality are found.
+
+These decisions are made using the advertised values for LoD selection metrics that are part of the information payload of the node. The I3S standard describes multiple LoD Selection Metrics and permits different <<7.5.3 LoD Switching Modes>>. An example LoD selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LoD rendering (<<7.5.3 LoD Switching Mode>>) is referred to in I3S as node-switching.
+
+I3S Scene Layers also include additional optional metadata on the LoD generation process (e.g. thinning, clustering and generalization) as non-actionable (to clients) information that is of interest to some service consumers.
+
+==== 7.5.2	Representation of input data that already has explicitly authored multiple representations
+I3S Layers can be used to represent input 3D geographic data that already have multiple, semantically authored, levels of detail.
+
+The most common method for doing so is to represent each semantically authored input level of detail as its own I3S Layer with visibility thresholds on the layer that capture the range of distances (from the 3D location of the camera) at which the layer should be used. At further or closer distances, applications switch to using a different I3S layer representing a different input semantically authored level of detail. The set of such I3S Layers representing a single, modeled, real world phenomena (such as buildings for a city) can be grouped within the same I3S service. For each I3S Layer within the set, the features in the leaf nodes of the index tree represent the modeled features at the level of detail presented in the input. Additional levels of detail can optionally be automatically generated by extending the viewing range of each semantically input level of detail.
+
+Tools can also be developed that load all of the input level of detail information for the modeled entities in the input into a single I3S layer. In this case the depth of the I3S index tree is fixed to the number of levels of detail present in the input. Feature identities and geometries in each node are set based upon the input data.
+
+The specific approach taken is influenced by the extent of the data, the number of levels of detail actually present in the input and the need for further additional automatically generated levels of detail.
+
+==== 7.5.3	LoD Switching Modes
+Depending on the properties of a 3D layer, a good user experience will necessitate switching out the content of a node with the content of more detailed nodes.
+
+
