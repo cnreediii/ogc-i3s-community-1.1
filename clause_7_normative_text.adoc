@@ -159,6 +159,26 @@ Figure 4 below shows the node tree of an Indexed Scene Layer whose layer type is
 
 [#fig_i3s_tree,reftext='{figure-caption} {counter:figure-num}']
 .Example illustrating the composition of an I3S tree for a 3D Object Indexed Scene Layer with a mesh pyramid profile.
-image::figures/FIG04.png[width=600,align="center"]
+image::figures/FIG04.png[width=600,align="center"] +
 
 Figure detail: _Orange boxes represent features stored explicitly within the node, the numbers represent feature identifiers. Turquoise boxes represent the geometry instances associated with each node – each geometry instance is an aggregate geometry (a geometry collection) that covers all the features in the node. Blue boxes represent the node ids, the hyphenated numbers represent node ids as string based treekeys._
+
+==== (7.3.2)	Geometry Model and Storage
+All Scene Layer types make use of the same fundamental set of geometry types: points, lines, and triangles.
+Array Buffer View  geometry property declarations control geometries storage and consumption representation.  I3s provides full control over those properties, such as per-vertex layout of components (e.g. position, normal and texture coordinates). This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer. 
+I3S supports storage of triangle meshes via triangles geometry type.
+
+.Note JavaScript: ArrayBufferView is an abstract type that is the base for the following types: DataView, Float32Array, Float64Array, Int8Array, Int16Array, Int32Array, Uint8Array, Uint8ClampedArray, Uint16Array, Uint32Array
+
+Both 3D Object as well as Integrated Mesh layer type model geometries as triangle meshes using the mesh-pyramids profile. The mesh-pyramids profile uses the triangles geometry type to store triangle meshes with reduced level of detail representations of the mesh, segmented by features, available in the interior nodes as described above.
+
+For more details regarding 3D objects and point scene layer, see Geometry. 
+
+For more details regarding point cloud scene layer, see defaultGeometrySchema.
+
+==== (7.3.3)	Textures
+Textures are stored as a binary resource associated with a node. The texture resource for a node contains the images that are used as textures for the features stored in the node. Both integrated mesh and 3D object profile support textures. Authoring applications can provide additional texture formats using textureEncoding declarations.
+
+The mesh-pyramids profile supports either a single texture or a texture atlas per node. 
+
+By default, the mesh-pyramids profile allows/supports encoding the same texture resource in multiple formats, catering for bandwidth, memory consumption and optimal performance consideration on different platforms. As a result, the I3S standard supports most commonly used image formats such as JPEG/PNG as well as rendering optimized compressed texture formats such as https://en.wikipedia.org/wiki/S3_Texture_Compression[S3TC]. In all cases, the standard provides flexibility by allowing authoring applications to provide additional texture formats via the textureEncoding declarations that use MIME types. For example, most existing I3S services provide “image/vnd-ms.dds” (for S3TC compressed texture) in addition to the default “image/jpeg” encoding.
