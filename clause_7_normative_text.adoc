@@ -218,7 +218,7 @@ By using only information found in the node index document, such as bounding vol
 .	Use/render the data within a node if its quality is appropriate to the current 3D view and discontinue further traversal to children nodes; or to 
 .	Continue traversal until children nodes with better quality are found.
 
-These decisions are made using the advertised values for LoD selection metrics that are part of the information payload of the node. The I3S standard describes multiple LoD Selection Metrics and permits different <<7.5.3 LoD Switching Modes>>. An example LoD selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LoD rendering (<<7.5.3 LoD Switching Mode>>) is referred to in I3S as node-switching.
+These decisions are made using the advertised values for LoD selection metrics that are part of the information payload of the node. The I3S standard describes multiple LoD Selection Metrics and permits different <<LoD Switching Modes>>. An example LoD selection metric is the maximum screen size that the node may occupy before it must be replaced with data from more detailed nodes. This model of discrete LoD rendering (<<LoD Switching Modes>>) is referred to in I3S as node-switching.
 
 I3S Scene Layers also include additional optional metadata on the LoD generation process (e.g. thinning, clustering and generalization) as non-actionable (to clients) information that is of interest to some service consumers.
 
@@ -231,7 +231,7 @@ Tools can also be developed that load all of the input level of detail informati
 
 The specific approach taken is influenced by the extent of the data, the number of levels of detail actually present in the input and the need for further additional automatically generated levels of detail.
 
-==== 7.5.3	LoD Switching Modes
+==== LoD Switching Modes
 Depending on the properties of a 3D layer, a good user experience will necessitate switching out the content of a node with the content of more detailed nodes.
 
 
