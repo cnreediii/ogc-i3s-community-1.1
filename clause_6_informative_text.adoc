@@ -35,7 +35,7 @@ Layers are described using two properties: type and profile. The type of a layer
 The following table shows the layer types and profiles. For each row the table indicates if the layer type represents features (geographic entities) with identity (as opposed to a geospatial field described by a mesh or cloud of geometry elements) and if the specific profile for the layer supports storage of attributes (either feature attributes or attributes of individual geometry elements, depending on the type of the layer).
 
 [#table_layertypes,reftext='{table-caption} {counter:table-num}']
-.3D Layer Types Supported in I3S
+.*3D Layer Types Supported in I3S*
 [width="90%",options="header"]
 |===
 |Layer Type (example) |	Profile |	Annex |	Features with Identity |Attributes
