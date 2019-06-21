@@ -256,9 +256,15 @@ The first step in the automatic LoD generation process is to build the I3S bound
 
 As shown in Table 2 below, the method used to create the levels depends on the Scene Layer type.
 
-[#img_scene_layer_type]
-.Table 2: Example Level of Detail generation methods based on Scene Layer type.
-image::images/TAB2.png[width=500,align="center"]
+|===
+| |3D Object	|Points	|Point Clouds	|Building Scene Layer
+|Mesh-pyramids	|X|||X 
+|Thinning |X|X|X|X
+|Clustering |X|X|X|X
+|Generalization |X|||X
+|===
+
+Table 2: _Example Level of Detail generation methods based on Scene Layer type._
 
 ==== 7.5.5	LoD Selection Metrics
 A client needs information to determine whether a node's contents are "good enough" to render in the current 3D view. This metric can be used by the client to determine whether a representation is of the correct quality. Publishers can add as many LodSelection objects as desired but must provide one if the layer's lodType is not null. Of the three min/avg/max values, typically only one or two are used. Selection criteria include constraints such as resolution, screen size, bandwidth and available memory and target minimum quality goals.
