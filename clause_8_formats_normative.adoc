@@ -21,11 +21,11 @@ As a result, the I3S standard supports most commonly used image formats such as 
 compressed texture formats such as S3TC. The only requirement is the authoring application needs to provide the appropriate 
 `textureEncoding` declaration by using MIME types such as, “image/jpeg” (for Jpeg) and “image/vnd-ms.dds” (for S3TC).  
 
-8.1.3	Texture Sets
+==== 8.1.3	Texture Sets
 This standard allows the combination of multiple textures into a single resource by using array buffer views. However, we 
 generally recommend using large atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle.
 
-8.1.4	Atlas usage and Regions
+==== 8.1.4	Atlas usage and Regions
 Individual textures should be aggregated into texture atlases. Each individual texture becomes a subtexture. As with all texture 
 resources, the atlas has to be 2n-sized on both dimensions, with n being in the range [3,12]. Width and height dimensions do not 
 have to be equal, e.g. 512px x 256px. Subtextures contained within an atlas also need to be 2n-sized, with n being in the 
@@ -38,9 +38,36 @@ Subtexture pixels are identified by the `subimageRegion`: [`umin`, `vmin`, `umax
 passed on to the shader using a separate vertex attribute so that every vertex UV coordinate becomes a UVR coordinate, with 
 the R encoding the [`umin`, `vmin`, `umax`, `vmax`] of the region in 4 UInt16 values. 
 
-8.1.5	Texture coordinates
+==== 8.1.5	Texture coordinates
 Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not 
 directly take atlas regions into account. They always range from 0...1 in U and V, except when using the "repeat" 
 wrapping mode, where they may range from 0...n (n being the number of repeats). The client is expected to use the 
 `subimageRegion` values and the texture coordinates to best handle repeating textures in atlases. This approach has been 
 selected since client capabilities in dealing with more complex UV cases vary greatly.
+
+==== 8.1.6	Generating Image IDs
+The Id of an image is generated using the following method:
+
+```
+UInt64 BuildID(LONG id, int w, int h , int l, int al)
+{
+    UInt64 l_al = ((UInt64)al)<<60;
+    UInt64 l_l = ((UInt64)l)<<56;
+    UInt64 l_w = ((UInt64)(w - 1))<<44;
+    UInt64 l_h = ((UInt64)(h - 1))<<32;
+    UInt64 id64 = l_al + l_l + l_w + l_h + (UInt64)id;
+    return id64;
+}
+Usage syntax: 
+`UInt64 image_id = BuildID(id, w, h, l, al); `
+```
+===== 8.1.6.1	Function Parameters
+
+|===
+|id	|Index of the texture in the store, start from 1
+|w	|Width of the texture
+|h	|Height of the texture
+|l	|Index of the level that the texture belong to, start from 0
+|al	|Level count of the texture
+|===
+
