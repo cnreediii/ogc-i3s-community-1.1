@@ -471,3 +471,26 @@ Table 5: Attributes of the Class Store within the 3dSceneLayerInfo document
 For more details regarding point scene layer, see the store point scene layer.
 For more details regarding point cloud scene layer, see the store point cloud scene layer.
 
+==== 7.6.4.3	defaultGeometrySchema 
+This class is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. This effectively reduces redundancies of ArrayBufferView geometry declarations in a store and reuses the GeometryAttribute type from FeatureData. However, valueType and valuesPerElement are mandatory and SHALL be implemented.
+
+[#table_defaultGeometrySchema,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class GeometrySchema within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|geometryType	|String	|Low-level default geometry type, one of `{triangles, lines, points}`; if defined, all geometries in the store are expected to have this type.
+|*topology*	|String[]	|Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data. Possible values are: +
+•	`PerAttributeArray` +
+•	`Indexed`: When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data. +
+|*header*	|_HeaderAttribute[]_	|Defines header fields in the Geometry resources of this store that precede the vertex (and index) data
+|*ordering*	|String[]	|Provides the order of the keys in vertexAttributes and faceAttributes, if present.
+|*vertexAttributes*	|_vertexAttribute_ |Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates
+|faces	|_vertexAttribute_ |Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates
+|*featureAttributeOrder* |	String[]	|Provides the order of the keys in featureAttributes, if present.
+|*featureAttributes*	|_geometryFeature_ |Declaration of the attributes per feature in the geometry, such as feature ID or face range
+|===
+
+Note: properties in bold are mandatory
+Table 5a: Attributes of the Class GeometrySchema within the 3dSceneLayerInfo document
+For more details regarding point scene layer, see the default geometry schema point cloud scene layer.
