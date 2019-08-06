@@ -169,7 +169,7 @@ Note that the _key_ property (with values such as f_0, f_1, etc...) is automatic
 
 [#fig_scene_resource,reftext='{figure-caption} {counter:figure-num}']
 .An expanded view of a scene layer resource
-image::figures/FIG13.png[width=400,align="center"]
+image::figures/FIG13.png[width=300,align="center"]
 
 _More detail: The above is an expanded view of a scene layer resource showing the content of an attributeStorageInfo resource. The example shows 5 objects each corresponding to the 5 objects of the fields resource (as matched by the 'key' and 'name' properties present in both arrays).The JSON representation of the example is located in 3D Scene Layer examples section._
 
