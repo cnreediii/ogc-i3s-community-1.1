@@ -412,8 +412,62 @@ Edit: Edit is defined.
 |*store*	|_Class Store_ | The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.
 |statisticsInfo	|_statisticsInfo[]_ | Contains the statistical information for a layer.
 |fields	|_Class Field[]_ | A collection of objects that describe each attribute field regarding its field name, datatype and a user friendly name {name,type,alias}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer. 
-|attributeStorageInfo	|_Class attributeStorageInfo_ | Provides the schema and layout used for storing attribute content in binary format in I3S.|===
+|attributeStorageInfo	|_Class attributeStorageInfo_ | Provides the schema and layout used for storing attribute content in binary format in I3S.
+|===
 
-Note: properties in bold are required
+Note: properties in bold are mandatory.
 Table 4: Attributes of the Class 3dSceneLayerInfo within the 3dSceneLayerInfo document
 See Annex I for Examples.
+
+==== 7.6.4.2	Class Store
+The Class Store object describes the exact physical storage of a Layer. This enables the client to detect when multiple Layers are served from the same Store. Including multiple layers in a single store allows them to share resources. This enables efficient serving of many layers of the same content type, but with different attribute schemas or different symbology applied.
+
+[#table_store,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Store within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|id	|String	|A Store ID, unique across a SceneServer. Enables the client to discover which layers a part of a common store, if any. {meshes, polygons, points, lines, analytics, meshpyramids, pointclouds, symbols}
+|*profile*	|String	|Indicates which profile this scene store fulfills. One of {meshes, points, analytics, meshpyramids, symbols, PointCloud}.
+|resourcePattern	|String []	|Indicates the resources needed for rendering and the required order in which the client should load them. Possible values for each array string: +
+`3dNodeIndexDocument`: JSON file describes a single index node within a store, with links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, its spatial extent. [Read more](3DNodeIndexDocument.cmn.md) +
+`SharedResource`: Shared resources are models or textures that can be shared among features within the same layer. +
+`featureData`: The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials. +
+`Geometry`: Each geometry resource is an array of geometries. +
+`Texture`: The texture resource for a node contains the images that are used as textures for the features stored in the node. +
+`Attributes`: Attribute resource for node containing feature data attributes +
+|rootNode	|string	|Relative URL to root node resource.
+|*version*	|String	|Format version of this resource; used here again if this store hasn't been served by a 3D Scene Server.
+|extent	|Number[4]	|The 2D spatial extent (xmin, ymin, xmax, ymax) of this store, in the horizontal indexCRS
+|indexCRS	|String	|The horizontal CRS used for all minimum bounding spheres (mbs) in this store, identified by an OGC URL.
+|vertexCRS	|String	|The horizontal CRS used for all "vertex positions" in this store, identified by an OGC URL.
+|normalReferenceFrame |string	|Describes the coordinate reference frame used for storing normals. 
+Possible values are: +
+`east-north-up`: A value of east-north-up indicates that normals are stored in a node local reference frame defined by the easting, northing and up directions at the MBS center, and is only valid for geographic (WGS84) vertexCRS. +
+`earth-centered`: A value of earth-centered indicates that normals are stored in a global earth-centered, earth-fixed (ECEF) reference frame where the x-axis points towards Prime meridian (lon = 0°) and Equator (lat = 0°), the y-axis points East towards lon = +90 and lat = 0 and the z-axis points North. It is only valid for geographic vertexCRS. +
+`vertex-reference-frame`: A value of vertex-reference-frame indicates that normals are stored in the same reference frame as vertices and is only valid for projected vertexCRS +
+|nidEncoding	|string	|MIME type for the encoding used for the Node Index Documents; format:
+application/vnd.ogc.I3S.json+gzip; version=1.6
+|featureEncoding	|string	|MIME type for the encoding used for the Feature Data Resources; format:
+application/vnd.ogc.I3S.json+gzip; version=1.6
+|geometryEncoding	|string	|MIME type for the encoding used for the Geometry Resources; format:
+application/octet-stream; version=1.6
+|textureEncoding	|string[]	|MIME type(s) for the encoding used for the Texture Resources
+|lodType	|String	|Optional field to indicate which LoD generation scheme is used in this store.
+Possible values are: +
+`MeshPyramid`: Used for integrated mesh and 3D scene layer. +
+`AutoThinning`: Use for point scene layer. +
+`Clustering`: Fill in which profile types are using this lodType +
+`Generalizing`: Fill in which profile types are using this lodType +
+|lodModel	|String	|optional field to indicate which LoD Switching mode clients have to use. One of {*node-switching*, none}.
+|indexingScheme	|String	|Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used.
+|*defaultGeometrySchema*	|_defaultGeometrySchema_ |A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.
+|defaultTextureDefinition	|_texture_ | A common, global TextureDefinition  to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.
+|defaultMaterialDefinition	|_material_ |If a store uses only one material, it can be defined here entirely as a MaterialDefinition 
+|===
+
+Note: properties in bold are mandatory.
+Table 5: Attributes of the Class Store within the 3dSceneLayerInfo document
+For more details regarding point scene layer, see the store point scene layer.
+For more details regarding point cloud scene layer, see the store point cloud scene layer.
+
