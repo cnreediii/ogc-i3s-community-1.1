@@ -1,1 +1,46 @@
 == I3S File Formats
+
+=== 8.1	Textures
+
+The Textures file is a binary resource that contains one or multiple images that are used as textures of features in the store. 
+A single Texture.bin file contains 1...n textures for a single specific texture LoD. It can contain a single texture atlas or 
+multiple individual textures.  The bundling strategy is determined by the authoring application so that specific aspects of the 
+materials and textures used can be taken into account, such as tiling.
+
+==== 8.1.1	Texture Recommendations and Requirements
+The number and volume of textures tends to be the limiting display factor, especially for web and mobile clients. Thus, this 
+standard provides several recommendations and requirements on texture resources that are delivered as part of an Indexed 3D Scene.
+
+==== 8.1.2	Image Formats
+I3S supports multiple texture formats. The choice of format depends on the use case. For example, a client application might 
+prefer consuming the more compact JPEG (and/or PNG) formats over low bandwidth conditions since they are very efficient to 
+transmit and have a widespread adoption. However, client applications that might be constrained for memory or computing resource 
+might prefer to directly consume compressed textures such as S3TC for scalability and performance reasons. 
+
+As a result, the I3S standard supports most commonly used image formats such as JPEG/PNG as well as rendering optimized 
+compressed texture formats such as S3TC. The only requirement is the authoring application needs to provide the appropriate 
+`textureEncoding` declaration by using MIME types such as, “image/jpeg” (for Jpeg) and “image/vnd-ms.dds” (for S3TC).  
+
+8.1.3	Texture Sets
+This standard allows the combination of multiple textures into a single resource by using array buffer views. However, we 
+generally recommend using large atlases (e.g. 2048x2048px) and then to use exactly one texture per bundle.
+
+8.1.4	Atlas usage and Regions
+Individual textures should be aggregated into texture atlases. Each individual texture becomes a subtexture. As with all texture 
+resources, the atlas has to be 2n-sized on both dimensions, with n being in the range [3,12]. Width and height dimensions do not 
+have to be equal, e.g. 512px x 256px. Subtextures contained within an atlas also need to be 2n-sized, with n being in the 
+range [3,12]. Otherwise if their width or height dimension is not 2n, border artifacts are likely to appear when filtering or 
+MIP-mapping. If source subtexture dimensions do not match this requirement, they need to be padded (with nearest/interpolated 
+pixels) or scaled to the nearest lower 2n size. An image that is 140px x 90px would thus be rescaled to 128px x 64px before 
+being inserted into the atlas or padded to 256px x 128px.
+
+Subtexture pixels are identified by the `subimageRegion`: [`umin`, `vmin`, `umax`, `vmax`] attribute. Region information is 
+passed on to the shader using a separate vertex attribute so that every vertex UV coordinate becomes a UVR coordinate, with 
+the R encoding the [`umin`, `vmin`, `umax`, `vmax`] of the region in 4 UInt16 values. 
+
+8.1.5	Texture coordinates
+Client capabilities for handling complex UV cases vary widely, so texture coordinates are used. Texture coordinates do not 
+directly take atlas regions into account. They always range from 0...1 in U and V, except when using the "repeat" 
+wrapping mode, where they may range from 0...n (n being the number of repeats). The client is expected to use the 
+`subimageRegion` values and the texture coordinates to best handle repeating textures in atlases. This approach has been 
+selected since client capabilities in dealing with more complex UV cases vary greatly.
