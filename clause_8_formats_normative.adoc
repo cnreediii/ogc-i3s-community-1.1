@@ -173,14 +173,14 @@ image::figures/FIG13.png[width=400,align="center"]
 
 _More detail: The above is an expanded view of a scene layer resource showing the content of an attributeStorageInfo resource. The example shows 5 objects each corresponding to the 5 objects of the fields resource (as matched by the 'key' and 'name' properties present in both arrays).The JSON representation of the example is located in 3D Scene Layer examples section._
 
-- A client application equipped with the list of available fields and the corresponding attribute-value-array metadata can then fetch the attribute values of interest just by supplying the desired field key as part of the *attributes* REST request. Furthermore, the client will also be capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1.
+- A client application equipped with the list of available fields and the corresponding attribute-value-array metadata can then fetch the attribute values of interest just by supplying the desired field key as part of the *attributes* REST request. Furthermore, the client will also be capable of decoding the fetched _attribute_ resource based on the metadata as retrieved in step 1. 
 
-Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array, should first check in the geometry buffer before requesting it from the *attributes* REST resource. 
+   Note: The geometry buffer contains the _objectIDs_ array as the last section of the geometry layout    (layers[id].store.defaultGeometrySchema.featureAttributes). A client application that has a need to access the _ObjectIDs_ array, should first check in the geometry buffer before requesting it from the *attributes* REST resource. 
 
-The following example below shows the attributes REST request signature:
+   The following example below shows the attributes REST request signature:
 
 * http://<myserver>/<my product>/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-0/attributes/0/f_1
 * http://<myserver>/<my product>/rest/services/Hosted/SanFran/SceneServer/layers/0/nodes/0-0-0-/attributes/0/f_2 
 
-In the first example above we are requesting the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (f_1) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, the second example will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (f_2).
+   In the first example above we are requesting the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (f_1) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, the second example will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (f_2).
 
