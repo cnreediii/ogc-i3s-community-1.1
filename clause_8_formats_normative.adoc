@@ -127,3 +127,24 @@ These metadata allow clients to initialize and allocate any required client side
 image::figures/FIG11.png[width=600,align="center"]
 
 _Detail: The above is an example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias._
+
+==== 8.3.1	The content of this binary attribute resource is made up of:
+
+Clients can use the key property (layers[id].attributeStorageInfo[].key) of the attributeStorageInfo to uniquely identify and request the *attribute* resource through a RESTful API, called attributes. Clients use the _attributeStorageInfo_ metadata to decode the retrieved attribute binary content.
+
+The attribute resource header contains:
+
+* A header section of 4 bytes which indicates the count of features. The count value SHALL be present in all _attribute_ resources. For an _attribute_ resource of a string data type, the header has an additional 4 bytes indicating the total byte count of the string attribute values.
+* For all numerical field types, the header section SHALL be followed by the attribute values array record. The attribute values SHALL always begin at an offset that is divisible by the byte length of a single value. If the header does not end at such an offset, the necessary amount of padding SHALL be inserted between the header and the attribute values.
+* For string field types, the header section SHALL be followed by a fixed length array whose values are the byte counts of each string data, inclusive of the null termination character. This array SHALL then followed by an array of actual string data. The strings SHALL be stored null terminated.
+
+_An example JSON encoding for a 3dSceneLayer mesh pyramid can be found at code 1. This is a scene layer resource illustrating the metadata information found in the fields (layers[id].fields[id]) and attributeStorageInfo arrays (layers[id].attributeStorageInfo[id])._
+
+A client application will be able to find the URI of any attribute resource through its href reference from the *attributeData* array of the *Node Index Document* (similar access patterns exist for resources such as 'features', 'geometries', etc …). See Figure 12 below:
+
+[#fig_node_resource,reftext='{figure-caption} {counter:figure-num}']
+.A node resource document
+image::figures/FIG12.png[width=600,align="center"]
+
+_Detail: A node resource document illustrating attribute data content access URLs (href)._
+
