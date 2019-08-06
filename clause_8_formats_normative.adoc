@@ -59,7 +59,7 @@ UInt64 BuildID(LONG id, int w, int h , int l, int al)
     return id64;
 }
 Usage syntax: 
-`UInt64 image_id = BuildID(id, w, h, l, al); `
+UInt64 image_id = BuildID(id, w, h, l, al); 
 ```
 ===== 8.1.6.1	Function Parameters
 
@@ -70,4 +70,29 @@ Usage syntax:
 |l	|Index of the level that the texture belong to, start from 0
 |al	|Level count of the texture
 |===
+
+=== 8.2	Geometry
+The binary geometry attribute file follows the Khronos http://www.khronos.org/registry/typedarray/specs/latest/[Typed Array specification] in the https://www.ecma-international.org/publications/standards/Ecma-262.htm[ECMAScript® 2015 Language Specification]. Citing the overview of that specification:
+
+“This specification defines an ArrayBuffer type, representing a generic fixed-length binary buffer. The contents of an ArrayBuffer cannot be directly manipulated. Instead, a group of types are used to create views of the ArrayBuffer. For example, to access the buffer as an array of 32-bit signed integers, an Int32Array would be created that refers to the ArrayBuffer.
+Multiple typed array views can refer to the same ArrayBuffer, of different types, lengths, and offsets. This allows for complex data structures to be built up in the ArrayBuffer. As an example, given the following code:
+
+```
+// create an 8-byte ArrayBuffer
+var b = new ArrayBuffer(8);
+
+// create a view v1 referring to b, of type Int32, starting at
+// the default byte index (0) and extending until the end of the buffer
+var v1 = new Int32Array(b);
+
+// create a view v2 referring to b, of type Uint8, starting at
+// byte index 2 and extending until the end of the buffer
+var v2 = new Uint8Array(b, 2);
+
+// create a view v3 referring to b, of type Int16, starting at
+// byte index 2 and having a length of 2
+var v3 = new Int16Array(b, 2, 2);
+```
+
+This defines an 8-byte buffer b, and three views of that buffer, v1, v2, and v3. Each of the views refers to the same buffer -- so v1[0] refers to bytes 0..3 as a signed 32-bit integer, v2[0] refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as a signed 16-bit integer. Any modification to one view is immediately visible in the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1 (where -1 is represented as 0xffff)."
 
