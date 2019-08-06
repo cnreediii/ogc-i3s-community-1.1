@@ -96,3 +96,29 @@ var v3 = new Int16Array(b, 2, 2);
 
 This defines an 8-byte buffer b, and three views of that buffer, v1, v2, and v3. Each of the views refers to the same buffer -- so v1[0] refers to bytes 0..3 as a signed 32-bit integer, v2[0] refers to byte 2 as a unsigned 8-bit integer, and v3[0] refers to bytes 2..3 as a signed 16-bit integer. Any modification to one view is immediately visible in the other: for example, after v2[0] = 0xff; v2[1] = 0xff; then v3[0] == -1 (where -1 is represented as 0xffff)."
 
+[#fig_geometrybuffer,reftext='{figure-caption} {counter:figure-num}']
+.Geometry Buffer Layout with headers
+image::figures/FIG10.png[width=400,align="center"]
+
+Note: The expected triangle/face winding order in all geometry resources is counterclockwise (CCW).
+
+Note: If normal vectors are present in a geometry, they need to be calculated based on uniform axis units. They are always given as if x, y and z axes all had metric units, as a unit vector. This means that if WGS84 is used as a horizontal CRS, the normal calculation cannot directly use the face's WGS84 coordinates, but needs to convert them to a local Cartesian CRS first.
+
+=== 8.3	Attribute Data
+
+Attribute data is stored within I3S layers as part of the Scene Service cache along with geometry, texture, and material resources in an optimized, render friendly format.
+
+By attribute data we mean the tabular information stored as an attribute of a feature class, which is the primary input source of scene services.
+
+Attribute data for all features in a node is stored and made available as discrete, per field resource called *_attribute_*. The number of attribute resources corresponds to the number of fields the service publisher opted to include in the scene cache. 
+
+A key concept of this storage model is that the order in which attribute values are stored within any _attribute_ resource SHALL be the same as the order in which the feature geometries are stored within the geometry resource of that node. This allows clients who fetch these resources to render each node efficiently - using direct array access to retrieve feature attribute(s) without the need for object-id based attribute lookups.
+
+For cases where object-id based access to attributes is needed, the _attribute_ resource representing the object-id field stores the _object-id_ values of each feature within the node and SHALL use the same storage order as the geometry resource. This facilitates object-id based access. Clients can also build an object-id to array-index dictionary for cases where large numbers of object-id based attribute or geometry look ups within a node are needed. (Note: the following ways of referring to the ObjectId of a feature are equivalent in these and previous versions of the I3S specification: ObjectId, object-id, OID, FID). 
+
+When the same feature is included in multiple nodes at different levels of detail, the corresponding attributes for the feature are also included as _attribute_ resource/s of each node it is present in. This redundancy in attribute storage allows each node to be rendered independently of any other node.
+
+Metadata on each _attribute_ resource is made available to clients via the `scene service layer`. When attributes are present within the scene cache, the resourcePattern array in the layers store (layers[id].store.resourcePattern) will include a value called Attributes, indicating attributes are a required resource, utilized for attribute driven symbolization and rendering. In addition to the resourcePattern, additional metadata in the fields array and attributeStorageInfo array further describe each attribute resource.
+
+These metadata allow clients to initialize and allocate any required client side resources prior to accessing any attributes of interest.
+
