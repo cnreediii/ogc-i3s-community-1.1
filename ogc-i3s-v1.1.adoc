@@ -102,6 +102,8 @@ include::clause_6_informative_text.adoc[]
 
 include::clause_7_normative_text.adoc[]
 
+include::clause_8_formats_normative.adoc[]
+
 <<<
 ////
 add or remove annexes after "A" as necessary
