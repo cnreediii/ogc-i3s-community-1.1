@@ -98,7 +98,7 @@ This defines an 8-byte buffer b, and three views of that buffer, v1, v2, and v3.
 
 [#fig_geometrybuffer,reftext='{figure-caption} {counter:figure-num}']
 .Geometry Buffer Layout with headers
-image::figures/FIG10.png[width=400,align="center"]
+image::figures/FIG10.png[width=600,align="center"]
 
 Note: The expected triangle/face winding order in all geometry resources is counterclockwise (CCW).
 
@@ -122,3 +122,8 @@ Metadata on each _attribute_ resource is made available to clients via the `scen
 
 These metadata allow clients to initialize and allocate any required client side resources prior to accessing any attributes of interest.
 
+[#fig_fields,reftext='{figure-caption} {counter:figure-num}']
+.Example of the fields array resource
+image::figures/FIG11.png[width=600,align="center"]
+
+_Detail: The above is an example of the fields array (layers[id].fields[id]) resource of a scene service layer illustrating different supported types of feature attribute fields. The fields array describes an attribute field with respect to its name, type and alias._
