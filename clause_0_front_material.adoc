@@ -61,3 +61,9 @@ The following organization support the submission of the I3S Community Standard 
 |===
 
 Please note that all questions and/or comments regarding this OGC Community Standard should be submitted to the OGC via the comment submission form. <<insert link here when the OGC actually has one!>>
+
+[big]*v.     Future Work*
+The I3S community anticipates that revisions to this Community Standard will be required to prescribe content appropriate to meet new use cases.  These use cases may arise from either (or both) the external user and developer community or from OGC review and comments. Further, future revisions will be driven by any submitted change requests that document community uses cases and requirements.
+
+Currently, the following layer type may be considered for future inclusion in the I3S standard (future work): 
+* Building Scene Layer (e.g. comprehensive building model including building components)
