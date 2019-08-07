@@ -198,3 +198,31 @@ _More detail: A typical attribute (table) info of a feature class. The fields ar
 As it could be inferred from Figure 11 and Figure 13, a scene service layer exposes/includes *only* supported attribute field value types of a feature class. As a result, the 'Shape' field (see Figure 14), which is of _FieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
 
 Table 25 below lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
+
+|===
+|Feature Data Field Type Constants	|Value	|Description	|I3S ValueTypes
+|FieldTypeSmallInteger	|0	|Short Integer	|Int16
+|FieldTypeInteger	|1	|Long Integer	|Int32
+|FieldTypeSingle	|2	|Single Precision floating point number	|Float32
+|FieldTypeDouble	|3	|Double Precision floating point number	|Float64
+|FieldTypeString	|4	|Character String	|String*
+|FieldTypeDate	|5	|Date	|string
+|FieldTypeOID	|6	|Long Integer representing object ID	|UInt32
+|FieldTypeGUID	|10	|Globally Unique Identifier	|string
+|FieldTypeGlobalID	|11	|Global ID	|string
+|FieldTypeXML	|12	|XML Document	|string
+|===
+
+Table 33: Attribute data types supported by a scene service layer.
+NOTE: String – using UTF-8 Unicode character encoding scheme.
+
+The following types of attribute value arrays are supported: _Int32-Array, UInt32-Array, UInt64-Array, Float64-Array, Float32-Array, String-Array_.
+
+Using our example feature class shown in Figure 14 let's see how it maps to the different types of attribute resources.
+
+* *OID* (type 'FieldTypeOID') is by default represented as an UInt32-Array, with a simple 1-d array of UInt32 value type.
+* *NEAR-FID* (type 'FieldTypeInteger') is represented as an Int32-Array, with a simple 1-d array of Int32 value type.
+* *NEAR_DIST* (type 'FieldTypeDouble')  is represented as a Double-Array, with a 1-d array of Float64 value type.
+* *Name*  (type 'FieldTypeString') is represented as a String-Array. A String-Array supports storage of variable length strings and is stored as two arrays in sequence. The first fixed length array has the byte counts of each string (null terminated) in the second array. The second array stores the actual string values as UTF8 encoded strings. The value type of the first array is (UInt32) whereas the value type of the second array is String.
+
+The _attributes_ REST API of a scene layer gives access to all scene cache operations supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in Figure 14 has 5 binary resources, as identified by keys f_0_, f_1_, f_2_, f_3_ and f_4 and are accessible by their respective rest resource URLs (_.../nodes/<nodeID>/attributes/0/f_0, .../nodes/<nodeID>/attributes/0/f_1, etc..).
