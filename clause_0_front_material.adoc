@@ -2,15 +2,15 @@
 
 A single I3S data set, referred to as a Scene Layer, is a container for arbitrarily large amounts of heterogeneously distributed 3D geographic data. Scene Layers are designed to be used in mobile, desktop, and server-based workflows and can be accessed over the web or as local files. 
 
-The delivery format and persistence model for Scene Layers, referred to as Indexed 3d Scene Layer (I3S) and Scene Layer Package (SLPK) respectively, are specified in detail in this OGC Community Standard. Both formats are encoded using JSON and binary ArrayBuffers (ECMAScript 2015). I3S is designed to be cloud, web and mobile friendly. I3S is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. I3S is designed to stream large 3d datasets and is designed for performance and scalability. I3S is designed to support 3D geospatial content and supports the requisite coordinate reference systems and height models in conjunction with a rich set of layer types.
+The delivery format and persistence model for Scene Layers, referred to as Indexed 3d Scene Layer (I3S) and Scene Layer Package (SLPK) respectively, are specified in detail in this OGC Community Standard. Both formats are encoded using JSON and binary ArrayBuffers (ECMAScript 2015). I3S is designed to be cloud, web and mobile friendly. I3S is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. I3S is designed to stream large 3D datasets and is designed for performance and scalability. I3S is designed to support 3D geospatial content and supports the requisite coordinate reference systems and height models in conjunction with a rich set of layer types.
 
 The open community GitHub version of this standard is here: https://github.com/Esri/i3s-spec. 
 
 [big]*ii.    Source of this document*
 
-The majority of the content in this OGC document is a direct copy of the content contained at https://github.com/Esri/i3s-spec . No normative changes have been made to the content. This OGC document does contain content not contained at https://github.com/Esri/i3s-spec. Specifically, while derived from content on the https://github.com/Esri/i3s-spec repository, the Abstract, Keywords, Preface, Submitting Organizations, Endorsers, Terms and Definitions, and References sections and Annex B (Bibliography) in this document are not found on the https://github.com/Esri/i3s-spec website. However, there is a plan to incorporate the Terms and Definitions and References sections into the community GitHub repository.
+The majority of the content in this OGC document is a direct copy of the content contained at https://github.com/Esri/i3s-spec . No normative changes have been made to the content. This OGC document does contain content not contained at https://github.com/Esri/i3s-spec. Specifically, while derived from content on the https://github.com/Esri/i3s-spec repository, the Abstract, Keywords, Preface, Submitting Organizations, Endorsers, Terms and Definitions, and References sections and Annex B (Bibliography) in this document are not found on the https://github.com/Esri/i3s-spec website. The Terms and Definitions and References sections may be added into the community GitHub repository in the future.
 
-Please note that the Esri I3S Github repository includes a “Building Scene Layer (e.g. comprehensive building model including building components)”. This layer type is not included in this Community Standard but may be included in a future version.
+Please note that the Esri I3S Github repository includes a “Building Scene Layer (e.g. comprehensive building model including building components)”. This layer type is not included in this Community Standard but may be proposed for inclusion in a future version.
 
 [big]*iii.    Validity of content*
 
@@ -40,7 +40,7 @@ Esri, Inc.
 
 [big]*v.     Supporting Organizations*
 
-All questions regarding this submission should be directed to the editor or the submitters:
+The following organization support the submission of the I3S Community Standard version 1.1 to the OGC:
 
 [width="90%",options="header"]
 |===
@@ -59,3 +59,5 @@ All questions regarding this submission should be directed to the editor or the 
 |Thorsten Rietz	|Wetransform GmbH
 |Dale Lutz	|Safe Software
 |===
+
+Please note that all questions and/or comments regarding this OGC Community Standard should be submitted to the OGC via the comment submission form. <<insert link here when the OGC actually has one!>>
