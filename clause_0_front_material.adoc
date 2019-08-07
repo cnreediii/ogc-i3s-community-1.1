@@ -22,7 +22,7 @@ The following are keywords to be used by search engines and document catalogues.
 
 ogcdoc, OGC document, i3s, 3d, point clouds, visualization, scene, scene layer, slpk
 
-[big]*v.   Preface*
+[big]*vi.   Preface*
 
 I3S originated from investigations into technologies for rapidly streaming and distributing large volumes of 3D content across enterprise systems that may consist of server components, cloud hosted components, and a variety of client software from desktop to web and mobile applications.
 
