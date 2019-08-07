@@ -184,3 +184,17 @@ _More detail: The above is an expanded view of a scene layer resource showing th
 
    In the first example above we are requesting the attributes of all features for a _field_ named 'NEAR_FID', as identified by its field key (f_1) in Figure 11. This field resource contains the attribute values of all _features_ that are present in node 0-0-0-0. Similarly, the second example will fetch the attributes of all features associated with the field called ('NEAR_DIST') using its key (f_2).
 
+==== 8.3.4	Attribute Resources: Details
+A numeric attribute resource is a single, one dimensional array. A string _attribute_ resource is two, sequential, one dimensional arrays. The structure of each _attribute_ resource is declared upfront in the scene layer resource thru the _attributeStorageInfo_ object. The client application (as stated above in the typical usage pattern) is expected to read the _attributeStorageInfo_ metadata to get the header information, the ordering of the stored records (arrays) as well as their value types before consuming the binary attribute resource.
+
+Consider a sample scene service layer and its field types (see Figure 14). This layer has 6 fields named 'OID', 'Shape', 'NEAR_FID', 'NEAR_DIST', 'Name' and 'Building_ID'. 
+
+[#fig_scene_resource,reftext='{figure-caption} {counter:figure-num}']
+.A typical attribute (table) info of a feature class
+image::figures/FIG14.png[width=500,align="center"]
+
+_More detail: A typical attribute (table) info of a feature class. The fields array that’s shown as an example in Figure 11 and the attributeStorageInfo array in Figure 13 is derived from the attribute value of the above feature class._
+
+As it could be inferred from Figure 11 and Figure 13, a scene service layer exposes/includes *only* supported attribute field value types of a feature class. As a result, the 'Shape' field (see Figure 14), which is of _FieldTypeGeometry_ type, will not be included in the attribute cache of a scene layer.
+
+Table 25 below lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
