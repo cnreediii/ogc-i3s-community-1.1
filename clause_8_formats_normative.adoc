@@ -199,6 +199,9 @@ As it could be inferred from Figure 11 and Figure 13, a scene service layer expo
 
 Table 25 below lists a feature layer's field data types (including its values and description). The I3S valueTypes column indicates the value types of the fields that are supported for attribute based mapping/symbology.
 
+[#table_attribute_types,reftext='{table-caption} {counter:table-num}']
+.Attribute data types supported by a scene service layer.
+[width="90%",options="header"]
 |===
 |Feature Data Field Type Constants	|Value	|Description	|I3S ValueTypes
 |FieldTypeSmallInteger	|0	|Short Integer	|Int16
