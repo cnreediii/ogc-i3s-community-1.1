@@ -4,7 +4,7 @@ This section contains the normative clauses and requirements for implementing I3
 
 === Coordinate Reference Systems
 
-The I3S standard supports specifying the Coordinate Reference System and refers to two OGC standards for describing a CRS as Well Known Text. These are WKT1 as defined in the OGC Coordinate Transformation Service Standard (01-009) and WKT2 as defined in OGC Geographic Information – Well known text representation of coordinate reference systems (12-063r5). CRS as OGC Well Known Text was originally defined in clause 6.4 in the OGC Simple Features 99-036/ISO 19125 standard. 
+The I3S standard supports specifying the Coordinate Reference System and refers to two OGC standards for describing a CRS as Well Known Text. These are WKT1 as defined in the OGC Coordinate Transformation Service Standard (01-009) and WKT2 as defined in OGC Geographic Information – Well known text representation of coordinate reference systems (12-063r5). CRS as OGC Well Known Text was originally defined in clause 6.4 in the http://portal.opengeospatial.org/files/?artifact_id=13227[OGC Simple Features 99-036/ISO 19125] standard. 
 
 I3S also supports specifying CRS in the ISO/OGC WKT standard http://docs.opengeospatial.org/is/12-063r5/12-063r5.html[ISO 19162:2015], Geographic information – Well-known text representation of coordinate reference systems. This new ISO/OGC Standard specifies an update to the original WKT representation. The two standards are referred to as WKT1 and WKT2 respectively.
 
@@ -38,15 +38,15 @@ These use cases lead to the following implementation requirements. Note that all
 - All vertex positions SHALL be specified using a geodetic CRS (including Cartesian coordinate reference systems), where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) for all vertex positions. 
 - Axis Order: Axis order explicitly defined by the CRS SHALL be used when present. When the axis order is not defined by the CRS, Easting, Northing, Height axis order SHALL be used. The Height axis SHALL always point upwards towards the sky (away from the center of the earth).
 
-All I3S layers indicate the coordinate system used by the layer with the spatialReference property in the 3dSceneLayerInfo resource. This property is normative.
+All I3S layers indicate the coordinate system used by the layer with the _spatialReference_ property in the 3dSceneLayerInfo resource. This property is normative.
 
-The spatial reference object is common to all i3s profile types.
+The spatial reference object is common to all I3S profile types.
 
 === Height Models
 
 The I3S standard accommodates declaration of a vertical coordinate reference system that may either be ellipsoidal (height defined with respect to a reference ellipsoid) or gravity-related height (height defined with respect to a reference geoid/gravity surface). This allows the I3S approach to be applied across a diverse range of fields and applications where the particular definition of height is of importance. 
  
-The Well-known Text (WKT) string representation of the CRS now includes the vertical coordinate reference system utilized by the layer. The spatialReference property also includes a Well-known Id (wkid) and a Vertical Coordinate Reference System Well-known ID (vcsWkid) representation, which could alternatively be utilized by a client application consuming the layer instead of the WKT. In addition to the detailed spatialReference property that describes the layers horizontal and vertical CRSs, the 3dSceneLayerInfo resource also includes a coarse metadata property called heightModelInfo, which can be used by a client application to quickly identify if the layers' height model is either gravity-related or ellipsoidal.
+The Well-known Text (WKT) string representation of the CRS now includes the vertical coordinate reference system utilized by the layer. The _spatialReference_ property also includes a Well-known Id (Wkid) and a Vertical Coordinate Reference System Well-known ID (_vcsWkid_) representation, which could alternatively be utilized by a client application consuming the layer instead of the WKT. In addition to the detailed _spatialReference_ property that describes the layers horizontal and vertical CRSs, the 3dSceneLayerInfo resource also includes a coarse metadata property called _heightModelInfo_, which can be used by a client application to quickly identify if the layers' height model is either gravity-related or ellipsoidal.
 
 The following is a WKT1 description of WGS 84, EPSG 4326.
 
@@ -96,7 +96,7 @@ HeightModelInfo
         }
 ```
 
-The above examples illustrate the coordinate reference system and height model of a layer in an I3S payload. The spatialReference object includes a Well-known Text (WKT) string representation of the CRS for both horizontal and vertical coordinate reference systems. The examples provided above show both WKT1 and WKT2 WKT encodings as defined in OGC 12-063r5 - either may be encoded in the spatialReference object. The heightModelInfo object is coarse metadata that could be used by client application to quickly determine if the layers' horizontal and vertical coordinate reference systems align with that of any base map data used by the application. 
+The above examples illustrate the coordinate reference system and height model of a layer in an I3S payload. The _spatialReference_ object includes a Well-known Text (WKT) string representation of the CRS for both horizontal and vertical coordinate reference systems. The examples provided above show both WKT1 and WKT2 WKT encodings as defined in OGC 12-063r5 - either may be encoded in the spatialReference object. The _heightModelInfo_ object is coarse metadata that could be used by client application to quickly determine if the layers' horizontal and vertical coordinate reference systems align with that of any base map data used by the application. 
 
 See Class 3dSceneLayerInfo (Clause 7.5.4) for more information on the use of the heightModelInfo object.
 
@@ -169,7 +169,7 @@ Figure detail: _Orange boxes represent features stored explicitly within the nod
 
 ==== (7.3.2)	Geometry Model and Storage
 All Scene Layer types make use of the same fundamental set of geometry types: points, lines, and triangles.
-Array Buffer View  geometry property declarations control geometries storage and consumption representation.  I3s provides full control over those properties, such as per-vertex layout of components (e.g. position, normal and texture coordinates). This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer. 
+Array Buffer View  geometry property declarations control geometries storage and consumption representation.  I3S provides full control over those properties, such as per-vertex layout of components (e.g. position, normal and texture coordinates). This orders the vertex position, normal and texture coordinates to ensure the same pattern across the Scene Layer. 
 I3S supports storage of triangle meshes via triangles geometry type.
 
 _NOTE:_ JavaScript: ArrayBufferView is an abstract type that is the base for the following types: DataView, Float32Array, Float64Array, Int8Array, Int16Array, Int32Array, Uint8Array, Uint8ClampedArray, Uint16Array, Uint32Array.
@@ -190,7 +190,7 @@ By default, the mesh-pyramids profile allows/supports encoding the same texture 
 See Textures section for more on texture format, texture coordinate, texture atlas usage and regions discussion.
 
 ==== 7.3.4	Attribute Model and Storage
-I3S supports the following two patterns of accessing attribute data. They can be accessed through:
+I3S supports the following two patterns of accessing attribute data. They can be accessed:
 
 .	From optional paired services that expose query-able and updatable RESTful endpoints that enable direct access to dynamic source data, including attributes. The query in this case uses the unique feature-ID key – which is always maintained within each node and is also available as part of the descriptor for any segmented geometry.
 .	From fully cached attribute information, in binary form, within the I3S store. I3S clients can still choose to use both of these modes even if the attributes are fully cached within I3S store. The binary storage representation provides a significant performance benefit
@@ -492,5 +492,7 @@ This class is used in stores where all ArrayBufferView geometry declarations use
 |===
 
 Note: properties in bold are mandatory
-Table 5a: Attributes of the Class GeometrySchema within the 3dSceneLayerInfo document
+Table 5a: Attributes of the Class GeometrySchema within the 3dSceneLayerInfo document.
+
 For more details regarding point scene layer, see the default geometry schema point cloud scene layer.
+
