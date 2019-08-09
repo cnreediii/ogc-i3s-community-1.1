@@ -496,3 +496,68 @@ Table 5a: Attributes of the Class GeometrySchema within the 3dSceneLayerInfo doc
 
 For more details regarding point scene layer, see the default geometry schema point cloud scene layer.
 
+7.6.4.4	Class HeaderAttribute
+Headers to Geometry resources SHALL be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.
+
+[width="90%",options="header"]
+|Name	|Type	|Description
+|*property*	|String	|The name of the property in the header
+|*type*	|String	|The element type of the header property, from {_UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64_}
+|===
+
+Note: properties in bold are mandatory
+Table 5b: Attributes of the Class HeaderAttribute within the 3dSceneLayerInfo document
+
+Example
+```
+{
+  "property": "vertexCount",
+  "type": "UInt32"
+}
+```
+
+7.6.4.5	field
+The Field class is used to provide schema information for this 3dSceneLayer.
+
+[#table_defaultGeometrySchema,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Field within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|name	|String	|The name of the field.
+|*type*	|String	|The type of the field, from this enum: {_FieldTypeBlob, FieldTypeGeometry, FieldTypeDate, FieldTypeFloat, FieldTypeDouble, FieldTypeGeometry, FieldTypeGlobalID, FieldTypeGUID, FieldTypeInteger, FieldTypeOID, FieldTypeSmallInteger, FieldTypeString, FieldTypeGroup_}
+|alias	|String[] 	|The display alias to be used for this field.
+|domain	|_domain_ |Array of domains defined for a field.
+
+Table 6: Attributes of the Class Field within the 3dSceneLayerInfo document
+
+The following is a JSON example of the field class.
+
+```
+{
+  "name": "CreatedPhase",
+  "type": "FieldTypeInteger",
+  "alias": "CreatedPhase",
+  "domain": {
+    "type": "codedValue",
+    "name": "Phases",
+    "description": "Phases",
+    "codedValues": [
+      {
+        "name": "Existing",
+        "code": 0
+      },
+      {
+        "name": "Baby Room Overhaul",
+        "code": 1
+      },
+      {
+        "name": "Roof Garden",
+        "code": 2
+      }
+    ],
+    "mergePolicy": "esriMPTDefaultValue",
+    "splitPolicy": "esriSPTDefaultValue"
+  }
+} 
+```
