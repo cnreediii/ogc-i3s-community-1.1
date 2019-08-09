@@ -558,8 +558,6 @@ The following is a JSON example of the field class.
         "code": 2
       }
     ],
-    "mergePolicy": "esriMPTDefaultValue",
-    "splitPolicy": "esriSPTDefaultValue"
   }
 } 
 ```
@@ -569,9 +567,6 @@ The following is a JSON example of the field class.
 
 Attribute domains are rules that describe the legal values of a field type, providing a method for enforcing data integrity. Attribute domains are used to constrain the values allowed in a particular attribute. Using domains helps ensure data integrity by limiting the choice of values for a particular field. Attribute domains can be shared across scene layers like 3D Object Scene Layers or Building Scene Layers.
 
-[#table_domain,reftext='{table-caption} {counter:table-num}']
-.*Attributes of the Class Field within the 3dSceneLayerInfo document*
-[width="90%",options="header"]
 |===
 |Property	|Type	|Description
 |*type*	|string	|Type of domain. Possible values are: +
@@ -588,7 +583,7 @@ Possible values are: +
 * FieldTypeSmallInteger +
 * FieldTypeString
 |range	|number[2]	|Range of the domain (numeric types only)
-|codedValues	|domainCodedValue [] |Range of the domain (string types only)
+|codedValues	|<<domainCodedValue>>[] |Range of the domain (string types only)
 | ===
 Note: properties in bold are mandatory.
 
@@ -619,3 +614,80 @@ The following is a JSON example of a domain encoding.
   ],
 } 
 ```
+
+=====	domainCodedValue
+Quite often, in a controlled vocabulary, such as in a land use classification, coded values are used to represent categories of a feature. For example, “Res” could refer to Residential. The domainCodedValue class allows for the specification of these codes values.
+
+|===
+|Property	|Type	|Description
+|name	|string	|Text representation of the domain value.
+|code	string, number	|Coded value (i.e. field value).
+|===
+
+```
+Example 1
+ {
+  "name": "code 1.5 description",
+  "code": 1.5
+} 
+Example 2
+ {
+  "name": "coded 3000.1 desc",
+  "code": 3000.3
+} 
+```
+
+7.6.4.6	attributeStorageInfo
+The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. This is an object that describes the structure of the binary attributeData resource of a node.
+
+For more details regarding point cloud scene layer, see <<attributeInfo>>.
+
+[#table_attributeStorageInfo,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class attributeStorageInfo within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*key*	|string	|The unique field identifier key.
+|*name*	|string	|The name of the field.
+|*header*	|<<headerValue>>[] |Declares the headers of the binary attribute data. One of {_count, attributeValuesByteCount_}. count, should always be present and indicates the count of features in the attribute storage. _attributeValuesByteCount_ will only be present for strings data type and indicates the total byte count of the string data for all features in the binary attribute buffer.
+| ordering	|String[]	|Declares the ordering indicating the order in which the array of attribute byte counts and the array of attribute values are stored in the binary attribute data. One of {_attributeByteCounts, attributeValues_}. _attributeValues_, should always be present. _attributeByteCounts_ should only be present when working with string data types.
+|attributeByteCounts	|<<value>> |The element type of the attributeByteCounts property, from {_UInt32_}.
+|attributeValues	|<<value>> |The element type of the attributeValues property, from {_UInt8, UInt16, UInt32, UInt64, Int16, Int32, Int64 or Float32, Float64_}
+|objectIds	|<<value>> |Stores the object-id values of each feature within the node.
+|===
+
+Properties in bold are mandatory.
+
+Table 7: Attributes of the Class attributeStorageInfo within the 3dSceneLayerInfo document
+Example: attributeStorageInfo for 3d object scene layer.
+
+```
+{
+  "key": "f_2",
+  "name": "Family",
+  "header": [
+    {
+      "property": "count",
+      "valueType": "UInt32"
+    },
+    {
+      "property": "attributeValuesByteCount",
+      "valueType": "UInt32"
+    }
+  ],
+  "ordering": [
+    "attributeByteCounts",
+    "attributeValues"
+  ],
+  "attributeByteCounts": {
+    "valueType": "UInt32",
+    "valuesPerElement": 1
+  },
+  "attributeValues": {
+    "valueType": "String",
+    "encoding": "UTF-8",
+    "valuesPerElement": 1
+  }
+} 
+```
+
