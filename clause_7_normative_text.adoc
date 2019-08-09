@@ -584,7 +584,8 @@ Possible values are: +
 * FieldTypeString
 |range	|number[2]	|Range of the domain (numeric types only)
 |codedValues	|<<domainCodedValue>>[] |Range of the domain (string types only)
-| ===
+|===
+
 Note: properties in bold are mandatory.
 
 A range domain specifies a valid range of values for a numeric attribute. When creating a range domain, you enter a minimum and maximum valid value. A range domain can be applied to short-integer, long-integer, float, double, and date attribute types.
@@ -637,7 +638,7 @@ Example 2
 } 
 ```
 
-7.6.4.6	attributeStorageInfo
+==== 7.6.4.6	attributeStorageInfo
 The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. This is an object that describes the structure of the binary attributeData resource of a node.
 
 For more details regarding point cloud scene layer, see <<attributeInfo>>.
