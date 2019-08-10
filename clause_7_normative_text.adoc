@@ -404,8 +404,8 @@ View: View is supported. +
 Query: Query is supported. +
 Edit: Edit is defined.
 |ZFactor	|number	|ZFactor to define conversion factor for elevation unit.
-|cachedDrawingInfo	| <<CachedDrawingInfo >> | Indicates if any stylization information represented as drawingInfo is additionally captured as part of the binary mesh representation. This helps for optimal client side access. Currently color component of the drawingInfo is supported.
-|drawingInfo	|<<Class DrawingInfo>> |Represents the stylization information of the layer.
+|cachedDrawingInfo	| <<CachedDrawingInfo>> | Indicates if any stylization information represented as drawingInfo is additionally captured as part of the binary mesh representation. This helps for optimal client side access. Currently color component of the drawingInfo is supported.
+|drawingInfo	|<<Class_DrawingInfo>> |Represents the stylization information of the layer.
 |elevationInfo	|<<elevationInfo>> | An object containing elevation drawing information. If absent, any content of the scene layer is drawn at its z coordinate.
 |popupinfo	|_popupInfo_| PopupInfo of the scene layer.
 |disablePopup	|boolean	|Indicates if client application will show the popup information.
@@ -695,7 +695,7 @@ Example: attributeStorageInfo for 3d object scene layer.
 ====7.6.4.7	Class IndexScheme *(deprecated)*
 Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk.
 
-==== Class	DrawingInfo
+==== Class_DrawingInfo
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
 
 When the DrawingInfo object is present in the _3dSceneLayerInfo_ Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers also supports capturing the DrawingInfo object as part of the binary I3S representation This is to support applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the _CachedDrawingInfo_ Class, indicating the component of the DrawingInfo object that's captured as part of the binary I3S representation. The Class DrawingInfo has the following structure: 
