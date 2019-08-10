@@ -38,7 +38,7 @@ These use cases lead to the following implementation requirements. Note that all
 - All vertex positions SHALL be specified using a geodetic CRS (including Cartesian coordinate reference systems), where x,y,z axes are all in same unit, and with a per-node offset (from the center point of the node's minimum bounding sphere) for all vertex positions. 
 - Axis Order: Axis order explicitly defined by the CRS SHALL be used when present. When the axis order is not defined by the CRS, Easting, Northing, Height axis order SHALL be used. The Height axis SHALL always point upwards towards the sky (away from the center of the earth).
 
-All I3S layers indicate the coordinate system used by the layer with the _spatialReference_ property in the 3dSceneLayerInfo resource. This property is normative.
+All I3S layers indicate the coordinate system used by the layer with the <<spatialReference>> property in the 3dSceneLayerInfo resource. This property is normative.
 
 The spatial reference object is common to all I3S profile types.
 
@@ -691,4 +691,105 @@ Example: attributeStorageInfo for 3d object scene layer.
   }
 } 
 ```
+
+====7.6.4.7	Class IndexScheme *(deprecated)*
+Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk.
+
+==== 7.6.4.8	DrawingInfo
+DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
+
+When the DrawingInfo object is present in the _3dSceneLayerInfo_ Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers also supports capturing the DrawingInfo object as part of the binary I3S representation This is to support applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the _CachedDrawingInfo_ Class, indicating the component of the DrawingInfo object that's captured as part of the binary I3S representation. The Class DrawingInfo has the following structure: 
+
+[#table_drawing-info,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*renderer*|	<<Class Renderer>> |The renderer object encapsulates the drawing information of the layer.
+|===
+
+Table 9 Attributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document
+
+For more details regarding point cloud scene, see _drawing info point cloud scene layer_.
+
+===== 7.6.4.8.1	Class Material
+The material used to shade the geometry. The Class Material has the following structure: 
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Material within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|color	|Material::Color	|Color is represented as a three-element array (RGB).
+|transparency	|Integer	|Indicates the transparency value associated with the symbol. The value has to lie between 100 (full transparency) and 0 (full opacity).
+|===
+
+Table 13: Attributes of the Class Material within the 3dSceneLayerInfo document
+
+===== 7.6.4.8.2	Class Outline
+The Class Outline defines the outline of the mesh fill symbol. It has properties such as color, size and transparency.
+
+The Class Outline has the following structure: 
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Material within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|color	|Material::Color	|Color is represented as a three-element array. The three elements represent values for red, green and blue in that order.
+|size	|Integer	|Outline size in points, positive only.
+|transparency	|Integer	|Indicates the transparency value associated with the outline of the symbol. The value has to lie between 100 (full transparency) and 0 (full opacity).
+|===
+
+Table 14: Attributes of the Class Material within the 3dSceneLayerInfo document
+
+7.6.4.8.3	Class Color
+The Color class defines the color of a symbol or the outline. Color is represented as a three-element array. The three elements represent values for red, green and blue in that order. Values range from 0 through 255. If color is undefined for a symbol or an outline, the color value is null.
+
+The Class Color has the following structure: 
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Color within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|color	|String	|The renderer type. One of {_Simple, UniqueValue, ClassBreaks_}. The default, _simple_ renderer is a renderer that uses one symbol only. 
+|symbolLayers	|Renderer::Symbol	|An object that represents how all features in this I3S layer will be drawn.
+|===
+
+Table 15: Attributes of the Class Color within the 3dSceneLayerInfo document
+
+===== CachedDrawingInfo
+The Class CachedDrawingInfo is used to indicate if the DrawingInfo object is captured as part of the binary I3S representation.
+
+The Class CachedDrawingInfo has the following structure: 
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*ttributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|color	|Boolean	|Indicates if the color component of the drawingInfo object is captured as part of the binary I3S representation.
+|===
+
+Table 16: Attributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document
+
+==== spatialReference
+The spatialReference object is located at the top level of the JSON hierarchy. A spatial reference can be defined using a well-known ID (WKID) or well-known text (WKT). The default tolerance and resolution values for the associated coordinate system are used.
+
+A spatial reference can optionally include a definition for a vertical coordinate system (VCS), which is used to interpret the z values in the geometry.
+
+Note: Please see detailed CRS discussion with examples here.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*ttributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Property	|Type	|Description
+|latestVcsWkid	|integer	|The current WKID value of the vertical coordinate system.
+|latestWkid	|integer	|Identifies the current WKID value associated with the same spatial reference. For example a WKID of '102100' (Web Mercator) has a latestWKid of '3857'.
+|vcsWkid	|integer	|The WKID value of the vertical coordinate system.
+|wkid	|integer	|The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system.
+|wkt	|string	|The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both)
+|===
 
