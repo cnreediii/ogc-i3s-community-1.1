@@ -391,22 +391,22 @@ The 3dSceneLayerInfo is a major object in the 3dSceneLayerInfo document. A Scene
 |*id*	|Integer	|Unique numeric ID of the Layer.
 |href	|URL	|The relative URL to the 3dSceneLayerResource. Only present as part of the SceneServiceInfo resource.
 |*layerType*	|String	|The user-visible layer type, one of {Point, Line, Polygon, 3DObject, PointCloud, IntegratedMesh}
-|spatialReference	|_spatialReference_|The spatialReference of the layer including the vertical coordinate reference system. wkt is included to support custom spatial references. {wkid, latestWkid, vcsWkid, latestVcsWkid, wkt}
-|heightModelInfo	|_heightModelInfo_| Enables consuming clients to perform quick test to determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content.{heightModel, geoid, heightUnit}
+|spatialReference	|<<spatialReference>>|The spatialReference of the layer including the vertical coordinate reference system. wkt is included to support custom spatial references. {wkid, latestWkid, vcsWkid, latestVcsWkid, wkt}
+|heightModelInfo	|<<heightModelInfo>>| Enables consuming clients to perform quick test to determine whether this layer is compatible (with respect to its horizontal and vertical CRS) with existing content.{heightModel, geoid, heightUnit}
 |*version*	|String	|The ID of the last update session in which any resource belonging to this layer has been updated.
 |serviceUpdateTimeStamp	|_serviceUpdateTimeStamp_ |The time of the last update
 |name	|String	|The name of this layer.
 |alias	|String[0..1]	|The display alias to be used for this layer.
 |description	|String[0..1]	|Description string for this layer.
 |copyrightText	|String[0..1]	|Copyright and usage information for the data in this layer.
-|*capabilities*	|String[1..3]	|Capabilities supported by this layer. Possible values for each array string:
-View: View is supported.
-Query: Query is supported.
+|*capabilities*	|String[1..3]	|Capabilities supported by this layer. Possible values for each array string: +
+View: View is supported. +
+Query: Query is supported. +
 Edit: Edit is defined.
 |ZFactor	|number	|ZFactor to define conversion factor for elevation unit.
-|cachedDrawingInfo	|_CachedDrawingInfo_| Indicates if any stylization information represented as drawingInfo is additionally captured as part of the binary mesh representation. This helps for optimal client side access. Currently color component of the drawingInfo is supported.
-|drawingInfo	|_Class DrawingInfo_ |Represents the stylization information of the layer.
-|elevationInfo	|_elevationInfo_| An object containing elevation drawing information. If absent, any content of the scene layer is drawn at its z coordinate.
+|cachedDrawingInfo	| <<CachedDrawingInfo >> | Indicates if any stylization information represented as drawingInfo is additionally captured as part of the binary mesh representation. This helps for optimal client side access. Currently color component of the drawingInfo is supported.
+|drawingInfo	|<<Class DrawingInfo>> |Represents the stylization information of the layer.
+|elevationInfo	|<<elevationInfo>> | An object containing elevation drawing information. If absent, any content of the scene layer is drawn at its z coordinate.
 |popupinfo	|_popupInfo_| PopupInfo of the scene layer.
 |disablePopup	|boolean	|Indicates if client application will show the popup information.
 |*store*	|_Class Store_ | The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.
@@ -695,7 +695,7 @@ Example: attributeStorageInfo for 3d object scene layer.
 ====7.6.4.7	Class IndexScheme *(deprecated)*
 Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk.
 
-==== 7.6.4.8	DrawingInfo
+==== Class	DrawingInfo
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
 
 When the DrawingInfo object is present in the _3dSceneLayerInfo_ Class, a client application may symbolize an I3S layer by utilizing the *Renderer* information. Indexed 3d Scene Layers also supports capturing the DrawingInfo object as part of the binary I3S representation This is to support applications that may not be able to dynamically symbolize/override a given I3S layer based on its drawing information. Such a behavior, when present, is indicated by the _CachedDrawingInfo_ Class, indicating the component of the DrawingInfo object that's captured as part of the binary I3S representation. The Class DrawingInfo has the following structure: 
@@ -765,7 +765,7 @@ The Class CachedDrawingInfo is used to indicate if the DrawingInfo object is cap
 The Class CachedDrawingInfo has the following structure: 
 
 [#table_material,reftext='{table-caption} {counter:table-num}']
-.*ttributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document*
+.*Attributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document*
 [width="90%",options="header"]
 |===
 |Name	|Type	|Description
@@ -781,8 +781,6 @@ A spatial reference can optionally include a definition for a vertical coordinat
 
 Note: Please see detailed CRS discussion with examples here.
 
-[#table_material,reftext='{table-caption} {counter:table-num}']
-.*ttributes of the Class CachedDrawingInfo within the 3dSceneLayerInfo document*
 [width="90%",options="header"]
 |===
 |Property	|Type	|Description
@@ -791,5 +789,62 @@ Note: Please see detailed CRS discussion with examples here.
 |vcsWkid	|integer	|The WKID value of the vertical coordinate system.
 |wkid	|integer	|The well-known ID (WKID) of the coordinate system. Specify either WKID or the well-known text (WKT) of the coordinate system.
 |wkt	|string	|The well-known text (WKT) of the coordinate system. Specify either WKT or WKID of the coordinate system (but not both)
+|===
+
+==== heightModelInfo
+(Was 7.6.4.10)
+
+The I3S standard accommodates declaration of a vertical coordinate system that may either be ellipsoidal or gravity-related. This allows for a diverse range of fields and applications where the definition of elevation/height is important.
+
+Note: Please see detailed heightInfo discussion with examples here.
+
+[width="90%",options="header"]
+|===
+|Property	|Type	|Description
+|heightModel	|string	|Represents the height model type. +
+Possible values are: +
+* gravity_related_height +
+* ellipsoidal
+|vertCRS	|string	|Represents the vertical coordinate system.
+|heightUnit	|string	|Represents the unit of the height. +
+Possible values are: +
+*	meter +
+*	us-foot +
+*	foot +
+*	clarke-foot +
+*	clarke-yard +
+*	clarke-link +
+*	sears-yard +
+*	sears-foot +
+*	sears-chain +
+*	benoit-1895-b-chain +
+*	indian-yard +
+*	indian-1937-yard +
+*	gold-coast-foot +
+*	sears-1922-truncated-chain +
+*	us-inch +
+*	us-mile +
+*	us-yard +
+*	millimeter +
+*	decimeter +
+*	centimeter +
+* kilometer
+|===
+
+==== elevationInfo
+(was 7.6.4.11)
+
+The elevationInfo defines how content in a scene layer is aligned to the ground. For example, the feature is on the ground or at an absolute height.
+
+[width="90%",options="header"]
+|===
+|Property	|Type	|Description
+|mode	|string	|The mode of the elevation. Possible values are: +
+*	relativeToGround +
+*	absoluteHeight +
+*	onTheGround +
+*	relativeToScene +
+|offset	|number	|Offset is always added to the result of the above logic except for onTheGround where offset is ignored.
+unit	string	A string value indicating the unit for the values in elevationInfo
 |===
 
