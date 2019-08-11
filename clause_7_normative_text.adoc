@@ -968,3 +968,39 @@ Depending on the geometry and _lodModel_ used, a node document can be tuned towa
 
 The 3dNodeIndexDocument has the following structure:
 
+[#fig_3dnodeindex,reftext='{figure-caption} {counter:figure-num}']
+.Logical schema of the 3dNodeIndexDocument
+image::figures/FIG07.png[width=500,align="center"]
+
+7.6.5.1	Class 3dNodeIndexDocument
+The Node is the root object in the 3dNodeIndexDocument. There SHALL always be exactly one Node object in a 3dNodeIndexDocument.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class _Node_ within the NodeIndexDocument*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*id*	|String (TreeKey)	|Tree Key ID, unique within the store. The root node is always "root", all others follow the pattern "2-4-0-15-2". At each level in a subtree, numbering starts at 0.
+|level	|Integer	|Explicit level of this node within the index tree. The lowest level is 1.
+|version	|string	|The version (store update session ID) of this node.
+|mbs	|Number[4]	|An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of a node.
+|obb	|_obb_ |Describes oriented bounding box.
+|created	|String	|Creation date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone (see http://www.w3.org/TR/NOTE-datetime).
+|expires	|String	|Expiration date of this node in UTC, presented as a string in the format YYYY-MM-DDThh:mm:ss.sTZD, with a fixed "Z" timezone (see http://www.w3.org/TR/NOTE-datetime).
+|transform	|Number[16]	|Optional, 3D (4x4) transformation matrix expressed as a linear array of 16 values.
+|parentNode	|<<nodeReference>> |Reference to the parent Node of a Node.
+|children	|<<nodeReference>> []| Reference to the child Nodes of a Node.
+|neighbors	|<<nodeReference>> [] |Reference to the neighbor (same level, spatial proximity) Nodes of a Node.
+|sharedResource|<<Resource>> |Resource reference describing a shared resource document.
+|featureData	|<<resource>> []	|Resource reference describing a FeatureData document.
+|geometryData	|<<resource>> []	|Resource reference describing a geometry resource.
+|textureData	|<<resource>> []	|Resource reference describing a texture resource.
+|ttributeData	|<<resource>> []	|Resource reference describing a FeatureData document.
+|lodSelection	|<<lodSelection>> [] |Metrics for LoD Selection, to be evaluated by the client.
+|features	|<<lodSelection>> [] | A list of summary information on the features present in this Node, used for pre-visualisation and LoD switching in featureTree LoD stores.
+|===
+
+Note: properties in bold are mandtory.
+
+Table 17: Attributes of the Class Node within the NodeIndexDocument
+
