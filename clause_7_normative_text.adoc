@@ -407,10 +407,10 @@ Edit: Edit is defined.
 |cachedDrawingInfo	| <<CachedDrawingInfo>> | Indicates if any stylization information represented as drawingInfo is additionally captured as part of the binary mesh representation. This helps for optimal client side access. Currently color component of the drawingInfo is supported.
 |drawingInfo	|<<Class_DrawingInfo>> |Represents the stylization information of the layer.
 |elevationInfo	|<<elevationInfo>> | An object containing elevation drawing information. If absent, any content of the scene layer is drawn at its z coordinate.
-|popupinfo	|_popupInfo_| PopupInfo of the scene layer.
+|popupinfo	|<<popupInfo>> | PopupInfo of the scene layer.
 |disablePopup	|boolean	|Indicates if client application will show the popup information.
 |*store*	|_Class Store_ | The store object describes the exact physical storage of a layer and enables the client to detect when multiple layers are served from the same store.
-|statisticsInfo	|_statisticsInfo[]_ | Contains the statistical information for a layer.
+|statisticsInfo	|<<statisticsInfo>> [] | Contains the statistical information for a layer.
 |fields	|_Class Field[]_ | A collection of objects that describe each attribute field regarding its field name, datatype and a user friendly name {name,type,alias}. It includes all fields that are included as part of the I3S layer as derived from a source input feature layer. 
 |attributeStorageInfo	|_Class attributeStorageInfo_ | Provides the schema and layout used for storing attribute content in binary format in I3S.
 |===
@@ -471,7 +471,8 @@ Table 5: Attributes of the Class Store within the 3dSceneLayerInfo document
 For more details regarding point scene layer, see the store point scene layer.
 For more details regarding point cloud scene layer, see the store point cloud scene layer.
 
-==== 7.6.4.3	defaultGeometrySchema 
+==== defaultGeometrySchema 
+(Was 7.6.4.3)
 This class is used in stores where all ArrayBufferView geometry declarations use the same pattern for face and vertex elements. This effectively reduces redundancies of ArrayBufferView geometry declarations in a store and reuses the GeometryAttribute type from FeatureData. However, valueType and valuesPerElement are mandatory and SHALL be implemented.
 
 [#table_defaultGeometrySchema,reftext='{table-caption} {counter:table-num}']
@@ -483,10 +484,10 @@ This class is used in stores where all ArrayBufferView geometry declarations use
 |*topology*	|String[]	|Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data. Possible values are: +
 •	`PerAttributeArray` +
 •	`Indexed`: When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data. +
-|*header*	|<<HeaderAttribute>> []	|Defines header fields in the Geometry resources of this store that precede the vertex (and index) data
+|*header*	|<<Class_HeaderAttribute>> []	|Defines header fields in the Geometry resources of this store that precede the vertex (and index) data
 |*ordering*	|String[]	|Provides the order of the keys in vertexAttributes and faceAttributes, if present.
-|*vertexAttributes*	|<<vertexAttribute>> |Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates
-|faces	|<<vertexAttribute>> |Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates
+|*vertexAttributes*	|<<vertexAttributes>> |Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates
+|faces	|<<vertexAttributes>> |Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates
 |*featureAttributeOrder* |	String[]	|Provides the order of the keys in featureAttributes, if present.
 |*featureAttributes*	|<<geometryFeature>> |Declaration of the attributes per feature in the geometry, such as feature ID or face range
 |===
@@ -496,7 +497,7 @@ Table 5a: Attributes of the Class GeometrySchema within the 3dSceneLayerInfo doc
 
 For more details regarding point scene layer, see the default geometry schema point cloud scene layer.
 
-==== Class HeaderAttribute
+==== Class_HeaderAttribute
 (was 7.6.4.4)
 Headers to Geometry resources SHALL be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.
 
