@@ -461,7 +461,7 @@ Possible values are: +
 `Generalizing`: Fill in which profile types are using this lodType +
 |lodModel	|String	|optional field to indicate which LoD Switching mode clients have to use. One of {*node-switching*, none}.
 |indexingScheme	|String	|Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used.
-|*defaultGeometrySchema*	|_defaultGeometrySchema_ |A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.
+|*defaultGeometrySchema*	|<<defaultGeometrySchema>> |A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.
 |defaultTextureDefinition	|_texture_ | A common, global TextureDefinition  to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.
 |defaultMaterialDefinition	|_material_ |If a store uses only one material, it can be defined here entirely as a MaterialDefinition 
 |===
@@ -483,12 +483,12 @@ This class is used in stores where all ArrayBufferView geometry declarations use
 |*topology*	|String[]	|Declares the topology of embedded geometry attributes. When 'Indexed', the indices must also be declared in the geometry schema ('faces') and precede the vertexAttribute data. Possible values are: +
 •	`PerAttributeArray` +
 •	`Indexed`: When Indexed, the indices must also be declared in the geometry schema (faces) and precede the vertexAttribute data. +
-|*header*	|_HeaderAttribute[]_	|Defines header fields in the Geometry resources of this store that precede the vertex (and index) data
+|*header*	|<<HeaderAttribute>> []	|Defines header fields in the Geometry resources of this store that precede the vertex (and index) data
 |*ordering*	|String[]	|Provides the order of the keys in vertexAttributes and faceAttributes, if present.
-|*vertexAttributes*	|_vertexAttribute_ |Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates
-|faces	|_vertexAttribute_ |Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates
+|*vertexAttributes*	|<<vertexAttribute>> |Declaration of the attributes per vertex in the geometry, such as position, normals or texture coordinates
+|faces	|<<vertexAttribute>> |Declaration of the indices into vertex attributes that define faces in the geometry, such as position, normals or texture coordinates
 |*featureAttributeOrder* |	String[]	|Provides the order of the keys in featureAttributes, if present.
-|*featureAttributes*	|_geometryFeature_ |Declaration of the attributes per feature in the geometry, such as feature ID or face range
+|*featureAttributes*	|<<geometryFeature>> |Declaration of the attributes per feature in the geometry, such as feature ID or face range
 |===
 
 Note: properties in bold are mandatory
@@ -496,7 +496,8 @@ Table 5a: Attributes of the Class GeometrySchema within the 3dSceneLayerInfo doc
 
 For more details regarding point scene layer, see the default geometry schema point cloud scene layer.
 
-==== 7.6.4.4	Class HeaderAttribute
+==== Class HeaderAttribute
+(was 7.6.4.4)
 Headers to Geometry resources SHALL be uniform across a cache and may only contain fixed-width, single element fields. The HeaderDefinition provides the name of each field for later access and the valueType of that header field.
 
 [width="90%",options="header"]
@@ -517,7 +518,8 @@ Example
 }
 ```
 
-==== 7.6.4.5	field
+==== field
+(was 7.6.4.5)
 The Field class is used to provide schema information for this 3dSceneLayer.
 
 [#table_field,reftext='{table-caption} {counter:table-num}']
@@ -638,7 +640,8 @@ Example 2
 } 
 ```
 
-==== 7.6.4.6	attributeStorageInfo
+==== attributeStorageInfo
+Was 7.6.4.6)
 The attributeStorageInfo is another major object in the 3dSceneLayerInfo document. This is an object that describes the structure of the binary attributeData resource of a node.
 
 For more details regarding point cloud scene layer, see <<attributeInfo>>.
@@ -883,7 +886,9 @@ Example
 } 
 ```
 
-==== 7.6.4.14	statisticsInfo
+==== statisticsInfo
+(was 7.6.4.14)
+
 This class is used to describe the statistics for the scene layer. Statistical information helps clients define symbology, definition queries or other functionality which is depending on statistical information.
 
 For more details regarding point cloud scene layers, see _statistics_.
@@ -908,7 +913,8 @@ Example: statisticsInfo for 3D Object scene layer.
 } 
 ```
 
-==== 7.6.4.15	VertexAttributes
+==== VertexAttributes
+(7.6.4.15	)
 VertexAttributes describe valid properties for a single vertex.
 
 [width="90%",options="header"]
@@ -950,7 +956,8 @@ Note: properties in bold are mandatory.
 } 
 ```
 
-==== 7.6.4.16	value
+==== value
+(Was 7.6.4.16)
 Value declares the headers of the binary attribute data. Must be one of {_count, attributeValuesByteCount_}. _count_ should always be present and indicates the count of features in the attribute storage. _attributeValuesByteCount_ will only be present for strings data type and indicates the total byte count of the string data for all features in the binary attribute buffer.
 
 [width="90%",options="header"]
