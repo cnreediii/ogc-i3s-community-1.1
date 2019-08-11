@@ -848,3 +848,123 @@ The elevationInfo defines how content in a scene layer is aligned to the ground.
 unit	string	A string value indicating the unit for the values in elevationInfo
 |===
 
+==== popupInfo
+(Was 7.6.4.12)
+The properties in the popupInfo class define the look and feel of popup windows when a user clicks or queries a feature.
+
+[width="90%",options="header"]
+|===
+|Property	|Type	|Description
+|title	|string	|A string that appears at the top of the popup window as a title
+|description	|string	|A string that appears in the body of the popup window as a description. It is also possible to specify the description as HTML-formatted content.
+|expressionInfos	|[]	|List of Arcade expressions added to the pop-up.
+|fieldInfos	|[]	|Array of fieldInfo information properties. This information is provided by the service layer definition. 
+|mediaInfos	|[] |	Array of various mediaInfo to display. Can be of type image, piechart, barchart, columnchart, or linechart. The order given is the order in which it displays. 
+|popupElements	|[]	|An array of popupElement objects that represent an ordered list of popup elements
+|===
+
+==== serviceUpdateTimeStamp
+(was 7.6.4.13)
+This object provides a time stamp about when the I3S service or the source of the service was created or updated.
+
+[width="90%",options="header"]
+|===
+|*Property*	|*Type*	|*Description*
+|*lastUpdate*	|number	|Specifies the moment in milliseconds when the I3S service was created or updated.
+|===
+
+Note: properties in bold are mandatory.
+
+Example
+
+```
+{
+  "lastUpdate": 1518827901690
+} 
+```
+
+==== 7.6.4.14	statisticsInfo
+This class is used to describe the statistics for the scene layer. Statistical information helps clients define symbology, definition queries or other functionality which is depending on statistical information.
+
+For more details regarding point cloud scene layers, see _statistics_.
+
+[width="90%",options="header"]
+|===
+|*Property*	|*Type*	|*Description*
+|*key*	|string	|Key indicating the resource of the statistics. For example f_1 for ./statistics/f_1
+|*name*	|string	|Name of the field of the statistical information.
+|*href*	|string	|The URL to the statistics information. For example ./statistics/f_1
+|===
+
+Note: properties in bold are mandatory.
+
+Example: statisticsInfo for 3D Object scene layer.
+
+```
+ {
+  "key": "f_1",
+  "name": "Category",
+  "href": "./statistics/f_1"
+} 
+```
+
+==== 7.6.4.15	VertexAttributes
+VertexAttributes describe valid properties for a single vertex.
+
+[width="90%",options="header"]
+|===
+|*Property*	|*Type*	|*Description*
+|*position*	|Class GeometryAttribute |Vertex position
+|*normal*	|Class GeometryAttribute |vertex normal
+|*uv0*	|Class GeometryAttribute |First set of UV coordinates
+|*color*	|Class GeometryAttribute |Colors attribute
+|*region*	|Class GeometryAttribute |Regions attribute
+|===
+
+Note: properties in bold are mandatory.
+
+*Example*
+
+```
+{
+  "position": {
+    "byteOffset": 8,
+    "valueType": "Float32",
+    "valuesPerElement": 3
+  },
+  "normal": {
+    "byteOffset": 2672,
+    "valueType": "Float32",
+    "valuesPerElement": 3
+  },
+  "uv0": {
+    "byteOffset": 5336,
+    "valueType": "Float32",
+    "valuesPerElement": 2
+  },
+  "color": {
+    "byteOffset": 7112,
+    "valueType": "UInt8",
+    "valuesPerElement": 4
+  }
+} 
+```
+
+==== 7.6.4.16	value
+Value declares the headers of the binary attribute data. Must be one of {_count, attributeValuesByteCount_}. _count_ should always be present and indicates the count of features in the attribute storage. _attributeValuesByteCount_ will only be present for strings data type and indicates the total byte count of the string data for all features in the binary attribute buffer.
+
+[width="90%",options="header"]
+|===
+|*Property*	|*Type*	|*Description*
+|valueType	|string	|Defines the value type.
+|encoding	|string	|Encoding method for the value.
+|valuesPerElement	|number	|Number of values per element.
+|===
+
+=== 7.6.5	3dNodeIndexDocument
+The 3dNodeIndexDocument JSON file describes a single index node within a store. This includes links to other nodes (children, sibling, and parent), links to feature data, geometry data and texture data resources, metadata such as metrics used for LoD selection, and its spatial extent.
+
+Depending on the geometry and _lodModel_ used, a node document can be tuned towards being light-weight or more heavy-weight. This is the means by which clients have to further decide which data to retrieve. The bounding volume information provided for the node, its parent, any neighbors and children present, provides sufficient data for simple visualization by rendering the centroids as point features for example. This can help the user understand the overall distribution of the data.
+
+The 3dNodeIndexDocument has the following structure:
+
