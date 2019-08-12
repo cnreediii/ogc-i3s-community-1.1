@@ -10,3 +10,17 @@ Profiles of the mandatory classes that define the layer are provided in a corres
 === Point Scene Layer
 Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings. Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
 
+[#fig_pointscenelayer,reftext='{figure-caption} {counter:figure-num}']
+.Example of a point scene layer
+image::figures/FIG20.png[width=400,align="center"]
+
+===	Point Scene Layer Structure
+Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings. Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
+The point scene layer is structured into a tree of multiple JSON files. Besides storing information in the JSON format, some are also provided as binary buffer. Point scene layers can be used to create a scene layer package (*.slpk) or an I3S service. A point scene layer _SHALL_ contain profiles of the following classes:
+
+-	Layer description
+-	Nodes containing Geometry and Attributes
+-	Node Index Document
+-	Statistics
+
+Please visit Annex G for details on the Point Scene Layer Profile as well as a full JSON example.
