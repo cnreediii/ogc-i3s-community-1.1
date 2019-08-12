@@ -1441,3 +1441,79 @@ Note: Mandatory properties in bold are mandatory.
 
 Table 31: Attributes of the Class Texture within the SharedResources document
 
+==== Class_Class Image
+(Was 7.7.1.3)
+An image is a binary resource, containing a single raster that can be used to texture a feature or symbol. It represents one specific texture LoD. For details on texture organization, please refer to the section on Texture resources.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Image within the SharedResources document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*id*	|String	|A unique ID for each image. Generated using the <<BuildID>> function.
+|size	|Integer	|x size of this image.
+|pixelInWorldUnits	|Float	|maximum size of a single pixel in world units (used by the renderer to pick the image to load/map)
+|href	|URL[1..*]	|The href to the image(s), one per encoding, in the same order as the encodings.
+|byteOffset	|Integer[0..*]	|The byte offset of this image's encodings (one per encoding, in the same order as the encodings.) in the block in which this texture image resides.
+|length	|Integer[0..*]	|The length in bytes of this image's encodings (one per encoding, in the same order as the encodings).
+|===
+
+Note: Properties in bold are mandatory.
+
+Table 32: Attributes of the Class Image within the SharedResources document
+
+==== 7.7.1.4	Class Renderer
+The Renderer class contains properties that define the drawing symbology of an Indexed 3D Scene Layer, including its type, symbol and any label or descriptions associated with it.
+
+The Class Renderer has the following structure: 
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Renderer within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|type	|String	|The renderer type. One of {\*Simple\*, _UniqueValue_, _ClassBreaks_}. The default, simple renderer is a renderer that uses one symbol only. 
+|symbol	|Renderer::Symbol	|An object that represents how all features of this I3S layer will be drawn.
+|label	|String	|The text string that may be used to label a symbol when displayed in a table of content of an application.
+|description	|String	|The text string that does not appear in the table of contents but may appear in the legend.
+|===
+
+Table 33: Attributes of the Class Renderer within the 3dSceneLayerInfo document
+
+==== 7.7.1.5	Class Symbol
+The Class Symbol represents the render primitive used to symbolize an Indexed 3D Scene Layer. MeshSymbol3D is the only supported type of Symbol.
+The Class Symbol has the following structure:
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Symbol within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|type	|String	|Specifies the type of symbol used. Value of this property SHALL be {_MeshSymbol3D_}. 
+|symbolLayers	|Renderer::SymbolLayers	|An object that represents how all features of this I3S layer will be drawn.
+|===
+
+Table 34: Attributes of the Class Symbol within the 3dSceneLayerInfo document
+
+==== 7.7.1.6	Class SymbolLayers
+A Collection of symbol objects used to visualize the feature.
+
+The Class SymbolLayers has the following structure: 
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class SymbolLayers within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|type	|String	|Specifies the type of symbol used. Value of this property SHALL be {_Fill_}.
+|material	|SymbolLayers::Material	|The material used to shade the geometry.
+|outline	|SymbolLayers::Outline	|The outline of the mesh fill symbol.
+|===
+
+Table 35: Attributes of the Class SymbolLayers within the 3dSceneLayerInfo document
+
+==== 7.7.1.7	Class ShaderDefinition
+ShaderDefinitions are, in this version of the I3S standard, an optional feature to provide API-dependent shader programs with a layer.
+
+==== 7.7.1.8	Class Symbol
+For Symbols, the same model is used as in the FeatureData Geometry. 
