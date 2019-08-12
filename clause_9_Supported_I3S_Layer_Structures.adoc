@@ -29,21 +29,26 @@ Please visit Annex G for details on the Point Scene Layer Profile as well as a f
 
 ```
 .<host>/SceneServer/layers
-	+--0 // layer description (named 3dSceneLayer.json in SLPK)
+	+--0 // scene layer document
 	+-- nodes
 	|  +--root
 	|  |  +-- attributes
-	|  |  |  +--2
-	|  |  |  +--4
-	|  |  |  +--8
+	|  |  |  +--f_2
+	|  |  |  +--f_4
 	|  |  |  +--(...)
-	|  |  +-- geometries
+	|  |  +-- features
 	|  |  |  +-- 0
-	+--statistics
-	|  +-- 2
-	|  +-- 4
-	|  +-- 8
 	|  +-- (...)
+	+--statistics
+	|  +-- f_2
+	|  | +--0
+	|  +-- f_4
+	|  | +--0
+	|  +-- (...)
+	+--resources
+	    +-- styles
+	 	| +-- root
+	 	| +-- web 
 ```
 
 ====	HTTP API Overview
