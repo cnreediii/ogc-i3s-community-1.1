@@ -1063,3 +1063,45 @@ Table 19: Attributes of the Class Resource within the NodeIndexDocument
   ]
 } 
 ```
+==== Class Feature (Deprecated)
+(Was 7.6.4.4)
+*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as featureData.*
+
+Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Feature within the NodeIndexDocument*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|id	|Number	|An ID of the Feature object, unique within the store (important to note when using Features from multiple stores!). The ID SHALL not be re-used e.g. for multiple representation of an input feature that are present in different nodes.
+|mbs	|Number[4]	|An array of four doubles, corresponding to x, y, z and radius of the minimum bounding sphere of the referenced node.
+|lodChildFeatures	|Number[0..*]	|IDs of features in a higher LoD level which together make up this feature.
+|lodChildNodes	|String[0..*]	|Tree Key IDs of the nodes in which the lodChildFeatures are found
+|rank	|Number[0..1]	|The LoD level of this feature. Only required for features that participate in a LoD tree. The lowest rank SHALL be 1.
+|rootFeature	|String	|The Tree Key ID of the root node of a feature LoD tree that this feature participates in. Only required if the feature participates in a LoD tree and if it is not the rootFeature itself.
+|===
+
+Table 20: Attributes of the Class Feature within the NodeIndexDocument
+
+==== Class LodSelection
+(Was 7.6.4.5)
+A LodSelection object provides information on a given metric determined during the cooking process of an I3S store. This metric can be used by the client to determine whether a representation is of the right quality level for rendering or whether a different representation is needed.
+
+Publishers (aka “cookers”) can add as many LodSelection objects as desired but must provide one as soon as the layer's lodType is not null. Of the three min/avg/max values, typically only one or two are used.
+
+*Please Note: In version 1.1, the maxValue, avgValue, and minValue properties have been deprecated.* The deprecated properties are highlighted in red.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class LodSelection within the NodeIndexDocument*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*metricType*	|String	|The name of the error metric, one of {maxScreenThreshold, screenSpaceRelative, ...}
+|*maxError*	|number	|Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size.
+|[red]#maxValue#	|Float[0..1]	|Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
+|avgValue	|Float[0..1]	|Average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
+|minValue	|Float[0..1]	|Minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
+|===
+
+Table 21: Attributes of the Class LodSelection within the NodeIndexDocument
