@@ -1177,7 +1177,7 @@ The FeatureData JSON file(s) contain geographical features with a set of attribu
  
 Table 22: Attributes of the Class Feature within the FeatureData document
 
-==== Class featureAttribute
+==== Class_featureAttribute
 A featureAttribute is a field carrying a value. This value may also be a list of complete attributes, to be used with reports or metadata.
 
 [#table_material,reftext='{table-caption} {counter:table-num}']
@@ -1192,7 +1192,7 @@ A featureAttribute is a field carrying a value. This value may also be a list of
 
 Table 23: Attributes of the Class FeatureAttribute within the FeatureData document
 
-====	Class geometry
+====	Class_geometry
 (was 7.6.6.3)
 This is the common container class for all types of I3S geometry definitions.
 
@@ -1238,3 +1238,39 @@ Table 24: Attributes of the Class Geometry within the FeatureData document
 } 
 ```
 
+==== 7.6.6.4	Class GeometryParams
+This is the abstract parent class for all GeometryParams classes (GeometryReferenceParams, VestedGeometryParamas, SingleComponentParams). It does not have properties of its own.
+
+This is one of:
+- Class_geometryReferenceParams
+-	Class_vestedGeometryParams
+-	Class_singleComponentParams
+These are described below.
+
+====	Class_GeometryReferenceParams
+Instead of owning a Geometry exclusively, a Feature can also reference a (or part of a) Geometry defined for the node. This allows to pre-aggregate Geometries for many features. In this case, a GeometryReferenceParams has to be used.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class GeometryReferenceParams within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*href*	|String	|In-document absolute reference to full geometry definition (Embedded or ArrayBufferView) using the I3S json pointer syntax.
+|Type	|String	|The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as an internal reference (GeometryReference), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
+|faceRange	|Number[2]	|Inclusive range of faces in this geometry that belongs to this feature.
+|lodGeometry	|Boolean	|True if this geometry participates in a LoD tree. This value SHALL always be true for the mesh-pyramids profile.
+|===
+
+Table 25: Attributes of the Class GeometryReferenceParams within the FeatureData document
+
+*Example*: geometryReferenceParams
+
+ {
+  "type": "GeometryReference",
+  "href": "/geometryData/1",
+  "faceRange": [
+    0,
+    195
+  ]
+} 
+```
