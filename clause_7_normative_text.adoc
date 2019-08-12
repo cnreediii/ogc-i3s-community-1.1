@@ -1276,3 +1276,166 @@ Table 25: Attributes of the Class GeometryReferenceParams within the FeatureData
   ]
 } 
 ```
+
+====	Class_VestedGeometryParams
+(Was 7.6.6.6)
+This Class extends GeometryParams and is the abstract parent class for all concrete ("vested") GeometryParams classes that directly contain a Geometry definition, either as an ArrayBufferView or as an Embedded Geometry.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class VestedGeometryParams within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|type	|String	|The primitive type of the geometry defined through a VestedGeometryParams object. One of {*triangles*, lines, points}
+|topology	|String	|Declares the typology of embedded geometry attributes or those in a geometry resources. When 'Indexed', the indices (faces) SHALL also be declared. Possible values are: +
+-	_PerAttributeArray_ +
+-	_InterleavedArray_ +
+-	_Indexed_
+|vertexAttributes	|<<VertexAttributes>> |A list of Vertex Attributes, such as Position, Normals, UV coordinates, and their definitions. While there are standard keywords such as position, uv0..uv9, normal and color, this is an open, extendable list.
+|faces	|<<Class_geometryAttribute>> |A list of Face Attributes, such as indices to build faces, and their definitions. While there are standard keywords such as _position, uv0..uv9, normal_ and _color_, this is an open, extendable list.
+|===
+
+Table 26: Attributes of the Class VestedGeometryParams within the FeatureData document
+
+*Example*: vestedGeometryParams
+
+```
+ {
+  "type": "triangles",
+  "vertexAttributes": {
+    "position": {
+      "byteOffset": 8,
+      "valueType": "Float32",
+      "valuesPerElement": 3
+    },
+    "normal": {
+      "byteOffset": 2672,
+      "valueType": "Float32",
+      "valuesPerElement": 3
+    },
+    "uv0": {
+      "byteOffset": 5336,
+      "valueType": "Float32",
+      "valuesPerElement": 2
+    },
+    "color": {
+      "byteOffset": 7112,
+      "valueType": "UInt8",
+      "valuesPerElement": 4
+    }
+  }
+} 
+```
+==== Class_SingleComponentParams
+Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries. Component objects provide information on parts of the geometry they belong to, specifically with which material and texture to render them.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class SingleComponentParams within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|material	|string	URL - |I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.
+|texture	|string	|URL - I3S Pointer reference to the material definition in this node's shared resource, from its root element. If present, used for the entire geometry.
+|*id*	|number	|The ID of the component, only unique within the Geometry.
+|materialID	|number	|UUID of the material, as defined in the shared resources bundle, to use for rendering this component.
+|textureID	|number[]	|Optional ID of the texture, as defined in shared resources, to use with the material to render this component.
+|regionID	|number[]	|Optional ID of a texture atlas region which to use with the texture to render this component.
+|===
+
+Note: Properties in bold are mandatory
+
+Table 27: Attributes of the Class SingleComponentParams within the FeatureData document
+
+==== 7.6.6.8	Class Component
+Component objects provide information on parts of the geometry they belong to, specifically with which material and texture to render them.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Component within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name |Type |Description
+|id	|Integer	|The ID of the component, only unique within the Geometry
+|materialID	|UUID	|ID of the material, as defined in the shared resources bundle, to use for rendering this component
+|textureID	|Long[0..1]	|Optional ID of the texture, as defined in shared resources, to use with the material to render this component
+|regionID	|Long[0..1]	|Optional ID of a texture atlas region which to use with the texture to render this component
+|===
+
+Table 28: Attributes of the Class Component within the FeatureData document
+
+====	Class geometryAttribute
+(Was 7.6.6.9)
+Each geometryAttribute object is an accessor, (a view) into an arraybuffer. There are two types of GeometryAttributes - VertexAttributes and FaceAttributes. While the first describes properties that are valid for a single vertex, the second is used to describe faces and other structures by providing a set of indices. As an example, the faces.position index attribute is used to define which vertex positions make up a face.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class GeometryAttribute within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name |Type |Description
+|byteOffset	|Number	|The starting byte position where the required bytes begin. Only used with the Geometry "type": "ArrayBufferView".
+|count	|Integer	|The number of elements. Multiply by number of bytes used for valueType to know how many bytes need to be read. Only used with the Geometry "_type_": "_ArrayBufferView_".
+|*valueType*	|String	|The element type, from {_UInt8, UInt16, Int16, Int32, Int64 or Float32, Float64_}
+|*valuesPerElement*	|Number	|The number of values needed to make a valid element (such as 3 for a xyz position)
+|values	|Float[*]	|The actual values. Only used with the Geometry "_type_": "_Embedded_"
+|componentIndices	|Integer[0...*]	|An optional array that indicates how many of the elements in this view belong to the first, second and consecutive components of the geometry. The number of entries in this array, when present, has to be equal to the number of entries in the components List of the enclosing Geometry object. The entire field is optional when no components have been declared for this Geometry.
+|===
+
+Note: Properties in bold are mandatory.
+
+Table 29: Attributes of the Class GeometryAttribute within the FeatureData document
+
+== 7.7	Shared Resources
+Shared resources are models or textures that can be shared among features within the same layer. They are stored entirely as a JSON file. Each node has a shared resource which contains materials and symbols used by more than a single feature in that node or in features which are stored in the subtree of the current node. This approach ensures an optimal distribution of shared resources across nodes, while maintaining the node-based updating process.
+
+Figure 9: Logical schema of the SharedResources document
+
+=== 7.7.1	Class SharedResource
+The SharedResource class collects Material definitions, Texture definitions, Shader definitions and geometry symbols that need to be instanced.
+
+7.7.1.1	Class Material
+Materials describe how a Feature or a set of Features is to be rendered. This includes which shading and which colors to use. The following table provides the set of attributes and parameters for the "_type_": "_standard_" material.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Material within the SharedResources document*
+[width="90%",options="header"]
+|===
+|Name |Type |Description
+|name	|String	|A name for the material as assigned in the creating application.
+|type	|String	|Indicates the material type, chosen from the supported values {standard, water, billboard, leafcard, reference}
+|$ref	|JSONPointer	|The href that resolves to the shared resource bundle in which the material definition is contained.
+|params.vertexRegions	|Boolean[0..1]	|Indicates whether this Material uses per-vertex regions. Defaults to false.
+|params.vertexColors	|Boolean[0..1]	|Indicates whether this Material use Vertex Colors. Defaults to false.
+|params.useVertexColorAlpha	|Boolean[0..1]	|Indicates whether Vertex Colors also contain a transparency channel. Defaults to false.
+|params.transparency	|Number	|Indicates whether the transparency of this material; 0 = opaque, 1 = fully transparent.
+|params.reflectivity	|Number	|Indicates reflectivity of this Material.
+|params.shininess	|Number	|Indicates shininess of this Material.
+|params.ambient	|Number []	|Ambient color of this Material.
+|params.diffuse	|Number []	|Diffuse color of this Material.
+|params.specular	|Number []	|Specular color of this Material.
+|params.renderMode	|String	|Rendering mode, any one of {_textured, solid, untextured, wireframe_}
+|params.castShadows	|Boolean	|true if features with this material should cast shadows
+|params.receiveShadows	|Boolean	|true if features with this material should receive shadows
+|params.cullFace	|String	|Indicates the material culling options {_back, front, *none*_}. Default being none.
+|===
+
+Table 30: Attributes of the Class Material within the SharedResources document
+
+==== Class Texture
+(7.7.1.2)
+A Texture is a set of images, with some parameters specific to the texture/uv mapping  to geometries.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Texture within the SharedResources document*
+[width="90%",options="header"]
+|===
+|Name |Type |Description
+|*encoding*	|string[]	|MIMEType - The encoding/content type that is used by all images in this map
+|wrap	|String[] 	|UV wrapping modes, from {_none, repeat, mirror_}
+|atlas	|Boolean	|TRUE if the Map represents a texture atlas.
+|uvSet	|String	|The name of the UV set to be used as texture coordinates.
+|channels	|String[]	|Indicates which channels are stored in which channel of this map. Possible values: h=brightness, r=red, g=green, b=blue, a=alpha, n=bump, d=displacement, ...
+|images	|<<Class_Image>> [] |An image is a binary resource, containing a single raster that can be used to texture a feature or symbol.
+|===
+Note: Mandatory properties in bold are mandatory.
+
+Table 31: Attributes of the Class Texture within the SharedResources document
+
