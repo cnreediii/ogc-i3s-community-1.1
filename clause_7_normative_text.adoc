@@ -1267,6 +1267,7 @@ Table 25: Attributes of the Class GeometryReferenceParams within the FeatureData
 
 *Example*: geometryReferenceParams
 
+```
  {
   "type": "GeometryReference",
   "href": "/geometryData/1",
@@ -1274,7 +1275,7 @@ Table 25: Attributes of the Class GeometryReferenceParams within the FeatureData
     0,
     195
   ]
-} 
+}
 ```
 
 ====	Class_VestedGeometryParams
@@ -1324,8 +1325,9 @@ Table 26: Attributes of the Class VestedGeometryParams within the FeatureData do
       "valuesPerElement": 4
     }
   }
-} 
+}
 ```
+
 ==== Class_SingleComponentParams
 Objects of this type extend VestedGeometryParams and use one texture and one material. They can be used with aggregated LoD geometries. Component objects provide information on parts of the geometry they belong to, specifically with which material and texture to render them.
 
