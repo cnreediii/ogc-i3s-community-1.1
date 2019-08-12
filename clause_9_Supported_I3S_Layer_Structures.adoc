@@ -1,1 +1,7 @@
-info
+== Supported I3S Layer Structures
+This section provides detailed information on the supported I3S layer structures for:
+
+-	Point Scene Layers
+
+Profiles of the mandatory classes that define the layer are provided in a corresponding annex.
+
