@@ -2,6 +2,11 @@
 This section provides detailed information on the supported I3S layer structures for:
 
 -	Point Scene Layers
+-	Integrated Scene Mesh Layer
+-	3D Object Scene Layer
 
 Profiles of the mandatory classes that define the layer are provided in a corresponding annex.
+
+=== Point Scene Layer
+Point scene layers contain point features and their attributes. Point scene layers are often used to visualize large amounts of 3D data like trees or buildings. Most phenomena that can be visualized by 3D symbols can be displayed with a point scene layers.
 
