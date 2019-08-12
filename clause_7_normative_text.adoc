@@ -1065,7 +1065,7 @@ Table 19: Attributes of the Class Resource within the NodeIndexDocument
 ```
 ==== Class Feature (Deprecated)
 (Was 7.6.4.4)
-*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as featureData.*
+*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as <<FeatureData>>.*
 
 Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.
 
@@ -1099,9 +1099,142 @@ Publishers (aka “cookers”) can add as many LodSelection objects as desired b
 |Name	|Type	|Description
 |*metricType*	|String	|The name of the error metric, one of {maxScreenThreshold, screenSpaceRelative, ...}
 |*maxError*	|number	|Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size.
-|[red]#maxValue#	|Float[0..1]	|Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
-|avgValue	|Float[0..1]	|Average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
+| [Red]#maxValue#	|Float[0..1]	|Maximum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
+| [#FF0000]#avgValue#	|Float[0..1]	|Average metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
 |minValue	|Float[0..1]	|Minimum metric value, expressed in the CRS of the vertex coordinates or in reference to other constants such as screen size
 |===
 
 Table 21: Attributes of the Class LodSelection within the NodeIndexDocument
+
+*Example*: LOD Selection example
+
+```
+ {
+  "metricType": "maxScreenThreshold",
+  "maxError": 34.87550189480981
+} 
+```
+
+==== obb
+(Was 7.6.5.6)
+This class defines the properties for an oriented bounding box.
+
+[width="90%",options="header"]
+|===
+|*center*	|number[3]	|The center point of the oriented bounding box. For a global scene, i.e. XY coordinate system in WGS1984, center is in longitude of decimal degrees, latitude of decimal degrees, elevation in meters.
+|*halfSize*	|number[3]	|Half size of the oriented bounding box in spatial reference units (or meters for global scenes).
+|*quaternion*	|number[4]	|Orientation of the oriented bounding box as a 4-component quaternion. For global scene, quaternion is in Earth-Centric-Earth-Fixed (ECEF) Cartesian space. ( Z+ : North, Y+ : East, X+: lon=lat=0.0).
+|===
+
+Note: properties in bold are mandatory
+
+*Example*: Global scene (WSG84) oriented-bounding box.
+
+``` 
+{
+  "center": [
+    -105.01482,
+    39.747244,
+    1596.040551
+  ],
+  "halfSize": [
+    29.421873,
+    29.539055,
+    22.082193
+  ],
+  "quaternion": [
+    0.420972,
+    -0.055513,
+    -0.118217,
+    0.897622
+  ]
+} 
+```
+
+=== FeatureData
+(Was 7.6.6)
+The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes and other references to styling or materials. Point Clouds do not have feature data. Features have the following structure: 
+ 
+Figure 8: Logical schema of the FeatureData document
+
+==== 7.6.6.1	Class FeatureData
+The FeatureData JSON file(s) contain geographical features with a set of attributes, accessors to geometry attributes, and other references to styling or materials.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Feature within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*id+	|Integer	|Feature ID, unique within the Node. If lodType is FeatureTree, the ID SHALL be unique in the store.
+|position	|Number[2:3]	|An array of two or three doubles, giving the (x,y,z) (easting/northing/height) position of this feature's minimum bounding sphere center, in the vertexCRS.
+|pivotOffset	|Number[3]	|An array of three doubles, providing an optional, "semantic" pivot offset that can be used to, for example, correctly drape tree symbols.
+|mbb	|Number[6]	|An array of six doubles, corresponding to xmin, ymin, zmin, xmax, ymax and zmax of the minimum bounding box of the feature, expressed in the vertexCRS, without offset. The mbb can be used with the Feature’s Transform to provide a LOD0 representation without loading the GeometryAttributes.
+|layer	|String	|The name of the Feature Class this feature belongs to.
+|attributes	|<<Class_featureAttribute>> |The list of attributes for this feature.
+|geometries	|<<Class_geometry>> |The list of geometries the feature has. A feature always SHALL have at least one Geometry.
+|===
+ Note that properties in bold are mandatory.
+ 
+Table 22: Attributes of the Class Feature within the FeatureData document
+
+==== Class featureAttribute
+A featureAttribute is a field carrying a value. This value may also be a list of complete attributes, to be used with reports or metadata.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class FeatureAttribute within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|name	|String	|The name of the attribute.
+|value	|String	|The value of the attribute. If group is set and the type of this attribute is set to FieldTypeGroup, the value may be used as a label.
+|group	|FeatureAttribute[0..*]	|A list of FeatureAttributes belonging to an attribute value group.
+|===
+
+Table 23: Attributes of the Class FeatureAttribute within the FeatureData document
+
+====	Class geometry
+(was 7.6.6.3)
+This is the common container class for all types of I3S geometry definitions.
+
+[#table_material,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class Geometry within the FeatureData document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|*id*	|Number	|Reference-able, unique ID of the Geometry in this store.
+|type	|String	|The type denotes whether the following geometry is defined by using array buffer views (ArrayBufferView), as an internal reference (GeometryReference), as a reference to a shared Resource (SharedResourceReference) or embedded (Embedded).
+|transformation	|number[16]	|3D (4x4) transformation matrix expressed as a linear array of 16 values.
+|params	|<<geometryParams>> See 7.6.6.4 below	|The parameters for a geometry, as an Embedded GeometryParams object, an ArrayBufferView, a GeometryReference object, or a SharedResourceReference object.
+|===
+
+Note: properties in bold are mandatory
+
+Table 24: Attributes of the Class Geometry within the FeatureData document
+
+*Example*: Geometry
+
+```
+ {
+  "id": 0,
+  "type": "ArrayBufferView",
+  "transformation": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ]
+} 
+```
+
