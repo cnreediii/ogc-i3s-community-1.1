@@ -229,3 +229,8 @@ Using our example feature class shown in Figure 14 let's see how it maps to the 
 * *Name*  (type 'FieldTypeString') is represented as a String-Array. A String-Array supports storage of variable length strings and is stored as two arrays in sequence. The first fixed length array has the byte counts of each string (null terminated) in the second array. The second array stores the actual string values as UTF8 encoded strings. The value type of the first array is (UInt32) whereas the value type of the second array is String.
 
 The _attributes_ REST API of a scene layer gives access to all scene cache operations supported feature attribute data as attribute value arrays that are stored in binary format. As a result, the scene cache of the example feature class in Figure 14 has 5 binary resources, as identified by keys f_0_, f_1_, f_2_, f_3_ and f_4 and are accessible by their respective rest resource URLs (_.../nodes/<nodeID>/attributes/0/f_0, .../nodes/<nodeID>/attributes/0/f_1, etc..).
+
+=== Accessing the Legend of a 3D Object Layer
+Legends are essential for proper display (complete communication of represented information) of 3D Object Layer (also equally applicable for other layer types).
+
+Clients are responsible for building legend information from the <<drawingInfo>> resource for the scene layer. In this scene layers and scene services behave identically to feature layers and feature services.
