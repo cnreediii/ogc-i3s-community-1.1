@@ -104,6 +104,8 @@ include::clause_7_normative_text.adoc[]
 
 include::clause_8_formats_normative.adoc[]
 
+include::clause_9_Supported_I3S_Layer_Structures.adoc[]
+
 <<<
 ////
 add or remove annexes after "A" as necessary
