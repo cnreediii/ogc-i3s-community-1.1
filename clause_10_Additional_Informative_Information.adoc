@@ -33,7 +33,7 @@ In summary, here are other characteristics, including content data formats, whic
 - Bounding volume hierarchy (BVH) based on bounding spheres (MBS) as well as oriented bounding boxes (OBB);
 - Scene layers may be created in Cartesian 3D or in global 3D world coordinate reference systems 
 
-===Persistence
+=== Persistence
 I3S scene layers can be delivered to web, mobile and desktop clients using a number of different patterns. Most users will interact with scene layers using applications that access cloud or server based information via RESTful interfaces/services. In these cases the cache (the I3S nodes and their payloads) for the scene layer resides on the server and is returned to clients via a RESTful interface that exposes the scene layer, its nodes and their associated resources (geometries, attributes, textures) as web addressable resources.
 
 The I3S standard contains a complete description of the web addressable resources and their URL scheme.
@@ -42,7 +42,7 @@ Alternatively, a scene layer can be delivered as a Scene Layer Package. – This
 
 All storage methods store the Indexed 3D Scene Layers in a simple key-value structure, with the key representing the access URL and the value being the JSON document or other resource type.
 
-====11.1	Scene Layer Packages 
+==== 11.1	Scene Layer Packages 
 Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file. A SLPK package can be consumed by applications directly.
 
 The format of the package itself is defined as follows:
