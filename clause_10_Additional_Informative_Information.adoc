@@ -46,6 +46,7 @@ All storage methods store the Indexed 3D Scene Layers in a simple key-value stru
 Scene Layer Packages (SLPK) allow a complete I3S layer, with all resources, to be transported or exchanged as a single file. A SLPK package can be consumed by applications directly.
 
 The format of the package itself is defined as follows:
+
 -	The Archive type is always Zip64 .
 --	On this Archive, an overall compression scheme may be applied. This compression scheme SHALL be either STORE or DEFLATE64. Standard DEFLATE is acceptable as a fallback if DEFLATE64 is not available, but will only work with smaller SLPKs. 
 --	STORE is the preferred compression schema for an SLPK intended for direct consumption by client application, especially if a resource compression is already applied on the individual resources (as shown in the figure 15 below).
