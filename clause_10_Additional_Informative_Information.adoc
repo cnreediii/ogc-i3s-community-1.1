@@ -22,6 +22,7 @@ Minimal structure elements: bounding volume; first-child reference; child-count;
 
 === 10.2	Summary of I3S Defining Characteristics
 In summary, here are other characteristics, including content data formats, which the scene layer may include: 
+
 - Attributes may be included on individual entities, points, or on partial segments of meshes
 - Attribute-based stylization may be modified by client software
 - Multiple, alternative textures may be provided to optimize for per-platform performance and display
