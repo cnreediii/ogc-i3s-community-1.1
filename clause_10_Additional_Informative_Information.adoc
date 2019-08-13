@@ -1,0 +1,12 @@
+== Additional Informative Information
+
+=== 10.1	Flexibility
+I3S is flexible and allows for different implementation choices for different types of 3D data or even for the same type of 3D data. The profile for a layer indicates the set of choices made. Choices supported by I3S and made use of by different profiles are described below. In each case the profile listed is the canonical profile for the corresponding layer-type. Here are a few implementation options:
+.	The Minimum Bounding Volume (MBV) property can be represented as:
+.. Minimum Bounding Sphere (MBS)
+.. Oriented Bounding Box (OBB) 
+.	Node structure
+.. Expanded: Supports clients that want to get more complete meta-information about node’s position within the BVH hierarchy and its immediate neighborhood 
+...	Each index node provides pointers to its parent, all its children, and sibling neighbors (including their MBVs). Used by: mesh-pyramids and points profiles
+. Fixed-size: Supports paged access pattern 
+Minimal structure elements: bounding volume; first-child reference; child-count; LoD selection data; etc.
