@@ -19,7 +19,7 @@
 |Approval Date:   <2019-mm-dd>
 |Publication Date:   <2019-mm-dd>
 |External identifier of this OGC(R) document:  http://www.opengis.net/doc/CS/i3s/1.1
-|Internal reference number of this OGC(R) document:    17-014r6
+|Internal reference number of this OGC(R) document:    17-014r7
 |Version: 1.1
 |Category: OGC(R) Implementation
 |Editor:   Carl Reed, Tamrat Belayneh 
