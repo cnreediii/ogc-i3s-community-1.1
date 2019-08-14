@@ -108,6 +108,8 @@ include::clause_9_Supported_I3S_Layer_Structures.adoc[]
 
 include::clause_10_Additional_Informative_Information.adoc[]
 
+include::clause_10_Persistence.adoc[]
+
 <<<
 ////
 add or remove annexes after "A" as necessary
@@ -115,7 +117,13 @@ add or remove annexes after "A" as necessary
 include::annex-a.adoc[]
 
 <<<
-include::annex-n.adoc[]
+include::annex-b.adoc[]
+
+<<<
+include::annex-c.adoc[]
+
+<<<
+include::annex-d.adoc[]
 
 <<<
 ////
