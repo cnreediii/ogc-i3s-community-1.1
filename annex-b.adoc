@@ -1,5 +1,5 @@
-[annex-b]
-:appendix-caption: Annex B
+[appendix]
+:appendix-caption: Annex
 == Contributors to this Community Standard
 
 Contributors: Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal Müller, Dragan Petrovic, Sud Menon
