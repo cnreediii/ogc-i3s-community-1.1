@@ -1,0 +1,27 @@
+[annex-e]
+:appendix-caption: Annex H
+
+== Annex H: I3S Scene Layer Profile - Mesh-pyramids (MP)
+What this profile is for: This profile is implemented by the 3D Object and Integrated Mesh layer types.
+
+=== Access Pattern
+
+This section describes how a client is expected to load and handle resources from an Indexed 3D Scene Layer using the 
+Mesh-pyramids profile. The general pattern consists of these phases:
+
+.	Handshake & capabilities negotiation: The client ensures that the service has the expected resources and that a client and a server have a common set of capabilities. Within this phase, the client utilizes the following resources: 
+..	Retrieve SceneServiceInfo: General service information
+..	Retrieve 3dSceneLayer: Information on available layers, including symbology and encoding
+.	Index exploration: The client retrieves Node Index Documents and decides – based on lodSelection properties – whether it wants to download and render their attached resources. Within this phase, the client utilizes the following resource: 
+..	NodeIndexDocument: Summary of the content of a single node of the index, references children, parent and neighbor nodes, indicating what can be found there
+.	Rendering: When a client has decided that it wants to render the content of a node, it retrieves the attached resources: 
+..	SharedData: Material definitions, shared geometries for instancing
+..	GeometryData: Geometry attributes such as positions and indices
+..	TextureData: Images used as texture maps
+..	AttributeData: Attribute data of features used for attribute-based symbolization (as indicated by the DrawingInfo object in the 3dSceneLayer resource)
+.	Identify: Additional resources belonging to a node are accessed only if needed, e.g. for an Identify operation. 
+..	AttributeData: If the AttributeData resources of the node have not already been fetched (in step 3 above) client application can request the desired attribute data.
+
+A familiar access pattern based on a single tree data structure is proposed for view frustum culling, level-of-detail selection, 
+and rendering. The following pseudo code illustrates the recommended pattern when navigating an index tree using Mesh Pyramids.
+Node traversal starts at the root node and recursively calls TraverseNodeTree(node):
