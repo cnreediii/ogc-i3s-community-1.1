@@ -18,10 +18,15 @@ The format of the package itself is defined as follows:
 --	STORE is the preferred compression schema for an SLPK intended for direct consumption by client application, especially if a resource compression is already applied on the individual resources (as shown in the figure 15 below).
 -	Every resource except textures may also be individually compressed. Compressed textures (such as S3TC) can additionally have GZIP  compression applied to them. 
 -	For resource compression, only the GZIP scheme is supported, as DEFLATE support is not universally available supported in all browsers.
+
 The layout shown in Figure 15 below is referred to as the BASIC folder pattern. The I3S standard allows also for an EXTENDED folder pattern that uses subtree partitions to avoid problems with very large packages. The top level includes a nodes folder with
 -	A subfolder that contains all node resources
 -	A metadata.json file that describes the content of the SLPK
 -	A 3dSceneLayer.json.gz file that defines the Scene Layer
+
+[#fig_slpk,reftext='{figure-caption} {counter:figure-num}']
+.Example of a SLPK with BASIC folder layout
+image::figures/FIG25.png[width=600,align="center"]
 
 The 3dNodeIndexDocument.json.gz, features/0.json.gz and SharedResource.json.gz correspond to 3dNodeIndexDocument, 
 featureData and SharedResource documents of the Scene Layer, and are JSON with GZIP compression.
@@ -46,8 +51,9 @@ For the above mentioned two use cases, an SLPK file is employed as follows:
 
 ==== 11.1.1	Metadata
 Every SLPK archive has a metadata.json file. The following entries are required and must be of the specified type. The 
-default is in bold:
+default is in *bold*.
 
+[width="90%",options="header"]
 |===
 |*Property*	|*Required*	|*Notes*
 |folderPattern	|True	|One of {*BASIC*, EXTENDED}
@@ -57,4 +63,46 @@ default is in bold:
 |nodeCount	|True	|Total number of nodes stored in this SLPK.
 |===
 
+=== 11.2	Key Value Stores
+In this persistence schema, all scene layer resources are stored within either key value based cloud blob stores such as Windows Azure Blob Storage or Amazon Simple Storage (S3) or within more general key value stores. In the case of cloud blob stores, layer resources are stored as either simple objects within containing buckets (S3) or blobs within blob containers (Azure). In all cases each resource within a scene layer is identified by a unique key. The default is in *bold*.
 
+[#table_slpk,reftext='{table-caption} {counter:table-num}']
+.Example showing the layout of a SceneService.
+[width="90%",options="header"]
+|===
+|I3S |Resources	|Required	|Notes
+|/SceneServer	|Yes	|The _SceneServiceInfo_ JSON that defines the service name and list the layers offered by this Scene Service. +
+Content type: text/plain, +
+Content encoding {NONE, *GZIP*}
+|/SceneServer/layers/0	|Yes	|The 3dSceneLayer JSON resource. The layer id (e.g. 0) is used as the key of the document. +
+Content type: text/plain +
+Content encoding {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/root	|Yes	|The 3dNodeIndexDocument of the layer as a JSON resource. The node id (e.g. root) is used as the key of the document. +
+Content type: text/plain +
+Content encoding: {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/0	|Yes	|The 3dNodeIndexDocument of the layer as a JSON resource. The node id (e.g. 0) is used as the key of the document +
+content type: text/plain, +
+content encoding: {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/0/shared	|Yes	|The SharedResource of the node as a JSON resource. The keyword shared is used as the key of the document. +
+content type: text/plain, +
+content encoding {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/0/features/0	|No	|The FeatureData document of the node as a JSON resource. The resource array id (e.g.0) is used as the key of the document. +
+content type: text/plain, +
+content encoding: {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/0/geometries/0	|Yes	|The GeometryData of the node as a binary resource. The resource array id (e.g.0) is used as the key of the resource. +
+content type: application/octet-stream, +
+content encoding {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/0/textures/0_0	|No	|The Texture of the node as a binary resource. The resource id (e.g. 0_0) is used as the key of the resource. +
+content type: image/jpeg, 
+content encoding {*NONE*}
+|/SceneServer/layers/0/nodes/0/textures/0_0_1	|No	|The compressed texture of the node as a binary resource. The resource id (e.g. 0_0_1) is used as the key of the resource. +
+content type: image/vnd-ms.dds, 
+content encoding {NONE, *GZIP*}
+|/SceneServer/layers/0/nodes/0/attributes/f_0/0	|No	|The AttributeData as a binary resource. The resource id (e.g.0) is used as the key of the resource. +
+Content type: application/octet-stream, +
+Content encoding: {NONE, *GZIP*} 
+|/SceneServer/layers/0/nodes/0/attributes/f_1/0	|No	|Same as the attributeData resource f_0/0 above.
+|/SceneServer/layers/0/nodes/1-4-2-0	|Yes	|same as node resource root and 0.
+|===
+
+_Detail: A typical example showing the layout of a SceneService in a key value store environment. The example illustrates the structure of the service using a 3D Object scene layer containing textured geometries as well as attribute data._
