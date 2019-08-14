@@ -1,7 +1,7 @@
 [annex-g]
 
 :appendix-caption: Annex G
-== I3S Scene Layer Profile for Points
+== Annex G: I3S Scene Layer Profile for Points
 
 === 3DSceneLayerInfo [Point Profile]
 The object 3DSceneLayerInfo describes the properties of a layer in a store. Every scene layer contains 3DSceneLayerInfo. For features based scene layers, such as 3D objects or point scene layers, may include the default symbology, as specified in the drawingInfo, which contains stylization information for a feature layer.
@@ -351,3 +351,76 @@ The following is an example JSON encoding for the 3DSceneLayerInfo Point Scene L
     ]
 } 
 ``` 
+=== 3DNodeIndexDocument
+The 3dNodeIndexDocument JSON file describes a single index node within a store. It includes links to other nodes (e.g. children, sibling, and parent), links to feature data, geometry data, texture data resources, metadata (e.g. metrics used for LoD selection), and spatial extent. 
+
+All mandatory properties of the 3DNodeIndexDocument shall be implemented in the I3S Point Scene Layer profile.
+
+The following is an example JSON encoding for the 3DNodeIndexDocument class for the Point Scene Layer Profile.
+
+{
+    "id": "root",
+    "level": 1,
+    "version": "ee4fbf04-e882-444e-854d-cd519b68594a",
+    "mbs": [
+        -120.235609902853241,
+        39.1981414865211661,
+        1895.23079465422779,
+        446.269165373884221
+    ],
+    "created": "2014-07-23T00:00:00.000Z",
+    "expires": "2015-07-23T00:00:00.000Z",
+    "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+    ],
+    "lodSelection": [
+        {
+            "metricType": "screenSpaceRelative",
+            "maxError": 0
+        },
+        {
+            "metricType": "distanceRangeFromDefaultCamera",
+            "maxError": 0
+        }
+    ],
+    "featureData": [
+        {
+            "href": "./features/0",
+            "featureRange": [
+                0,
+                3
+            ]
+        }
+    ],
+    "parentNode": null,
+    "children": null,
+    "attributeData": [
+        {
+            "href": "./attributes/f_0/0"
+        },
+        {
+            "href": "./attributes/f_1/0"
+        },
+        {
+            "href": "./attributes/f_2/0"
+        },
+        {
+            "href": "./attributes/f_3/0"
+        }
+    ]
+} 
