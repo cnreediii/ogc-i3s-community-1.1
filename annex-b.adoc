@@ -1,29 +1,8 @@
 [annex-b]
 :appendix-caption: Annex B
-== Additional Informative Material: Simple Example of an XML encoding
+== Contributors to this Community Standard
 
-Below is a modification of an XML example from the WMTS standard but revised to meet the above example requirements. This could just have easily been written in JSON, Javascript, and so on.
+Contributors: Tamrat Belayneh, Javier Gutierrez, Markus Lipp, Johannes Schmid, Simon Reinhard, Thorsten Reitz, Chengliang Shan, Ben Tan, Moxie Zhang, Pascal Müller, Dragan Petrovic, Sud Menon
 
-```
-<ows:Identifier>Fort Collins Tiled Data Store</ows:Identifier>
+Acknowledgements: Bart van Andel, Fabien Dachicourt, Carl Reed
 
-<tileSet> 
-	<tileSetIdentifier>Parcels<tileSetIdentifier> 
-	<tileSetCRS>EPSG2876</tiledSetCRS> 
-	<tileSetUOM>FT</tileSetUOM>
-	<tileSetOrigin>lower_left</tileSetOrigin>
-		<!-- Extent defined. lower left point of tile set bounding box -->
-		<ows:BoundingBox>
-			<LowerCorner>3080000,1400000</LowerCorner>
-			<UpperCorner>3600000,1500000</UpperCorner>
-		<ows:BoundingBox>
-		
-	< tessellationType>Square</tessellationType>
-	<!-- width and height of each tile in specified units -->
-		<tileWidth>1000</tileWidth>
-		<tileHeight>1000</tileHeight>
-	<tileOrigin>lower_left</tileOrigin>
-	<tileAddress>default</tileAddress>
-	<tileExtent>default</tileExtent>
-</tileSet>
-```
