@@ -358,6 +358,7 @@ All mandatory properties of the 3DNodeIndexDocument shall be implemented in the 
 
 The following is an example JSON encoding for the 3DNodeIndexDocument class for the Point Scene Layer Profile.
 
+```
 {
     "id": "root",
     "level": 1,
@@ -424,3 +425,4 @@ The following is an example JSON encoding for the 3DNodeIndexDocument class for 
         }
     ]
 } 
+```
