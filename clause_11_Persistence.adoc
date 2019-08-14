@@ -70,7 +70,7 @@ In this persistence schema, all scene layer resources are stored within either k
 .Example showing the layout of a SceneService.
 [width="90%",options="header"]
 |===
-|I3S |Resources	|Required	|Notes
+|I3S |Resources	Required	|Notes
 |/SceneServer	|Yes	|The _SceneServiceInfo_ JSON that defines the service name and list the layers offered by this Scene Service. +
 Content type: text/plain, +
 Content encoding {NONE, *GZIP*}
