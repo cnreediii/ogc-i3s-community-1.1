@@ -1,4 +1,4 @@
-[annex-e]
+[annex-h]
 :appendix-caption: Annex H
 
 == Annex H: I3S Scene Layer Profile - Mesh-pyramids (MP)
