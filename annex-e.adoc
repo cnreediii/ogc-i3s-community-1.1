@@ -85,3 +85,4 @@ This is the REST API for retrieval of these resources:
 - _Method_: GET
 - _Example Service_: http://3dcities.maps.arcgis.com/arcgis/rest/services/New_York_LoD2_3D_Buildings/SceneServer/layers/0/nodes/5-1-0-0-0/attributes/f_0/0
 - _Returns_: An attribute data resource (bundle). Refer to the I3S format specification for details on how different types of attributes are encoded.
+
