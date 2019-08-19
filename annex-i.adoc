@@ -248,6 +248,7 @@ Possible values are: `+
 Note: Properties in *bold* are mandatory.
 
 *Elevation pseudo-attribute*
+ 
  ```
  {
   "key": "1",
@@ -257,6 +258,7 @@ Note: Properties in *bold* are mandatory.
 ```
 
 *Example: Color attribute*
+ 
  ```
  {
   "key": "4",
@@ -273,7 +275,8 @@ Note: Properties in *bold* are mandatory.
 ```
 
 *Example: 8-bit uncompressed/GZIP compressed class-codes*
- ```
+
+```
  {
   "key": "8",
   "name": "CLASS_CODE",
