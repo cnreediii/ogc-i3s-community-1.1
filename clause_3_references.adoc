@@ -8,7 +8,7 @@ ISO/OGC: [ISO 19111:2019] http://docs.opengeospatial.org/as/18-005r4/18-005r4.ht
 
 ISO/OGC: OGC SF [99-036/ISO 19125]: http://portal.opengeospatial.org/files/?artifact_id=13227[Geographic information - Simple feature access - Part 1: Common architecture]. 2005. .
 
-ISO/OGC WKT CRS [12-063r5/ISO 19162:2019]: https://www.iso.org/standard/76496.html[Geographic information — Well known text representation of coordinate reference systems]. 2019 (August 8, 2019)
+ISO/OGC WKT CRS [12-063r5/ISO 19162:2019]: https://www.iso.org/obp/ui#iso:std:iso:19162:ed-2:v1:en[Geographic information — Well known text representation of coordinate reference systems]. 2019 (August 8, 2019)
 
 
 === Informative
