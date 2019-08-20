@@ -455,12 +455,11 @@ application/octet-stream; version=1.6
 |textureEncoding	|string[]	|MIME type(s) for the encoding used for the Texture Resources
 |lodType	|String	|Optional field to indicate which LoD generation scheme is used in this store.
 Possible values are: +
-`MeshPyramid`: Used for integrated mesh and 3D scene layer. +
-`AutoThinning`: Use for point scene layer. +
-`Clustering`: Fill in which profile types are using this lodType +
-`Generalizing`: Fill in which profile types are using this lodType +
+`MeshPyramid`: Used for integrated mesh and 3D Object Scene layers, which share similar data partitioning as well as traversal patterns and hence belong to the same profile. +
+`AutoThinning`: Used by point scene layer. Indicates the I3S generator (‘cooker’) used automatic data thining techniques to build interior nodes (non-leaf nodes). +
+`Clustering`: Used by point scene layer. Indicates the ‘cooker’ used data clustering algorithims to build interior nodes (non-leaf nodes). +
+`Generalizing`: Also used by point scene layer. Indicates the ‘cooker’ used data generalization algorithims/techniques to build interior nodes (non-leaf nodes). 
 |lodModel	|String	|optional field to indicate which LoD Switching mode clients have to use. One of {*node-switching*, none}.
-|indexingScheme	|String	|Information on the Indexing Scheme (QuadTree, R-Tree, Octree, ...) used.
 |*defaultGeometrySchema*	|<<defaultGeometrySchema>> |A common, global ArrayBufferView definition that can be used if the schema of vertex attributes and face attributes is consistent in an entire cache; this is a requirement for meshpyramids caches.
 |defaultTextureDefinition	|_texture_ | A common, global TextureDefinition  to be used for all textures in this store. The default texture definition uses a reduced profile of the full TextureDefinition, with the following attributes being mandatory: encoding, uvSet, wrap and channels.
 |defaultMaterialDefinition	|_material_ |If a store uses only one material, it can be defined here entirely as a MaterialDefinition 
@@ -697,7 +696,23 @@ Example: attributeStorageInfo for 3d object scene layer.
 ```
 
 ====7.6.4.7	Class IndexScheme *(deprecated)*
-Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk.
+Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk. This class will remain in the I3S Community Standard for one year from the date of publication and then will be removed.
+
+The IndexScheme class declaratively describes computational and structural properties of the index used within an I3S store. This information can be used by clients to better understand how to work with the index.
+
+[#table_indexscheme,reftext='{table-caption} {counter:table-num}']
+.*Attributes of the Class IndexScheme within the 3dSceneLayerInfo document*
+[width="90%",options="header"]
+|===
+|Name	|Type	|Description
+|name	|String	|Name of the scheme, selected from {RTree, QuadTree, AGOLTilingScheme}.
+|inclusive	|Boolean	|true indicates that the extent and mbs of all children nodes is fully within their parent nodes' extent/mbs
+|dimensionality	|Integer	|The number of dimensions in which this index differentiates.
+|childrenCardinality	|Integer[2]	|min/max number of children per node.
+|neighborCardinality	|Integer[2]	|min/max number of neighbors per node.
+|===
+
+*Deprecated*
 
 ==== Class_DrawingInfo
 DrawingInfo and the associated classes contain the default symbology (drawing information) of an Indexed 3D Scene Layer. 
