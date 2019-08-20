@@ -1085,7 +1085,7 @@ Table 19: Attributes of the Class Resource within the NodeIndexDocument
 ```
 ==== Class Feature (Deprecated)
 (Was 7.6.4.4)
-*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as <<FeatureData>>.*
+*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as <<FeatureData>>.* This deprecated class will remain in the OGC I3S Community Standard for a period of one year from the date of publication and then will be removed.
 
 Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.
 
