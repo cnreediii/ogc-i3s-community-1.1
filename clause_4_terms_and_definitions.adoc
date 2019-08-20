@@ -9,6 +9,9 @@ Three-dimensional (3D) models represent a physical body using a collection of po
 === *Array Buffers*
 In JavaScript, the ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.
 
+=== *Community Standard*
+An OGC Community Standard is an official position of the OGC endorsing a specification or standard developed external to the OGC. 
+
 === *Face*
 In solid geometry, a face is a flat (planar) surface that forms part of the boundary of a solid object; a three-dimensional solid bounded exclusively by flat faces is a polyhedron.
 
