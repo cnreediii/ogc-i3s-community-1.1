@@ -311,3 +311,110 @@ Shall be: +
 
 Note: properties in *bold* are mandatory.
 
+```
+The following is a JSON example.
+{
+  "id": "",
+  "profile": "PointCloud",
+  "version": "2.0",
+  "extent": [
+    -105.023403,
+    39.740089,
+    -105.011746,
+    39.757051
+  ],
+  "index": {
+    "nodeVersion": 1,
+    "boundingVolumeType": "obb",
+    "nodesPerPage": 64,
+    "lodSelectionMetricType": "density-threshold"
+  },
+  "defaultGeometrySchema": {
+    "geometryType": "points",
+    "header": [],
+    "topology": "PerAttributeArray",
+    "encoding": "lepcc-xyz",
+    "vertexAttributes": {
+      "position": {
+        "valueType": "Float64",
+        "valuesPerElement": 3
+      }
+    },
+    "ordering": [
+      "position"
+    ]
+  }
+} 
+```
+
+=== I3S point cloud scene layer: Index
+The following table describes the properties of the index, such as bounding volume tree, of the Point Cloud layer.
+
+[width="90%",options="header"]
+|===
+|Property	|Type	|Description
+|*nodeVersion*	|integer	|The version of the individual nodes format.
+|*nodesPerPage*	|integer	|The page size describes the number of nodes per paged index document. 64 is currently expected.
+|boundingVolumeType	|string	|The bounding volume type. Only OBB is currently supported. +
+Shall be:
+-	`obb`: Oriented bounding box
+|lodSelectionMetricType	|string	|Defines how node.lodThreshold should be interpreted. +
+Shall be:
+-	`density-threshold`: nodes[i].lodThreshold will represent an 'effective' 2D area for the node. This estimation works best when the point cloud scene layer represents a surface and is not volumetric. World space density is defined as Dw = node.pointCount / node.effectiveArea. Ds is Dw converted to screen space. Client would switch LOD when Ds is less/greater than a threshold defined by the client. For example, 0.1 point per pixel square. Note for point cloud scene layer creation: If each point footprint is assumed to be identical (say 0.1x0.1 unit), then the lodThreshold may be computed as number_of_points * point_footprint for a leaf node and sum( children[i].effective_area) for inner nodes.
+|href	|string	|
+|===
+
+Note: properties in *bold* are mandatory.
+
+```
+{
+  "nodeVersion": 1,
+  "boundingVolumeType": "obb",
+  "nodesPerPage": 64,
+  "lodSelectionMetricType": "density-threshold"
+}
+```
+
+=== I3S point cloud scene layer: defaultGeometrySchema
+The following table describes the properties for class defaultGeometryScheme of the Point Cloud layer.
+
+[width="90%",options="header"]
+|===
+|Property	|Type	|Description
+|*geometryType*	|string	|The type of primitive. Only points are supported for point cloud scene layer. +
+Shall be: +
+-	`points`
+|header	|[]	|The header in binary buffers. Currently not supported for point cloud scene layer.
+|*topology*	|string	|This property is currently *ignored for point cloud scene layer since it only contains geometry position without vertex attributes. +
+Shall be: +
+-	`PerAttributeArray`
+|*encoding*	|string	|Only _lepcc-xyz_ compression is currently supported. +
+Shall be: +
+-	`lepcc-xyz`
+|ordering	|string[]	|Currently the geometry contains XYZ only, so vertex attribute must only list 'position'. |
+Possible values for each array string: |
+-	`position`: vertex coordinates
+|vertexAttributes	|<<vertexAttributes>> |The vertex buffer description.
+|===
+
+Note: properties in *bold* are mandatory.
+
+JSON example for defaultGeometrySchema for point cloud scene layers.
+
+```
+ {
+  "geometryType": "points",
+  "header": [],
+  "topology": "PerAttributeArray",
+  "encoding": "lepcc-xyz",
+  "vertexAttributes": {
+    "position": {
+      "valueType": "Float64",
+      "valuesPerElement": 3
+    }
+  },
+  "ordering": [
+    "position"
+  ]
+} 
+```
