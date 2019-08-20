@@ -947,6 +947,7 @@ Note: properties in *bold* are mandatory.
 
 *Example*: Global scene (WSG84, last page)
 
+```
  {
     "nodes": [
         {
