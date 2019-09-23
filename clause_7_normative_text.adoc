@@ -696,7 +696,8 @@ Example: attributeStorageInfo for 3d object scene layer.
 ```
 
 ====7.6.4.7	Class IndexScheme *(deprecated)*
-Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk. This class will remain in the I3S Community Standard for one year from the date of publication and then will be removed.
+
+Warning: This class has been deprecated in version 1.1. This class is no longer supported. Use at your own risk. This class will remain in the I3S Community Standard until a version two of the standsrd is approved for publication. At that time this clause will be removed.
 
 The IndexScheme class declaratively describes computational and structural properties of the index used within an I3S store. This information can be used by clients to better understand how to work with the index.
 
