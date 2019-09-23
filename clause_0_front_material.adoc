@@ -60,7 +60,7 @@ The following organization support the submission of the I3S Community Standard 
 |Dale Lutz	|Safe Software
 |===
 
-Note on supporting organizations. As per the OGC Technical Committee policies and Procedures:
+Note on supporting organizations. As per the OGC Technical Committee Policies and Procedures:
 
 - Any http://www.opengeospatial.org/standards/community[Community Standard] submission requires that three or more distinct Member organizations support the submission. In addition to the submission team lead, each other organization supporting the submission shall provide the TCC with an email stating their organization’s support of the submission.
 
