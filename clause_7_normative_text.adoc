@@ -1086,7 +1086,7 @@ Table 19: Attributes of the Class Resource within the NodeIndexDocument
 ```
 ==== Class Feature (Deprecated)
 (Was 7.6.4.4)
-*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as <<FeatureData>>.* This deprecated class will remain in the OGC I3S Community Standard for a period of one year from the date of publication and then will be removed.
+*Warning: This Class has been deprecated for version 1.1. This Class is no longer supported. The properties specified in this class have been integrated into the 3dNodeIndexDocument as <<FeatureData>>.* This deprecated class will remain in the OGC I3S Community Standard until such time as Version 2 of this Community Standard is approved. At that time, this deprecated class will be removed from the standard.
 
 Features are representations of the geographic objects stored in a layer. In the 3dNodeIndexDocument, these objects define relationships, e.g. for linking feature representations of multiple LoDs.
 
@@ -1111,7 +1111,7 @@ A LodSelection object provides information on a given metric determined during t
 
 Publishers (aka “cookers”) can add as many LodSelection objects as desired but must provide one as soon as the layer's lodType is not null. Of the three min/avg/max values, typically only one or two are used.
 
-*Please Note: In version 1.1, the maxValue, avgValue, and minValue properties have been deprecated.* The deprecated properties are highlighted in red.
+*Please Note: In version 1.1, the maxValue, avgValue, and minValue properties have been deprecated.* The deprecated properties are highlighted in red. This deprecated elements will remain in the OGC I3S Community Standard until such time as Version 2 of this Community Standard is approved. At that time, these deprecated elements will be removed from the standard.
 
 [#table_material,reftext='{table-caption} {counter:table-num}']
 .*Attributes of the Class LodSelection within the NodeIndexDocument*
