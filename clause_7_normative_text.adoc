@@ -66,7 +66,7 @@ The following is a WKT1 description of WGS 84, EPSG 4326.
 The following is a WKT2 description of a compound WGS 84, EPSG 4326 and EPSG 3855.
 
 ```
-COMPOUNDCRS ["I3S Compund CRS",
+COMPOUNDCRS ["I3S Compound CRS",
 GEODCRS["WGS 84",
   DATUM["World Geodetic System 1984",
     ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1.0]]],
