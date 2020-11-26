@@ -4,7 +4,7 @@ A single I3S data set, referred to as a Scene Layer, is a container for arbitrar
 
 The delivery format and persistence model for Scene Layers, referred to as Indexed 3d Scene Layer (I3S) and Scene Layer Package (SLPK) respectively, are specified in detail in this OGC Community Standard. Both formats are encoded using JSON and binary ArrayBuffers (ECMAScript 2015). I3S is designed to be cloud, web and mobile friendly. I3S is based on JSON, REST and modern web standards and is easy to handle, efficiently parse and render by Web and Mobile Clients. I3S is designed to stream large 3D datasets and is designed for performance and scalability. I3S is designed to support 3D geospatial content and supports the requisite coordinate reference systems and height models in conjunction with a rich set of layer types.
 
-The open community GitHub version of this standard is here: https://github.com/Esri/i3s-spec. 
+The open community GitHub version of this standard is https://github.com/Esri/i3s-spec[here]. 
 
 [big]*ii.    Source of this document*
 
